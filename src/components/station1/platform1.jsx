@@ -6,7 +6,7 @@ import * as THREE from 'three'
   function PlatformOne({ middle }) {
     const [hovered, setHover] = useState(false)
 
-    const volumeRef = useRef(null);
+    const mapRef = useRef(null);
     const leftRef = useRef(null);
     const rightRef = useRef(null);
     const bottomRef = useRef(null);
@@ -26,23 +26,31 @@ import * as THREE from 'three'
     const poleRef = useRef()
     const lightAngle = .8
     const lightHeight = 14
+    let rise = 0;
+    let risespeed = .015;
 
     useFrame(() => {
+      rise += risespeed
 
-      leftRef.current.position.z = leftZ;
-      leftRef.current.position.y = 3.5;
+      
+      // leftRef.current.position.z = leftZ;
+      // leftRef.current.position.y = 3.5;
       leftRef.current.receiveShadow = true;
-      leftRef.current.castShadow = true;
-
+      // leftRef.current.castShadow = true;
+      
+      
       rightRef.current.position.z = midZ;
       rightRef.current.position.y = 2;
       rightRef.current.receiveShadow = true;
-      rightRef.current.castShadow = true;
+      // rightRef.current.castShadow = true;
 
+      mapRef.current.position.y = 1.5 * Math.sin(rise);
+
+      
       bottomRef.current.position.z = bottomZ;
       bottomRef.current.position.y = 3.5;
       bottomRef.current.receiveShadow = true;
-      bottomRef.current.castShadow = true;
+      // bottomRef.current.castShadow = true;
 
       targetRef.current.position.set(-30, lightHeight-1, midZ)
       lightRef.current.target = targetRef.current
@@ -61,25 +69,24 @@ import * as THREE from 'three'
       lightFourRef.current.angle = lightAngle
     })
     return (
-      <mesh
+      <mesh ref={mapRef}
       //   scale={hovered ? [1.05, 1.05, 1.05] : [1, 1, 1]}
       // onPointerOver={() => setHover(true)}
       //   onPointerOut={() => setHover(false)}
       >
-        <mesh ref={leftRef}   >
+        <mesh ref={leftRef}  position={[0,3.5,leftZ]}>
           <boxGeometry args={[80, 1, 2]} />
-          <meshStandardMaterial color="yellow" flatShading/>
+          <meshStandardMaterial color="yellow" />
         </mesh>  
         <mesh ref={rightRef}>
           <boxGeometry args={[80, 4, 12]} />
-          <plane attach="clippingPlanes-0" normal={[0, 0, 0]} constant={0} />
-          <meshStandardMaterial color="grey" flatShading />
+          <meshStandardMaterial color="grey" />
         </mesh>
         <mesh ref={bottomRef}>
           <boxGeometry args={[80, 1, 2]} />
-          <meshStandardMaterial color="yellow" flatShading/>
+          <meshStandardMaterial color="yellow" />
         </mesh>
-        <spotLight castShadow ref={lightRef} position={[-30, lightHeight, midZ]} color={"yellow"} intensity={1}  penumbra={1} />
+        <spotLight castShadow ref={lightRef} position={[-30, lightHeight, midZ]} color={"yellow"} intensity={1} penumbra={1} />
         <mesh  ref={targetRef} position={[-30, lightHeight, midZ]}>
           <sphereGeometry args={[0.6, 32, 32]} />
           <meshBasicMaterial  color="yellow" />
