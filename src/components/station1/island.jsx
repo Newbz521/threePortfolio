@@ -53,7 +53,7 @@ function Island({ middle }) {
         </mesh>
         <mesh ref={domeRef} rotation={[-Math.PI / 2, 0, 0]} position={[0,-3,0]} >
           <sphereGeometry args={[55, 20,20, 0, Math.PI]} />
-          <meshStandardMaterial side={THREE.DoubleSide}color="blue"  transparent opacity={.1}/>
+          <meshStandardMaterial side={THREE.DoubleSide} color="blue" clearcoat={1} transparent opacity={.1} clearcoatRoughness={0} roughness={0} metalness={0.25}/>
         </mesh>
       </mesh>
     )
