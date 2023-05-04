@@ -5,7 +5,7 @@ import { useSpring, a, config } from "@react-spring/three";
 import { Canvas, useFrame, useThree, PerspectiveCamera} from "@react-three/fiber"
 import { Outline } from '@react-three/postprocessing'
 import { BlendFunction, Resizer, KernelSize } from 'postprocessing'
-import {PivotControls, MeshReflectorMaterial, orthographicCamera, OrthographicCamera, OrbitControls, RoundedBox, useCursor} from '@react-three/drei'
+import {PivotControls, MeshReflectorMaterial, orthographicCamera, OrthographicCamera, OrbitControls, RoundedBox, useCursor, Text} from '@react-three/drei'
 import Cutter from '@r3f-cutter/r3f-cutter';
 import { useCSG, Geometry, Base, Subtraction } from '@react-three/csg'
 import PlatformOne from "./platform1";
@@ -16,6 +16,7 @@ import Island from "./island";
 import * as THREE from 'three'
 import "./station1.css"
 import { Vector3 } from "three";
+
 
 
 const StationOne = (props) => {
@@ -225,12 +226,38 @@ const [preset, setPreset] = useState(0)
   }
 
   function Video() {
-    const [video] = useState(() => Object.assign(document.createElement('video'), { src: '/drei_r.mp4', crossOrigin: 'Anonymous', loop: true, muted: true }))
+    const [video] = useState(() => Object.assign(document.createElement('video'), { src: "/Kitchan.mp4", crossOrigin: 'Anonymous', loop: true, muted: true }))
     useEffect(() => void video.play(), [video])
     return (
       <mesh position={[-20, 8, -14.7]} rotation={[0, Math.PI / 2, 0]}>
         <boxGeometry args={[.1,8,8]}/>
-        <meshBasicMaterial color="blue" toneMapped={false}>
+        <meshBasicMaterial  toneMapped={false}>
+          <videoTexture attach="map" args={[video]} encoding={THREE.sRGBEncoding} />
+        </meshBasicMaterial>
+      </mesh>
+    )
+  }
+
+  function VideoTwo() {
+    const [video] = useState(() => Object.assign(document.createElement('video'), { src: "/Bubble.mp4", crossOrigin: 'Anonymous', loop: true, muted: true }))
+    useEffect(() => void video.play(), [video])
+    return (
+      <mesh position={[0, 8, -14.7]} rotation={[0, Math.PI / 2, 0]}>
+        <boxGeometry args={[.1,8,8]}/>
+        <meshBasicMaterial  toneMapped={false}>
+          <videoTexture attach="map" args={[video]} encoding={THREE.sRGBEncoding} />
+        </meshBasicMaterial>
+      </mesh>
+    )
+  }
+
+  function VideoThree() {
+    const [video] = useState(() => Object.assign(document.createElement('video'), { src: "/Levi.mp4", crossOrigin: 'Anonymous', loop: true, muted: true }))
+    useEffect(() => void video.play(), [video])
+    return (
+      <mesh position={[20, 8, -14.7]} rotation={[0, Math.PI / 2, 0]}>
+        <boxGeometry args={[.1,8,8]}/>
+        <meshBasicMaterial  toneMapped={false}>
           <videoTexture attach="map" args={[video]} encoding={THREE.sRGBEncoding} />
         </meshBasicMaterial>
       </mesh>
@@ -243,6 +270,9 @@ const [preset, setPreset] = useState(0)
       const ref = useRef()
       const bounceRef = useRef()
       const [active, setActive] = useState(false)
+      const [git, setGit] = useState(false)
+      const [deploy, setDeploy] = useState(false)
+      const [world,setWorld] = useState(false)
       const [zoom, setZoom] = useState(false)
       useCursor(active)
       
@@ -257,7 +287,43 @@ const [preset, setPreset] = useState(0)
           <boxGeometry args={[8, 8, .5]} />
           <meshStandardMaterial color={active ? 'hotpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
           </mesh>
-          <Video/>
+          <Video />
+          <mesh ref={ref} position={[-23, 14, -15]} receiveShadow castShadow onClick={() => { window.open("https://github.com/Newbz521/FiberKitchen", "_blank"); }} onPointerOver={() => setGit(true)} onPointerOut={() => setGit(false)}>
+            <boxGeometry args={[2, 2, .5]} />
+          <meshStandardMaterial color={git ? 'lightpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
+          </mesh>
+          <mesh position={[-23, 14, -14.7]} >
+          <Text
+        scale={[.5, .5, .5]}
+        color="white" // default
+        >
+            GIT
+          </Text>
+            </mesh>
+          <mesh ref={ref} position={[-20, 14, -15]} receiveShadow castShadow onClick={() => {  window.open("https://kitchan.netlify.app/", "_blank"); }} onPointerOver={() => setDeploy(true)} onPointerOut={() => setDeploy(false)}>
+            <boxGeometry args={[2, 2, .5]} />
+          <meshStandardMaterial color={deploy ? 'pink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
+          </mesh>
+          <mesh position={[-20, 14, -14.7]} >
+          <Text
+        scale={[.5, .5, .5]}
+        color="white" // default
+        >
+            APP
+          </Text>
+            </mesh>
+          <mesh ref={ref} position={[-17, 14, -15]} receiveShadow castShadow onClick={() => { if (!zoom) { setPreset(1) } else { setPreset(0) }; setZoom(!zoom) }} onPointerOver={() => setWorld(true)} onPointerOut={() => setWorld(false)}>
+            <boxGeometry args={[2, 2, .5]} />
+          <meshStandardMaterial color={world ? 'hotpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
+          </mesh>
+          <mesh position={[-17, 14, -14.7]} >
+          <Text
+        scale={[.5, .5, .5]}
+        color="white" // default
+        >
+            ZOOM
+          </Text>
+            </mesh>
         </mesh>
       )
     }
@@ -268,6 +334,9 @@ const [preset, setPreset] = useState(0)
     const ref = useRef()
     const bounceRef = useRef()
     const [active, setActive] = useState(false)
+    const [git, setGit] = useState(false)
+    const [deploy, setDeploy] = useState(false)
+    const [world,setWorld] = useState(false)
     const [zoom, setZoom] = useState(false)
     useCursor(active)
      
@@ -281,7 +350,44 @@ const [preset, setPreset] = useState(0)
         <mesh ref={ref} position={[0, 8, -15]} receiveShadow castShadow onClick={() => { if (!zoom) { setPreset(2) } else { setPreset(0) }; setZoom(!zoom) }} onPointerOver={() => setActive(true)} onPointerOut={() => setActive(false)}>
         <boxGeometry args={[8, 8, .5]} />
         <meshStandardMaterial color={active ? 'hotpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
-      </mesh>
+        </mesh>
+        <VideoTwo />
+        <mesh ref={ref} position={[-3, 14, -15]} receiveShadow castShadow onClick={() => { window.open("https://github.com/Newbz521/Beacon-Defender-", "_blank"); }} onPointerOver={() => setGit(true)} onPointerOut={() => setGit(false)}>
+            <boxGeometry args={[2, 2, .5]} />
+          <meshStandardMaterial color={git ? 'lightpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
+          </mesh>
+          <mesh position={[-3, 14, -14.7]} >
+          <Text
+        scale={[.5, .5, .5]}
+        color="white" // default
+        >
+            GIT
+          </Text>
+            </mesh>
+          <mesh ref={ref} position={[0, 14, -15]} receiveShadow castShadow onClick={() => { window.open("https://newbz521.github.io/Beacon-Defender-/", "_blank"); }} onPointerOver={() => setDeploy(true)} onPointerOut={() => setDeploy(false)}>
+            <boxGeometry args={[2, 2, .5]} />
+          <meshStandardMaterial color={deploy ? 'pink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
+          </mesh>
+          <mesh position={[0, 14, -14.7]} >
+          <Text
+        scale={[.5, .5, .5]}
+        color="white" // default
+        >
+            APP
+          </Text>
+            </mesh>
+          <mesh ref={ref} position={[3, 14, -15]} receiveShadow castShadow onClick={() => { if (!zoom) { setPreset(1) } else { setPreset(0) }; setZoom(!zoom) }} onPointerOver={() => setWorld(true)} onPointerOut={() => setWorld(false)}>
+            <boxGeometry args={[2, 2, .5]} />
+          <meshStandardMaterial color={world ? 'hotpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
+          </mesh>
+          <mesh position={[3, 14, -14.7]} >
+          <Text
+        scale={[.5, .5, .5]}
+        color="white" // default
+        >
+            BACK
+          </Text>
+            </mesh>
       </mesh>
     )
   }
@@ -292,6 +398,9 @@ const [preset, setPreset] = useState(0)
     const ref = useRef()
     const bounceRef = useRef()
     const [active, setActive] = useState(false)
+    const [git, setGit] = useState(false)
+    const [deploy, setDeploy] = useState(false)
+    const [world,setWorld] = useState(false)
     const [zoom, setZoom] = useState(false)
     useCursor(active)
      
@@ -305,7 +414,44 @@ const [preset, setPreset] = useState(0)
         <mesh ref={ref} position={[20, 8, -15]} receiveShadow castShadow onClick={() => { if (!zoom) { setPreset(3) } else { setPreset(0) }; setZoom(!zoom) }} onPointerOver={() => setActive(true)} onPointerOut={() => setActive(false)}>
         <boxGeometry args={[8, 8, .5]} />
         <meshStandardMaterial color={active ? 'hotpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
-      </mesh>
+        </mesh>
+        <VideoThree />
+        <mesh ref={ref} position={[17, 14, -15]} receiveShadow castShadow onClick={() => { window.open("https://github.com/Newbz521/virtufit-prototype", "_blank") }} onPointerOver={() => setGit(true)} onPointerOut={() => setGit(false)}>
+            <boxGeometry args={[2, 2, .5]} />
+          <meshStandardMaterial color={git ? 'hotpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
+          </mesh>
+          <mesh position={[17, 14, -14.7]} >
+          <Text
+        scale={[.5, .5, .5]}
+        color="white" // default
+        >
+            GIT
+          </Text>
+            </mesh>
+          <mesh ref={ref} position={[20, 14, -15]} receiveShadow castShadow onClick={() => { window.open("https://virtualfit.netlify.app/", "_blank") }} onPointerOver={() => setDeploy(true)} onPointerOut={() => setDeploy(false)}>
+            <boxGeometry args={[2, 2, .5]} />
+          <meshStandardMaterial color={deploy ? 'hotpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
+          </mesh>
+          <mesh position={[20, 14, -14.7]} >
+          <Text
+        scale={[.5, .5, .5]}
+        color="white" // default
+        >
+            APP
+          </Text>
+            </mesh>
+          <mesh ref={ref} position={[23, 14, -15]} receiveShadow castShadow onClick={() => { if (!zoom) { setPreset(1) } else { setPreset(0) }; setZoom(!zoom) }} onPointerOver={() => setWorld(true)} onPointerOut={() => setWorld(false)}>
+            <boxGeometry args={[2, 2, .5]} />
+          <meshStandardMaterial color={world ? 'hotpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
+          </mesh>
+          <mesh position={[23, 14, -14.7]} >
+          <Text
+        scale={[.5, .5, .5]}
+        color="white" // default
+        >
+            BACK
+          </Text>
+            </mesh>
       </mesh>
     )
   }
@@ -316,6 +462,9 @@ const [preset, setPreset] = useState(0)
     const ref = useRef()
     const bounceRef = useRef()
     const [active, setActive] = useState(false)
+    const [git, setGit] = useState(false)
+    const [deploy, setDeploy] = useState(false)
+    const [world,setWorld] = useState(false)
     const [zoom, setZoom] = useState(false)
     useCursor(active)
      
@@ -340,6 +489,9 @@ const [preset, setPreset] = useState(0)
     const ref = useRef()
     const bounceRef = useRef()
     const [active, setActive] = useState(false)
+    const [git, setGit] = useState(false)
+    const [deploy, setDeploy] = useState(false)
+    const [world,setWorld] = useState(false)
     const [zoom, setZoom] = useState(false)
     useCursor(active)
      
@@ -363,6 +515,9 @@ const [preset, setPreset] = useState(0)
     const ref = useRef()
     const bounceRef = useRef()
     const [active, setActive] = useState(false)
+    const [git, setGit] = useState(false)
+    const [deploy, setDeploy] = useState(false)
+    const [world,setWorld] = useState(false)
     const [zoom, setZoom] = useState(false)
     useCursor(active)
      

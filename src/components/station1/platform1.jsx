@@ -79,8 +79,8 @@ import * as THREE from 'three'
           <meshStandardMaterial color="yellow" />
         </mesh>  
         <mesh ref={rightRef}>
-          <boxGeometry args={[80, 4, 12]} />
-          <meshStandardMaterial color="grey" />
+          <boxGeometry args={[80, 4, 12]} smoothness={10} />
+          <meshStandardMaterial color="#436fbd" envMapIntensity={.1} roughness={0} metalness={.1} />
         </mesh>
         <mesh ref={bottomRef}>
           <boxGeometry args={[80, 1, 2]} />
