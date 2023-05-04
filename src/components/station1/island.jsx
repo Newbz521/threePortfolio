@@ -49,7 +49,7 @@ function Island({ middle }) {
        
         <mesh  position={[0,-28,0]}>
           <cylinderGeometry args={[55, 20, 50]} />
-          <meshStandardMaterial color="rgb(194, 124, 74)"  flatShading/>
+          <meshStandardMaterial color="rgb(194, 124, 74)"  flatShading clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25}/>
         </mesh>
         <mesh ref={domeRef} rotation={[-Math.PI / 2, 0, 0]} position={[0,-3,0]} >
           <sphereGeometry args={[55, 20,20, 0, Math.PI]} />
