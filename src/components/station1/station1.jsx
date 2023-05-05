@@ -67,8 +67,8 @@ const farAway = {
   target: [18,10,15]
   }
   const Island2 = {
-    position: [500, -40, 5],
-    target: [450,-45,0]
+    position: [490, -45, 20],
+    target: [450,-40,0]
   }
 
 const CameraWrapper = ({ cameraPosition, target }) => {
