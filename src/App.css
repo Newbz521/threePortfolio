@@ -1,5 +1,11 @@
 .App {
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.title-block{
+  color: rgb(252, 211, 218);
 }
 
 .App-logo {

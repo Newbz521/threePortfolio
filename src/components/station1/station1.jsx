@@ -13,6 +13,7 @@ import DayScene from "./environment";
 import { OrbitingMesh, OrbitingMeshTwo } from "./satelite";
 import { useControls } from "leva";
 import Island from "./island";
+import IslandTwo from "../station2/island2";
 import * as THREE from 'three'
 import "./station1.css"
 import { Vector3 } from "three";
@@ -22,11 +23,20 @@ import { Vector3 } from "three";
 const StationOne = (props) => {
 const [toggler, setToggler] = useState(false);
 
+  document.addEventListener('keydown', function (event) {
+    // console.log(`Key: ${event.key} with keycode ${event.keyCode} has been pressed`);
+    if (event.key == "Escape") {
+      console.log("escape has been pressed!")
+      setPreset(0)
+    }
+  }
+)
+  
   
 const t = new Vector3();
 
 const defaultPosition = {
-  position: [-100, 50, 80],
+  position: [-100, 30, 80],
   target: [0, 0, 0]
 };
 
@@ -165,7 +175,6 @@ const [preset, setPreset] = useState(0)
       leftRef.current.receiveShadow = true;
       leftRef.current.castShadow = true;
       leftRef.current.position.x = -20 * Math.sin(step) 
-
       subRef.current.position.y = 1.5 * Math.sin(rise);
       // if (leftRef.current.position.x < 200) {
       //   leftRef.current.position.x += .5
@@ -173,8 +182,7 @@ const [preset, setPreset] = useState(0)
       // } else if (leftRef.current.position.x = 200) {
       //   leftRef.current.position.x = -200
       //   opacityLevel = 0;
-      // }
-     
+      // }  
     })
     return (
       <mesh ref={subRef}>
@@ -224,7 +232,6 @@ const [preset, setPreset] = useState(0)
       </mesh>
     )
   }
-
   function Video() {
     const [video] = useState(() => Object.assign(document.createElement('video'), { src: "/Kitchan.mp4", crossOrigin: 'Anonymous', loop: true, muted: true }))
     useEffect(() => void video.play(), [video])
@@ -237,7 +244,6 @@ const [preset, setPreset] = useState(0)
       </mesh>
     )
   }
-
   function VideoTwo() {
     const [video] = useState(() => Object.assign(document.createElement('video'), { src: "/Bubble.mp4", crossOrigin: 'Anonymous', loop: true, muted: true }))
     useEffect(() => void video.play(), [video])
@@ -250,7 +256,6 @@ const [preset, setPreset] = useState(0)
       </mesh>
     )
   }
-
   function VideoThree() {
     const [video] = useState(() => Object.assign(document.createElement('video'), { src: "/Levi.mp4", crossOrigin: 'Anonymous', loop: true, muted: true }))
     useEffect(() => void video.play(), [video])
@@ -376,7 +381,7 @@ const [preset, setPreset] = useState(0)
             APP
           </Text>
             </mesh>
-          <mesh ref={ref} position={[3, 14, -15]} receiveShadow castShadow onClick={() => { if (!zoom) { setPreset(1) } else { setPreset(0) }; setZoom(!zoom) }} onPointerOver={() => setWorld(true)} onPointerOut={() => setWorld(false)}>
+          <mesh ref={ref} position={[3, 14, -15]} receiveShadow castShadow onClick={() => { if (!zoom) { setPreset(2) } else { setPreset(0) }; setZoom(!zoom) }} onPointerOver={() => setWorld(true)} onPointerOut={() => setWorld(false)}>
             <boxGeometry args={[2, 2, .5]} />
           <meshStandardMaterial color={world ? 'hotpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
           </mesh>
@@ -440,7 +445,7 @@ const [preset, setPreset] = useState(0)
             APP
           </Text>
             </mesh>
-          <mesh ref={ref} position={[23, 14, -15]} receiveShadow castShadow onClick={() => { if (!zoom) { setPreset(1) } else { setPreset(0) }; setZoom(!zoom) }} onPointerOver={() => setWorld(true)} onPointerOut={() => setWorld(false)}>
+          <mesh ref={ref} position={[23, 14, -15]} receiveShadow castShadow onClick={() => { if (!zoom) { setPreset(3) } else { setPreset(0) }; setZoom(!zoom) }} onPointerOver={() => setWorld(true)} onPointerOut={() => setWorld(false)}>
             <boxGeometry args={[2, 2, .5]} />
           <meshStandardMaterial color={world ? 'hotpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
           </mesh>
@@ -541,17 +546,16 @@ const [preset, setPreset] = useState(0)
         far={50}
         dpr={[1, 1.5]} 
         gl={{ localClippingEnabled: true, alpha: false }} 
-        // camera={{ position: [-180, 90, -100], fov: 75 }}
+        camera={{ position: [-180, 60, -150], fov: 75 }}
       >
         <StoreOne />
-        {/* <Video/> */}
         <StoreTwo />
         <StoreThree />
-        <StoreFour />
+        {/* <StoreFour />
         <StoreFive />
-        <StoreSix/>
+        <StoreSix/> */}
         <EyeAnimation preset={preset} />
-        <OrbitControls makeDefault/>
+        <OrbitControls makeDefault  />
        
         {/* <gridHelper args={[100, 100, 'white', 'grey']} position-x={0}  /> */}
         <Subway middle={-30} />
@@ -561,7 +565,10 @@ const [preset, setPreset] = useState(0)
         <Island/>
         <DayScene />
         <OrbitingMesh />
-        <OrbitingMeshTwo/>
+        <OrbitingMeshTwo />
+        
+        <IslandTwo/>
+
     </Canvas>
     </div>
   );

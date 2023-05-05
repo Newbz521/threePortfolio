@@ -1,13 +1,11 @@
 import { useEffect, useState, useRef, Suspense } from "react";
-
 import { Canvas, useFrame, useThree, PerspectiveCamera } from "@react-three/fiber"
 import {Sky, useEnvironment, CubeCamera} from '@react-three/drei'
-
 import * as THREE from 'three'
-import GlassMaterial from "./glass";
-import SkyHDR from "./sky/Ggenebrush_HDRI1.hdr"
+import { OrbitingMeshThree,OrbitingMeshFour } from "../station1/satelite";
 
-function Island({ middle }) {
+
+function IslandTwo({ middle }) {
     let rise = 0;
     let risespeed = .015;
     const [hovered, setHover] = useState(false)
@@ -42,19 +40,21 @@ function Island({ middle }) {
       <mesh ref={leftRef}>
  
       
-        <mesh ref={platRef} position={[0,-1.5,0]}>
-          <cylinderGeometry args={[48, 48, 3]} />
-          <meshStandardMaterial color="darkgrey" />
+        <mesh ref={platRef} position={[450,-51.5,0]}>
+          <cylinderGeometry args={[90, 90, 3]} />
+          <meshStandardMaterial color="green" />
         </mesh>
        
-        <mesh  position={[0,-28,0]}>
-          <cylinderGeometry args={[55, 5, 50]} />
-          <meshStandardMaterial color="pink"  flatShading clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25}/>
+        <mesh  position={[450,-63,0]}>
+          <cylinderGeometry args={[100, 70, 20]} />
+          <meshStandardMaterial color="lightgrey"  flatShading clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25}/>
         </mesh>
-        <mesh ref={domeRef} rotation={[-Math.PI / 2, 0, 0]} position={[0,-3,0]} >
-          <sphereGeometry args={[55, 20,20, 0, Math.PI]} />
+        <mesh ref={domeRef} rotation={[-Math.PI / 2, 0, 0]} position={[450,-53,0]} >
+          <sphereGeometry args={[100, 20,20, 0, Math.PI]} />
           <meshStandardMaterial side={THREE.DoubleSide} color="blue" clearcoat={1} transparent opacity={.1} clearcoatRoughness={0} roughness={0} metalness={0.25}/>
         </mesh>
+        <OrbitingMeshFour />
+        <OrbitingMeshThree/>
       </mesh>
     )
   }
@@ -62,4 +62,4 @@ function Island({ middle }) {
 
 
 
-export default Island;
+export default IslandTwo;

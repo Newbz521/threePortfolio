@@ -17,6 +17,7 @@ function DayScene() {
   
   const [toggler, setToggler] = useState(false);
   const [planet, setPlanet] = useState("rgb(255, 244, 120)")
+  const [size,setSize] = useState(25)
   const dayRef = useRef()
   const nightRef = useRef()
 
@@ -31,8 +32,10 @@ function DayScene() {
     if (toggler == true) {
       // setShow("");
       setPlanet("rgb(255, 244, 120)");
+      setSize(25)
     } else {
       setPlanet("white");
+      setSize(15)
     }
     setToggler((prevCheck) => !prevCheck);
   }
@@ -45,25 +48,25 @@ function DayScene() {
       <mesh ref={dayRef}>
         
         <mesh onClick={handleShow}  onPointerOver={() => setHovered(true)}
-    onPointerOut={() => setHovered(false)}  position={[60, 60, 60]}>
-          <sphereGeometry args={[10, 32, 32]} />
+    onPointerOut={() => setHovered(false)}  position={[200, 100, 50]}>
+          <sphereGeometry args={[size, 32, 32]} />
           <meshBasicMaterial  color={planet} />
         </mesh>
         
         {!toggler ? (
           <>
-             <Sky sunPosition={[0, 1, .5]} distance={1000} inclination={0}
+             <Sky sunPosition={[0, 1, .5]} distance={10000} inclination={0}
             azimuth={1} />
-            <directionalLight castShadow intensity={.9} position={[60, 60, 60]} />
+            <directionalLight castShadow intensity={.9} position={[200, 100, 50]} />
             <ambientLight intensity={.2} />
             </>
             //  <directionalLight castShadow intensity={.7} position={[20, 70, 20]} shadow-mapSize={[1024, 1024]}/>
             //  <ambientLight intensity={.4} />
         ) : (
             <>
-          <Sky sunPosition={[0, -.1, .5]} distance={1000} inclination={0}
+          <Sky sunPosition={[0, -.1, .5]} distance={10000} inclination={0}
               azimuth={1} />
-              <directionalLight castShadow intensity={.1} position={[60, 60, 60]} />
+              <directionalLight castShadow intensity={.1} position={[200, 100, 50]} />
               <ambientLight intensity={.1} />
               </>
         )}
