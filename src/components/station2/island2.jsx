@@ -79,6 +79,7 @@ function IslandTwo(props) {
   const platRef = useRef(null)
   const [zoom, setZoom] = useState(false)
   const [active, setActive] = useState(false)
+  const fenceRef = useRef(null)
   useCursor(active)
   
     useFrame(() => {
@@ -87,7 +88,8 @@ function IslandTwo(props) {
       leftRef.current.receiveShadow = true;
       // leftRef.current.castShadow = true;
       leftRef.current.position.y = 1.5 * Math.sin(rise) 
-     
+      fenceRef.current.castShadow = true
+      fenceRef.current.receiveShadow = true
       // platRef.current.receiveShadow = true;
       platRef.current.castShadow = true;
       domeRef.current.castShadow = true;
@@ -144,7 +146,21 @@ function IslandTwo(props) {
           <cylinderGeometry args={[.3, 1, 10]}  />
           <meshStandardMaterial side={THREE.DoubleSide} color="rgb(193, 154, 107)" flatShading/>
         </mesh>
-      
+        <mesh ref={fenceRef} scale={[50,.5,50]} side={THREE.BackSide} position={[450,-47,0]}>
+          <Cylinder args={[1, 1, 1, 64, 1, true]} >
+          <meshStandardMaterial attach="material" color="rgb(193, 154, 107)" side={THREE.DoubleSide} receiveShadow castShadow/>
+          </Cylinder>
+        </mesh>
+        <mesh ref={fenceRef} scale={[50,.5,50]} side={THREE.BackSide} position={[450,-48,0]}>
+          <Cylinder args={[1, 1, 1, 64, 1, true]} color="brown">
+          <meshStandardMaterial attach="material" color="rgb(193, 154, 107)" side={THREE.DoubleSide} receiveShadow castShadow/>
+          </Cylinder>
+        </mesh>
+        <mesh ref={fenceRef} scale={[50,.5,50]} side={THREE.BackSide} position={[450,-49,0]}>
+          <Cylinder args={[1, 1, 1, 64, 1, true]} color="brown">
+          <meshStandardMaterial attach="material" color="rgb(193, 154, 107)" side={THREE.DoubleSide} receiveShadow castShadow/>
+          </Cylinder>
+        </mesh>
     
     
         <OrbitingMeshFour />
