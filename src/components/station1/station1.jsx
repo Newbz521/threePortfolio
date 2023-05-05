@@ -294,7 +294,7 @@ const [preset, setPreset] = useState(0)
       })
       return (
         <mesh ref={bounceRef}>
-          <mesh ref={ref} position={[-20, 8, -15]} receiveShadow castShadow onClick={() => { if (!zoom) { setPreset(1) } else { setPreset(0) }; setZoom(!zoom) }} onPointerOver={() => setActive(true)} onPointerOut={() => setActive(false)}>
+          <mesh ref={ref} position={[-20, 8, -15]} receiveShadow castShadow onClick={() => { setPreset(1) } } onPointerOver={() => setActive(true)} onPointerOut={() => setActive(false)}>
           <boxGeometry args={[8, 8, .5]} />
           <meshStandardMaterial color={active ? 'hotpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
           </mesh>
@@ -323,7 +323,7 @@ const [preset, setPreset] = useState(0)
             APP
           </Text>
             </mesh>
-          <mesh ref={ref} position={[-17, 14, -15]} receiveShadow castShadow onClick={() => { if (!zoom) { setPreset(1) } else { setPreset(0) }; setZoom(!zoom) }} onPointerOver={() => setWorld(true)} onPointerOut={() => setWorld(false)}>
+          <mesh ref={ref} position={[-17, 14, -15]} receiveShadow castShadow onClick={() => { setPreset(0) }} onPointerOver={() => setWorld(true)} onPointerOut={() => setWorld(false)}>
             <boxGeometry args={[2, 2, .5]} />
           <meshStandardMaterial color={world ? 'hotpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
           </mesh>
@@ -358,7 +358,7 @@ const [preset, setPreset] = useState(0)
     })
     return (
       <mesh ref={bounceRef}>
-        <mesh ref={ref} position={[0, 8, -15]} receiveShadow castShadow onClick={() => { if (!zoom) { setPreset(2) } else { setPreset(0) }; setZoom(!zoom) }} onPointerOver={() => setActive(true)} onPointerOut={() => setActive(false)}>
+        <mesh ref={ref} position={[0, 8, -15]} receiveShadow castShadow onClick={() => { setPreset(2) }} onPointerOver={() => setActive(true)} onPointerOut={() => setActive(false)}>
         <boxGeometry args={[8, 8, .5]} />
         <meshStandardMaterial color={active ? 'hotpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
         </mesh>
@@ -387,7 +387,7 @@ const [preset, setPreset] = useState(0)
             APP
           </Text>
             </mesh>
-          <mesh ref={ref} position={[3, 14, -15]} receiveShadow castShadow onClick={() => { if (!zoom) { setPreset(2) } else { setPreset(0) }; setZoom(!zoom) }} onPointerOver={() => setWorld(true)} onPointerOut={() => setWorld(false)}>
+          <mesh ref={ref} position={[3, 14, -15]} receiveShadow castShadow onClick={() => { setPreset(0) }} onPointerOver={() => setWorld(true)} onPointerOut={() => setWorld(false)}>
             <boxGeometry args={[2, 2, .5]} />
           <meshStandardMaterial color={world ? 'hotpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
           </mesh>
@@ -422,7 +422,7 @@ const [preset, setPreset] = useState(0)
     })
     return (
       <mesh ref={bounceRef}>
-        <mesh ref={ref} position={[20, 8, -15]} receiveShadow castShadow onClick={() => { if (!zoom) { setPreset(3) } else { setPreset(0) }; setZoom(!zoom) }} onPointerOver={() => setActive(true)} onPointerOut={() => setActive(false)}>
+        <mesh ref={ref} position={[20, 8, -15]} receiveShadow castShadow onClick={() => { setPreset(3) }} onPointerOver={() => setActive(true)} onPointerOut={() => setActive(false)}>
         <boxGeometry args={[8, 8, .5]} />
         <meshStandardMaterial color={active ? 'hotpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
         </mesh>
@@ -451,7 +451,7 @@ const [preset, setPreset] = useState(0)
             APP
           </Text>
             </mesh>
-          <mesh ref={ref} position={[23, 14, -15]} receiveShadow castShadow onClick={() => { if (!zoom) { setPreset(3) } else { setPreset(0) }; setZoom(!zoom) }} onPointerOver={() => setWorld(true)} onPointerOut={() => setWorld(false)}>
+          <mesh ref={ref} position={[23, 14, -15]} receiveShadow castShadow onClick={() => { setPreset(0) }} onPointerOver={() => setWorld(true)} onPointerOut={() => setWorld(false)}>
             <boxGeometry args={[2, 2, .5]} />
           <meshStandardMaterial color={world ? 'hotpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
           </mesh>
