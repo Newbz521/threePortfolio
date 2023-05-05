@@ -40,7 +40,7 @@ function Island(props) {
   
     const texture = useRef()
     useFrame(({ clock }) => {
-      texture.current.offset.x = clock.getElapsedTime() / 2
+      texture.current.offset.x = clock.getElapsedTime() / 9
     })
   
     const cylArgs = [1, 1, 1, 64, 1, true]
