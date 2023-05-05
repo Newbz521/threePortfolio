@@ -73,7 +73,7 @@ export function OrbitingMeshThree(props) {
   const targetRef = useRef()
   const lightRef = useRef()
   const middleRef = useRef()
-  const radius = 70;
+  const radius = 120;
   const speed = 0.08;
 
   useFrame(({ clock }) => {
@@ -110,7 +110,7 @@ export function OrbitingMeshFour(props) {
   const targetRef = useRef()
   const lightRef = useRef()
   const middleRef = useRef()
-  const radius = 55;
+  const radius = 80;
   const speed = 0.08;
 
   useFrame(({ clock }) => {

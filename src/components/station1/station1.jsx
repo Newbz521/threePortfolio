@@ -3,15 +3,15 @@ import { useEffect, useState, useRef, Suspense } from "react";
 import { useSpring, a, config } from "@react-spring/three";
 
 import { Canvas, useFrame, useThree, PerspectiveCamera} from "@react-three/fiber"
-import { Outline } from '@react-three/postprocessing'
-import { BlendFunction, Resizer, KernelSize } from 'postprocessing'
-import {PivotControls, MeshReflectorMaterial, orthographicCamera, OrthographicCamera, OrbitControls, RoundedBox, useCursor, Text} from '@react-three/drei'
-import Cutter from '@r3f-cutter/r3f-cutter';
-import { useCSG, Geometry, Base, Subtraction } from '@react-three/csg'
+// import { Outline } from '@react-three/postprocessing'
+// import { BlendFunction, Resizer, KernelSize } from 'postprocessing'
+import { OrbitControls, RoundedBox, useCursor, Text} from '@react-three/drei'
+// import Cutter from '@r3f-cutter/r3f-cutter';
+// import { useCSG, Geometry, Base, Subtraction } from '@react-three/csg'
 import PlatformOne from "./platform1";
 import DayScene from "./environment";
 import { OrbitingMesh, OrbitingMeshTwo } from "./satelite";
-import { useControls } from "leva";
+// import { useControls } from "leva";
 import Island from "./island";
 import IslandTwo from "../station2/island2";
 import * as THREE from 'three'
@@ -65,7 +65,11 @@ const farAway = {
   const storeSix = {
   position: [18, 10, 0],
   target: [18,10,15]
-}
+  }
+  const Island2 = {
+    position: [500, -40, 5],
+    target: [450,-45,0]
+  }
 
 const CameraWrapper = ({ cameraPosition, target }) => {
   const { camera } = useThree();
@@ -88,7 +92,7 @@ function AnimateEyeToTarget({ position, target }) {
   const s = useSpring({
     from: defaultPosition,
     // Fun jelly-like animation
-    config: config.wobbly,
+    // config: config.wobbly,
     onStart: () => {
       if (!controls) return;
       controls.enabled = false;
@@ -134,6 +138,8 @@ function EyeAnimation({ preset }) {
       setCameraSettings(storeFive);
     } else if (preset === 6) {
       setCameraSettings(storeSix);
+    }else if (preset === 7) {
+      setCameraSettings(Island2);
     }
   }, [preset]);
 
@@ -461,84 +467,84 @@ const [preset, setPreset] = useState(0)
     )
   }
 
-  let rise4 = 0;
-  let risespeed4 = .015
-  function StoreFour() {
-    const ref = useRef()
-    const bounceRef = useRef()
-    const [active, setActive] = useState(false)
-    const [git, setGit] = useState(false)
-    const [deploy, setDeploy] = useState(false)
-    const [world,setWorld] = useState(false)
-    const [zoom, setZoom] = useState(false)
-    useCursor(active)
+  // let rise4 = 0;
+  // let risespeed4 = .015
+  // function StoreFour() {
+  //   const ref = useRef()
+  //   const bounceRef = useRef()
+  //   const [active, setActive] = useState(false)
+  //   const [git, setGit] = useState(false)
+  //   const [deploy, setDeploy] = useState(false)
+  //   const [world,setWorld] = useState(false)
+  //   const [zoom, setZoom] = useState(false)
+  //   useCursor(active)
      
   
-    useFrame((state) => {
-      rise4 += risespeed4
-      bounceRef.current.position.y = 1.5 * Math.sin(rise4) 
-    })
-    return (
-      <mesh ref={bounceRef}>
-        <mesh ref={ref} position={[-20, 8, 15]} receiveShadow castShadow onClick={() => { if (!zoom) { setPreset(4) } else { setPreset(0) }; setZoom(!zoom) }} onPointerOver={() => setActive(true)} onPointerOut={() => setActive(false)}>
-        <boxGeometry args={[8, 8, .5]} />
-        <meshStandardMaterial color={active ? 'hotpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
-      </mesh>
-      </mesh>
-    )
-  }
+  //   useFrame((state) => {
+  //     rise4 += risespeed4
+  //     bounceRef.current.position.y = 1.5 * Math.sin(rise4) 
+  //   })
+  //   return (
+  //     <mesh ref={bounceRef}>
+  //       <mesh ref={ref} position={[-20, 8, 15]} receiveShadow castShadow onClick={() => { if (!zoom) { setPreset(4) } else { setPreset(0) }; setZoom(!zoom) }} onPointerOver={() => setActive(true)} onPointerOut={() => setActive(false)}>
+  //       <boxGeometry args={[8, 8, .5]} />
+  //       <meshStandardMaterial color={active ? 'hotpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
+  //     </mesh>
+  //     </mesh>
+  //   )
+  // }
 
-  let rise5 = 0;
-  let risespeed5 = .015
-  function StoreFive() {
-    const ref = useRef()
-    const bounceRef = useRef()
-    const [active, setActive] = useState(false)
-    const [git, setGit] = useState(false)
-    const [deploy, setDeploy] = useState(false)
-    const [world,setWorld] = useState(false)
-    const [zoom, setZoom] = useState(false)
-    useCursor(active)
+  // let rise5 = 0;
+  // let risespeed5 = .015
+  // function StoreFive() {
+  //   const ref = useRef()
+  //   const bounceRef = useRef()
+  //   const [active, setActive] = useState(false)
+  //   const [git, setGit] = useState(false)
+  //   const [deploy, setDeploy] = useState(false)
+  //   const [world,setWorld] = useState(false)
+  //   const [zoom, setZoom] = useState(false)
+  //   useCursor(active)
      
-    useFrame((state) => {
-      rise5 += risespeed5
-      bounceRef.current.position.y = 1.5 * Math.sin(rise5) 
-    })
-    return (
-      <mesh ref={bounceRef}>
-        <mesh ref={ref} position={[0, 8, 15]} receiveShadow castShadow onClick={() => { if (!zoom) { setPreset(5) } else { setPreset(0) }; setZoom(!zoom) }} onPointerOver={() => setActive(true)} onPointerOut={() => setActive(false)}>
-        <boxGeometry args={[8, 8, .5]} />
-        <meshStandardMaterial color={active ? 'hotpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
-      </mesh>
-      </mesh>
-    )
-  }
+  //   useFrame((state) => {
+  //     rise5 += risespeed5
+  //     bounceRef.current.position.y = 1.5 * Math.sin(rise5) 
+  //   })
+  //   return (
+  //     <mesh ref={bounceRef}>
+  //       <mesh ref={ref} position={[0, 8, 15]} receiveShadow castShadow onClick={() => { if (!zoom) { setPreset(5) } else { setPreset(0) }; setZoom(!zoom) }} onPointerOver={() => setActive(true)} onPointerOut={() => setActive(false)}>
+  //       <boxGeometry args={[8, 8, .5]} />
+  //       <meshStandardMaterial color={active ? 'hotpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
+  //     </mesh>
+  //     </mesh>
+  //   )
+  // }
 
-  let rise6 = 0;
-  let risespeed6 = .015
-  function StoreSix() {
-    const ref = useRef()
-    const bounceRef = useRef()
-    const [active, setActive] = useState(false)
-    const [git, setGit] = useState(false)
-    const [deploy, setDeploy] = useState(false)
-    const [world,setWorld] = useState(false)
-    const [zoom, setZoom] = useState(false)
-    useCursor(active)
+  // let rise6 = 0;
+  // let risespeed6 = .015
+  // function StoreSix() {
+  //   const ref = useRef()
+  //   const bounceRef = useRef()
+  //   const [active, setActive] = useState(false)
+  //   const [git, setGit] = useState(false)
+  //   const [deploy, setDeploy] = useState(false)
+  //   const [world,setWorld] = useState(false)
+  //   const [zoom, setZoom] = useState(false)
+  //   useCursor(active)
      
-    useFrame((state) => {
-      rise6 += risespeed6
-      bounceRef.current.position.y = 1.5 * Math.sin(rise6) 
-    })
-    return (
-      <mesh ref={bounceRef}>
-        <mesh ref={ref} position={[20, 8, 15]} receiveShadow castShadow onClick={() => { if (!zoom) { setPreset(6) } else { setPreset(0) }; setZoom(!zoom) }} onPointerOver={() => setActive(true)} onPointerOut={() => setActive(false)}>
-        <boxGeometry args={[8, 8, .5]} />
-        <meshStandardMaterial color={active ? 'hotpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
-      </mesh>
-      </mesh>
-    )
-  }
+  //   useFrame((state) => {
+  //     rise6 += risespeed6
+  //     bounceRef.current.position.y = 1.5 * Math.sin(rise6) 
+  //   })
+  //   return (
+  //     <mesh ref={bounceRef}>
+  //       <mesh ref={ref} position={[20, 8, 15]} receiveShadow castShadow onClick={() => { if (!zoom) { setPreset(6) } else { setPreset(0) }; setZoom(!zoom) }} onPointerOver={() => setActive(true)} onPointerOut={() => setActive(false)}>
+  //       <boxGeometry args={[8, 8, .5]} />
+  //       <meshStandardMaterial color={active ? 'hotpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
+  //     </mesh>
+  //     </mesh>
+  //   )
+  // }
 
   return (
     <div className="canvasContainer">
@@ -562,12 +568,12 @@ const [preset, setPreset] = useState(0)
         <SubwayLeft middle={30} />
         <PlatformOne middle={-15} />
         <PlatformOne middle={15} />
-        <Island/>
+        <Island setPreset={setPreset} />
         <DayScene />
         <OrbitingMesh />
         <OrbitingMeshTwo />
         
-        <IslandTwo/>
+        <IslandTwo setPreset={setPreset} />
 
     </Canvas>
     </div>

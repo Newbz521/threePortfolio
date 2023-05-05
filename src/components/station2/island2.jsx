@@ -1,19 +1,22 @@
-import { useEffect, useState, useRef, Suspense } from "react";
-import { Canvas, useFrame, useThree, PerspectiveCamera } from "@react-three/fiber"
-import {Sky, useEnvironment, CubeCamera} from '@react-three/drei'
+import { useState, useRef} from "react";
+import {useFrame} from "@react-three/fiber"
+import { useCursor} from '@react-three/drei'
 import * as THREE from 'three'
 import { OrbitingMeshThree,OrbitingMeshFour } from "../station1/satelite";
 
 
-function IslandTwo({ middle }) {
+function IslandTwo(props) {
     let rise = 0;
     let risespeed = .015;
     const [hovered, setHover] = useState(false)
     const loader = new THREE.TextureLoader();
     const volumeRef = useRef(null);
     const leftRef = useRef(null);
-    const domeRef = useRef(null);
+  const domeRef = useRef(null);
   const platRef = useRef(null)
+  const [zoom, setZoom] = useState(false)
+  const [active, setActive] = useState(false)
+  useCursor(active)
   
 
 
@@ -40,17 +43,17 @@ function IslandTwo({ middle }) {
       <mesh ref={leftRef}>
  
       
-        <mesh ref={platRef} position={[450,-51.5,0]}>
-          <cylinderGeometry args={[90, 90, 3]} />
+        <mesh ref={platRef} position={[450,-51,0]} onClick={() => { if (!zoom) { props.setPreset(7) } else { props.setPreset(0) }; setZoom(!zoom) }} >
+          <cylinderGeometry args={[60, 60, 2]} />
           <meshStandardMaterial color="green" />
         </mesh>
        
-        <mesh  position={[450,-63,0]}>
-          <cylinderGeometry args={[100, 70, 20]} />
+        <mesh  position={[450,-68,0]} onClick={() => { if (!zoom) { props.setPreset(7) } else { props.setPreset(0) }; setZoom(!zoom) }} >
+          <cylinderGeometry args={[70, 10, 30]} />
           <meshStandardMaterial color="lightgrey"  flatShading clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25}/>
         </mesh>
         <mesh ref={domeRef} rotation={[-Math.PI / 2, 0, 0]} position={[450,-53,0]} >
-          <sphereGeometry args={[100, 20,20, 0, Math.PI]} />
+          <sphereGeometry args={[70, 20,20, 0, Math.PI]} />
           <meshStandardMaterial side={THREE.DoubleSide} color="blue" clearcoat={1} transparent opacity={.1} clearcoatRoughness={0} roughness={0} metalness={0.25}/>
         </mesh>
         <OrbitingMeshFour />
