@@ -30,7 +30,7 @@ function DayScene() {
       setSize(40)
     } else {
       setPlanet("white");
-      setSize(30)
+      setSize(20)
     }
     setToggler((prevCheck) => !prevCheck);
   }
