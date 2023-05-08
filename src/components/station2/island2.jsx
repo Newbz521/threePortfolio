@@ -71,9 +71,6 @@ function IslandTwo(props) {
 
     let rise = 0;
     let risespeed = .015;
-    const [hovered, setHover] = useState(false)
-    const loader = new THREE.TextureLoader();
-    const volumeRef = useRef(null);
     const leftRef = useRef(null);
   const domeRef = useRef(null);
   const platRef = useRef(null)
@@ -121,28 +118,28 @@ function IslandTwo(props) {
           <meshStandardMaterial side={THREE.DoubleSide} color="blue" clearcoat={1} transparent opacity={.1} clearcoatRoughness={0} roughness={0} metalness={0.25}/>
         </mesh>
         
-        <mesh scale={[.9,.9,.5]} ref={domeRef} rotation={[-Math.PI / 2, 0, 0]} position={[450,-27,0]}  >
+        <mesh scale={[.9,.9,.5]} ref={domeRef} rotation={[-Math.PI / 2, 0, 0]} position={[450,-27,-20]}  >
           <sphereGeometry args={[20, 8,7, 40]} />
           <meshStandardMaterial side={THREE.DoubleSide} color="pink" flatShading/>
         </mesh>
-        <mesh scale={[.4,.4,.2]} ref={domeRef} rotation={[-Math.PI / 2, 0, 0]} position={[450,-34,12.5]}  >
+        <mesh scale={[.4,.4,.2]} ref={domeRef} rotation={[-Math.PI / 2, 0, 0]} position={[450,-34,-7.5]}  >
           <sphereGeometry args={[20, 5,5, 0]} />
           <meshStandardMaterial side={THREE.DoubleSide} color="pink" flatShading/>
         </mesh>
-        <mesh scale={[.2,.2,.1]} ref={domeRef} rotation={[-Math.PI / 2, 0, 0]} position={[455,-39,-8.5]}  >
+        <mesh scale={[.2,.2,.1]} ref={domeRef} rotation={[-Math.PI / 2, 0, 0]} position={[455,-39,-28.5]}  >
           <sphereGeometry args={[20, 5,5, 0]} />
           <meshStandardMaterial side={THREE.DoubleSide} color="pink" flatShading/>
         </mesh>
-        <mesh  ref={domeRef} rotation={[0, 0, 0]} position={[450,-43,0]}  >
+        <mesh  ref={domeRef} rotation={[0, 0, 0]} position={[450,-43,-20]}  >
           <cylinderGeometry args={[2, 3, 17]}  />
           <meshStandardMaterial side={THREE.DoubleSide} color="rgb(193, 154, 107)" flatShading />
         </mesh>
-        <mesh  ref={domeRef} rotation={[1, 0, 0]} position={[450,-40,5]}  >
+        <mesh  ref={domeRef} rotation={[1, 0, 0]} position={[450,-40,-15]}  >
           <cylinderGeometry args={[.5, 2, 15]}  />
           <meshStandardMaterial side={THREE.DoubleSide} color="rgb(193, 154, 107)" flatShading />
         </mesh>
 
-        <mesh  ref={domeRef} rotation={[-1, 0, -.5]} position={[453.5,-42,-5]}  >
+        <mesh  ref={domeRef} rotation={[-1, 0, -.5]} position={[453.5,-42,-25]}  >
           <cylinderGeometry args={[.3, 1, 10]}  />
           <meshStandardMaterial side={THREE.DoubleSide} color="rgb(193, 154, 107)" flatShading/>
         </mesh>

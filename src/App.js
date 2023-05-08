@@ -1,18 +1,23 @@
 import logo from './logo.svg';
 import StationOne from "./components/station1/station1"
+
 // import Station2 from './components/station2/station2';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
+  const [fontColor, setFontColor] = useState({ "color": "grey"})
+
+
   return (
     <div className="App">
-      <div className='title-block' style={{ height: "fit-content", width: "fit-content", position: "absolute", zIndex: 5, display: "flex", justifyContent: "center", alignItems: "flex-start", flexDirection:"column" }}>
-        <h1>Lawrence Yee</h1>
-        {/* <h3>Software Engineer</h3>
-        <h3>Architecture Designer</h3>
-        <h3>Fabricator</h3> */}
+      <div className='title-block' style={fontColor}>
+        <h1>LAWRENCE YEE</h1>
+      
+        <h4 >Software Engineer</h4>
+        <h4>Architecture Designer</h4>
       </div>
-      <StationOne/>
+      <StationOne setColor={setFontColor} />
       {/* <Station2/> */}
     </div>
   );

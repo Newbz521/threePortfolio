@@ -8,7 +8,7 @@ import { ReactNode, useRef, useState, useEffect } from "react";
 // import { Group } from "three";
 
 
-function DayScene() {
+function DayScene(props) {
   
   const [toggler, setToggler] = useState(false);
   const [planet, setPlanet] = useState("rgb(255, 244, 120)")
@@ -28,9 +28,11 @@ function DayScene() {
       // setShow("");
       setPlanet("rgb(255, 244, 120)");
       setSize(40)
+      props.setColor({color:"grey"})
     } else {
       setPlanet("white");
       setSize(20)
+      props.setColor({color:"white"})
     }
     setToggler((prevCheck) => !prevCheck);
   }
@@ -40,6 +42,7 @@ function DayScene() {
 })
   return (
     <>
+      
       <mesh ref={dayRef}>
         
         <mesh onClick={handleShow}  onPointerOver={() => setHovered(true)}

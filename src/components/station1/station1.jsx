@@ -299,7 +299,7 @@ const [preset, setPreset] = useState(0)
           <meshStandardMaterial color={active ? 'hotpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
           </mesh>
           <Video />
-          <mesh ref={ref} position={[-23, 14, -15]} receiveShadow castShadow onClick={() => { window.open("https://github.com/Newbz521/FiberKitchen", "_blank"); }} onPointerOver={() => setGit(true)} onPointerOut={() => setGit(false)}>
+          <mesh ref={ref} scale={git ?[1.2,1.2,1]: [1,1,1] } position={[-23, 14, -15]} receiveShadow castShadow onClick={() => { window.open("https://github.com/Newbz521/FiberKitchen", "_blank"); }} onPointerOver={() => setGit(true)} onPointerOut={() => setGit(false)}>
             <boxGeometry args={[2, 2, .5]} />
           <meshStandardMaterial color={git ? 'lightpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
           </mesh>
@@ -311,7 +311,7 @@ const [preset, setPreset] = useState(0)
             GIT
           </Text>
             </mesh>
-          <mesh ref={ref} position={[-20, 14, -15]} receiveShadow castShadow onClick={() => {  window.open("https://kitchan.netlify.app/", "_blank"); }} onPointerOver={() => setDeploy(true)} onPointerOut={() => setDeploy(false)}>
+          <mesh ref={ref}scale={deploy ?[1.2,1.2,1]: [1,1,1] } position={[-20, 14, -15]} receiveShadow castShadow onClick={() => {  window.open("https://kitchan.netlify.app/", "_blank"); }} onPointerOver={() => setDeploy(true)} onPointerOut={() => setDeploy(false)}>
             <boxGeometry args={[2, 2, .5]} />
           <meshStandardMaterial color={deploy ? 'pink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
           </mesh>
@@ -323,7 +323,7 @@ const [preset, setPreset] = useState(0)
             APP
           </Text>
             </mesh>
-          <mesh ref={ref} position={[-17, 14, -15]} receiveShadow castShadow onClick={() => { setPreset(0) }} onPointerOver={() => setWorld(true)} onPointerOut={() => setWorld(false)}>
+          <mesh ref={ref} scale={world ?[1.2,1.2,1]: [1,1,1] } position={[-17, 14, -15]} receiveShadow castShadow onClick={() => { setPreset(0) }} onPointerOver={() => setWorld(true)} onPointerOut={() => setWorld(false)}>
             <boxGeometry args={[2, 2, .5]} />
           <meshStandardMaterial color={world ? 'hotpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
           </mesh>
@@ -363,7 +363,7 @@ const [preset, setPreset] = useState(0)
         <meshStandardMaterial color={active ? 'hotpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
         </mesh>
         <VideoTwo />
-        <mesh ref={ref} position={[-3, 14, -15]} receiveShadow castShadow onClick={() => { window.open("https://github.com/Newbz521/Beacon-Defender-", "_blank"); }} onPointerOver={() => setGit(true)} onPointerOut={() => setGit(false)}>
+        <mesh ref={ref} scale={git ?[1.2,1.2,1]: [1,1,1] }position={[-3, 14, -15]} receiveShadow castShadow onClick={() => { window.open("https://github.com/Newbz521/Beacon-Defender-", "_blank"); }} onPointerOver={() => setGit(true)} onPointerOut={() => setGit(false)}>
             <boxGeometry args={[2, 2, .5]} />
           <meshStandardMaterial color={git ? 'lightpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
           </mesh>
@@ -375,7 +375,7 @@ const [preset, setPreset] = useState(0)
             GIT
           </Text>
             </mesh>
-          <mesh ref={ref} position={[0, 14, -15]} receiveShadow castShadow onClick={() => { window.open("https://newbz521.github.io/Beacon-Defender-/", "_blank"); }} onPointerOver={() => setDeploy(true)} onPointerOut={() => setDeploy(false)}>
+          <mesh ref={ref} scale={deploy ?[1.2,1.2,1]: [1,1,1] } position={[0, 14, -15]} receiveShadow castShadow onClick={() => { window.open("https://newbz521.github.io/Beacon-Defender-/", "_blank"); }} onPointerOver={() => setDeploy(true)} onPointerOut={() => setDeploy(false)}>
             <boxGeometry args={[2, 2, .5]} />
           <meshStandardMaterial color={deploy ? 'pink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
           </mesh>
@@ -387,7 +387,7 @@ const [preset, setPreset] = useState(0)
             APP
           </Text>
             </mesh>
-          <mesh ref={ref} position={[3, 14, -15]} receiveShadow castShadow onClick={() => { setPreset(0) }} onPointerOver={() => setWorld(true)} onPointerOut={() => setWorld(false)}>
+          <mesh ref={ref} scale={world ?[1.2,1.2,1]: [1,1,1] } position={[3, 14, -15]} receiveShadow castShadow onClick={() => { setPreset(0) }} onPointerOver={() => setWorld(true)} onPointerOut={() => setWorld(false)}>
             <boxGeometry args={[2, 2, .5]} />
           <meshStandardMaterial color={world ? 'hotpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
           </mesh>
@@ -427,9 +427,9 @@ const [preset, setPreset] = useState(0)
         <meshStandardMaterial color={active ? 'hotpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
         </mesh>
         <VideoThree />
-        <mesh ref={ref} position={[17, 14, -15]} receiveShadow castShadow onClick={() => { window.open("https://github.com/Newbz521/virtufit-prototype", "_blank") }} onPointerOver={() => setGit(true)} onPointerOut={() => setGit(false)}>
+        <mesh ref={ref} scale={git ?[1.2,1.2,1]: [1,1,1] } position={[17, 14, -15]} receiveShadow castShadow onClick={() => { window.open("https://github.com/Newbz521/virtufit-prototype", "_blank") }} onPointerOver={() => setGit(true)} onPointerOut={() => setGit(false)}>
             <boxGeometry args={[2, 2, .5]} />
-          <meshStandardMaterial color={git ? 'hotpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
+          <meshStandardMaterial  color={git ? 'hotpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
           </mesh>
           <mesh position={[17, 14, -14.7]} >
           <Text
@@ -439,7 +439,7 @@ const [preset, setPreset] = useState(0)
             GIT
           </Text>
             </mesh>
-          <mesh ref={ref} position={[20, 14, -15]} receiveShadow castShadow onClick={() => { window.open("https://virtualfit.netlify.app/", "_blank") }} onPointerOver={() => setDeploy(true)} onPointerOut={() => setDeploy(false)}>
+          <mesh ref={ref} scale={deploy ?[1.2,1.2,1]: [1,1,1] } position={[20, 14, -15]} receiveShadow castShadow onClick={() => { window.open("https://virtualfit.netlify.app/", "_blank") }} onPointerOver={() => setDeploy(true)} onPointerOut={() => setDeploy(false)}>
             <boxGeometry args={[2, 2, .5]} />
           <meshStandardMaterial color={deploy ? 'hotpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
           </mesh>
@@ -451,7 +451,7 @@ const [preset, setPreset] = useState(0)
             APP
           </Text>
             </mesh>
-          <mesh ref={ref} position={[23, 14, -15]} receiveShadow castShadow onClick={() => { setPreset(0) }} onPointerOver={() => setWorld(true)} onPointerOut={() => setWorld(false)}>
+          <mesh ref={ref} scale={world ?[1.2,1.2,1]: [1,1,1] } position={[23, 14, -15]} receiveShadow castShadow onClick={() => { setPreset(0) }} onPointerOver={() => setWorld(true)} onPointerOut={() => setWorld(false)}>
             <boxGeometry args={[2, 2, .5]} />
           <meshStandardMaterial color={world ? 'hotpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
           </mesh>
@@ -569,7 +569,7 @@ const [preset, setPreset] = useState(0)
         <PlatformOne middle={-15} />
         <PlatformOne middle={15} />
         <Island setPreset={setPreset} />
-        <DayScene />
+        <DayScene setColor={props.setColor} />
         <OrbitingMesh />
         <OrbitingMeshTwo />
         
