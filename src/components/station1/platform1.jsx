@@ -27,7 +27,7 @@ import * as THREE from 'three'
     const lightAngle = .8
     const lightHeight = 14
     let rise = 0;
-    let risespeed = .015;
+    let risespeed = .005;
 
     useFrame(() => {
       rise += risespeed

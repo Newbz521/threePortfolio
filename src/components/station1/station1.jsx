@@ -154,21 +154,13 @@ function EyeAnimation({ preset }) {
 }
   
 const [preset, setPreset] = useState(0)  
-// const { preset } = useControls({
-//   preset: {
-//     value: 0,
-//     min: 0,
-//     max: 1,
-//     step: 1
-//   }
-// });
 
   function Subway({middle}) {
     let step = 0;
     let speed = .005;
 
     let rise = 0;
-    let risespeed = .015;
+    let risespeed = .005;
     const subRef = useRef(null)
     const leftRef = useRef(null);
     const midZ = middle
@@ -208,7 +200,7 @@ const [preset, setPreset] = useState(0)
     let step = 0;
     let speed = .005;
     let rise = 0;
-    let risespeed = .015;
+    let risespeed = .005;
     const subRef = useRef(null)
     useFrame(() => {
       step += speed
@@ -276,7 +268,7 @@ const [preset, setPreset] = useState(0)
   }
 
   let rise = 0;
-  let risespeed = .015;
+  let risespeed = .005;
   function StoreOne() {
       const ref = useRef()
       const bounceRef = useRef()
@@ -340,7 +332,7 @@ const [preset, setPreset] = useState(0)
     }
 
   let rise2 = 0;
-  let risespeed2 = .015
+  let risespeed2 = .005
   function StoreTwo() {
     const ref = useRef()
     const bounceRef = useRef()
@@ -404,7 +396,7 @@ const [preset, setPreset] = useState(0)
   }
 
   let rise3 = 0;
-  let risespeed3 = .015
+  let risespeed3 = .005
   function StoreThree() {
     const ref = useRef()
     const bounceRef = useRef()
@@ -552,7 +544,7 @@ const [preset, setPreset] = useState(0)
         far={50}
         dpr={[1, 1.5]} 
         gl={{ localClippingEnabled: true, alpha: false }} 
-        camera={{ position: [-180, 60, -150], fov: 75 }}
+        camera={{ position: [-180, 60, -150], fov: 85 }}
       >
         <StoreOne />
         <StoreTwo />

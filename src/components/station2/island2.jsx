@@ -3,10 +3,11 @@ import { useFrame } from "@react-three/fiber"
 import { useCursor, Cylinder} from '@react-three/drei'
 import * as THREE from 'three'
 import { OrbitingMeshThree,OrbitingMeshFour } from "../station1/satelite";
-
+import Grass from "./Grass.png"
 
 function IslandTwo(props) {
-
+  const loader = new THREE.TextureLoader();
+  const grassTexture = loader.load(Grass)
   function ccccc(children, color) {
     const fontSize = 200
   
@@ -70,7 +71,7 @@ function IslandTwo(props) {
   }
 
     let rise = 0;
-    let risespeed = .015;
+    let risespeed = .005;
     const leftRef = useRef(null);
   const domeRef = useRef(null);
   const platRef = useRef(null)
@@ -106,7 +107,7 @@ function IslandTwo(props) {
       
         <mesh ref={platRef} position={[450,-51,0]} onClick={() => {  props.setPreset(7)}} >
           <cylinderGeometry args={[60, 60, 2]} />
-          <meshStandardMaterial color="green" />
+          <meshStandardMaterial color="lightgreen" normalMap={grassTexture} normalMapType={1} normalScale={20} attach="material" />
         </mesh>
        
         <mesh  position={[450,-68,0]} onClick={() => { props.setPreset(7) }} >

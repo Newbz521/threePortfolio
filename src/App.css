@@ -18,18 +18,33 @@
   width: 100vw;
   text-transform: uppercase;
   gap: 25px;
+  bottom:1vh;
+  overflow: none;
+  font-family: 'Teko', sans-serif;
+
 }
 h1, h4{
   margin-bottom: 0;
   margin-top: 0;
   padding: 0;
+  letter-spacing: 3px;
+  font-size: 25px;
+}
+h1{
+  font-size: 40px;
+  color: rgb(72, 133, 247);
+  margin-left: 1vw;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
-
+@media only screen and (max-width: 600px){
+  h1{
+    display: none;
+  }
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

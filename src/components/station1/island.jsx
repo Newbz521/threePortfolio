@@ -71,7 +71,7 @@ function Island(props) {
 
 
     let rise = 0;
-    let risespeed = .015;
+    let risespeed = .005;
     // const [hovered, setHover] = useState(false)
     // const loader = new THREE.TextureLoader();
     // const volumeRef = useRef(null);

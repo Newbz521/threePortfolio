@@ -1,5 +1,7 @@
 import { useRef } from 'react';
-import { useFrame} from '@react-three/fiber';
+import { useFrame } from '@react-three/fiber';
+import { OrbitControls, AdaptiveDpr, AdaptiveEvents, useGLTF, useHelper } from '@react-three/drei/native'
+
 import * as THREE from 'three'
 
 export function OrbitingMesh(props) {
@@ -112,11 +114,11 @@ export function OrbitingMeshFour(props) {
   const middleRef = useRef()
   const radius = 80;
   const speed = 0.08;
+  // useHelper(lightRef, THREE.SpotLightHelper, 'pink')
 
   useFrame(({ clock }) => {
     const angle = clock.getElapsedTime() * -speed;
     meshRef.current.position.set(Math.cos(angle) * radius, 10, Math.sin(angle) * radius);
-
     lightRef.current.target = middleRef.current
   });
 
@@ -131,7 +133,7 @@ export function OrbitingMeshFour(props) {
           <sphereGeometry args={[9, 20,20, 0, Math.PI]} />
           <meshStandardMaterial color="blue"  transparent opacity={.1} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25}/>
       </mesh>
-      <spotLight castShadow ref={lightRef} angle={.4} position={[450,15,0]} color={"white"} intensity={.5}  penumbra={0.2} />
+      <spotLight castShadow ref={lightRef} angle={.2} position={[450,15,0]} color={"white"} intensity={.4}  penumbra={0.2} />
         <mesh ref={targetRef} position={[450, 15, 0]}>
           <sphereGeometry args={[2, 32, 32]} />
           <meshStandardMaterial color="white" clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25}/>
