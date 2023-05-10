@@ -21,7 +21,9 @@ import { Vector3 } from "three";
 
 
 const StationOne = (props) => {
-const [toggler, setToggler] = useState(false);
+  const [toggler, setToggler] = useState(false);
+  const [fontColor, setFontColor] = useState({ "color": "grey"})
+
 
   document.addEventListener('keydown', function (event) {
     // console.log(`Key: ${event.key} with keycode ${event.keyCode} has been pressed`);
@@ -540,6 +542,12 @@ const [preset, setPreset] = useState(0)
 
   return (
     <div className="canvasContainer">
+            <div className='title-block' style={fontColor}>
+        <h1 onClick={function () { setPreset(0) }}>LAWRENCE YEE</h1>
+      
+        <h4 onClick={function () { setPreset(2) }}>Projects</h4>
+        <h4 onClick={function () { setPreset(7) }}>About Me</h4>
+      </div>
       <Canvas shadows
         far={50}
         dpr={[1, 1.5]} 
@@ -561,7 +569,7 @@ const [preset, setPreset] = useState(0)
         <PlatformOne middle={-15} />
         <PlatformOne middle={15} />
         <Island setPreset={setPreset} />
-        <DayScene setColor={props.setColor} />
+        <DayScene setColor={setFontColor} />
         <OrbitingMesh />
         <OrbitingMeshTwo />
         
