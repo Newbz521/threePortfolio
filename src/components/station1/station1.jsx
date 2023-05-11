@@ -22,7 +22,7 @@ import { Vector3 } from "three";
 
 const StationOne = (props) => {
   const [toggler, setToggler] = useState(false);
-  const [fontColor, setFontColor] = useState({ "color": "grey"})
+  // const [fontColor, setFontColor] = useState({ "color": "grey"})
 
 
   document.addEventListener('keydown', function (event) {
@@ -371,7 +371,7 @@ const [preset, setPreset] = useState(0)
             </mesh>
           <mesh ref={ref} scale={deploy ?[1.2,1.2,1]: [1,1,1] } position={[0, 14, -15]} receiveShadow castShadow onClick={() => { window.open("https://newbz521.github.io/Beacon-Defender-/", "_blank"); }} onPointerOver={() => setDeploy(true)} onPointerOut={() => setDeploy(false)}>
             <boxGeometry args={[2, 2, .5]} />
-          <meshStandardMaterial color={deploy ? 'pink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
+          <meshStandardMaterial color={deploy ? 'lightpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
           </mesh>
           <mesh position={[0, 14, -14.7]} >
           <Text
@@ -383,7 +383,7 @@ const [preset, setPreset] = useState(0)
             </mesh>
           <mesh ref={ref} scale={world ?[1.2,1.2,1]: [1,1,1] } position={[3, 14, -15]} receiveShadow castShadow onClick={() => { setPreset(0) }} onPointerOver={() => setWorld(true)} onPointerOut={() => setWorld(false)}>
             <boxGeometry args={[2, 2, .5]} />
-          <meshStandardMaterial color={world ? 'hotpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
+          <meshStandardMaterial color={world ? 'lightpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
           </mesh>
           <mesh position={[3, 14, -14.7]} >
           <Text
@@ -418,12 +418,12 @@ const [preset, setPreset] = useState(0)
       <mesh ref={bounceRef}>
         <mesh ref={ref} position={[20, 8, -15]} receiveShadow castShadow onClick={() => { setPreset(3) }} onPointerOver={() => setActive(true)} onPointerOut={() => setActive(false)}>
         <boxGeometry args={[8, 8, .5]} />
-        <meshStandardMaterial color={active ? 'hotpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
+        <meshStandardMaterial color={active ? 'lightpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
         </mesh>
         <VideoThree />
         <mesh ref={ref} scale={git ?[1.2,1.2,1]: [1,1,1] } position={[17, 14, -15]} receiveShadow castShadow onClick={() => { window.open("https://github.com/Newbz521/virtufit-prototype", "_blank") }} onPointerOver={() => setGit(true)} onPointerOut={() => setGit(false)}>
             <boxGeometry args={[2, 2, .5]} />
-          <meshStandardMaterial  color={git ? 'hotpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
+          <meshStandardMaterial  color={git ? 'lightpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
           </mesh>
           <mesh position={[17, 14, -14.7]} >
           <Text
@@ -435,7 +435,7 @@ const [preset, setPreset] = useState(0)
             </mesh>
           <mesh ref={ref} scale={deploy ?[1.2,1.2,1]: [1,1,1] } position={[20, 14, -15]} receiveShadow castShadow onClick={() => { window.open("https://virtualfit.netlify.app/", "_blank") }} onPointerOver={() => setDeploy(true)} onPointerOut={() => setDeploy(false)}>
             <boxGeometry args={[2, 2, .5]} />
-          <meshStandardMaterial color={deploy ? 'hotpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
+          <meshStandardMaterial color={deploy ? 'lightpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
           </mesh>
           <mesh position={[20, 14, -14.7]} >
           <Text
@@ -447,7 +447,7 @@ const [preset, setPreset] = useState(0)
             </mesh>
           <mesh ref={ref} scale={world ?[1.2,1.2,1]: [1,1,1] } position={[23, 14, -15]} receiveShadow castShadow onClick={() => { setPreset(0) }} onPointerOver={() => setWorld(true)} onPointerOut={() => setWorld(false)}>
             <boxGeometry args={[2, 2, .5]} />
-          <meshStandardMaterial color={world ? 'hotpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
+          <meshStandardMaterial color={world ? 'lightpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
           </mesh>
           <mesh position={[23, 14, -14.7]} >
           <Text
@@ -542,7 +542,7 @@ const [preset, setPreset] = useState(0)
 
   return (
     <div className="canvasContainer">
-            <div className='title-block' style={fontColor}>
+            <div className='title-block' >
         <h1 onClick={function () { setPreset(0) }}>LAWRENCE YEE</h1>
       
         <h4 onClick={function () { setPreset(2) }}>Projects</h4>
@@ -569,7 +569,7 @@ const [preset, setPreset] = useState(0)
         <PlatformOne middle={-15} />
         <PlatformOne middle={15} />
         <Island setPreset={setPreset} />
-        <DayScene setColor={setFontColor} />
+        <DayScene />
         <OrbitingMesh />
         <OrbitingMeshTwo />
         

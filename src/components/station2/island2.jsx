@@ -1,9 +1,11 @@
 import { useState, useRef, useMemo } from "react";
 import { useFrame } from "@react-three/fiber"
-import { useCursor, Cylinder} from '@react-three/drei'
+import { useCursor, Cylinder, RoundedBox} from '@react-three/drei'
 import * as THREE from 'three'
 import { OrbitingMeshThree,OrbitingMeshFour } from "../station1/satelite";
 import Grass from "./Grass.png"
+import { act } from "react-dom/test-utils";
+import Banners from "./banners";
 
 function IslandTwo(props) {
   const loader = new THREE.TextureLoader();
@@ -71,13 +73,14 @@ function IslandTwo(props) {
   }
 
     let rise = 0;
-    let risespeed = .005;
+    let risespeed = 0;
     const leftRef = useRef(null);
   const domeRef = useRef(null);
   const platRef = useRef(null)
   const [zoom, setZoom] = useState(false)
   const [active, setActive] = useState(false)
   const fenceRef = useRef(null)
+
   useCursor(active)
   
     useFrame(() => {
@@ -85,7 +88,7 @@ function IslandTwo(props) {
       // leftRef.current.position.y = 0;
       leftRef.current.receiveShadow = true;
       // leftRef.current.castShadow = true;
-      leftRef.current.position.y = 1.5 * Math.sin(rise) 
+      
       fenceRef.current.castShadow = true
       fenceRef.current.receiveShadow = true
       // platRef.current.receiveShadow = true;
@@ -93,6 +96,7 @@ function IslandTwo(props) {
       domeRef.current.castShadow = true;
       domeRef.current.receiveShadow = true;
       domeRef.current.flatShading = true;
+ 
       // domeRef.current.castShadow = true;
       // domeRef.current.receiveShadow = true;
     })
@@ -104,7 +108,7 @@ function IslandTwo(props) {
     return (
       <mesh ref={leftRef}>
  
-      
+       <Banners/>
         <mesh ref={platRef} position={[450,-51,0]} onClick={() => {  props.setPreset(7)}} >
           <cylinderGeometry args={[60, 60, 2]} />
           <meshStandardMaterial color="lightgreen" normalMap={grassTexture} normalMapType={1} normalScale={20} attach="material" />

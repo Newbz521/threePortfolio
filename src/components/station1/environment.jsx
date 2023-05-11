@@ -28,11 +28,11 @@ function DayScene(props) {
       // setShow("");
       setPlanet("rgb(255, 244, 120)");
       setSize(40)
-      props.setColor({color:"grey"})
+      // props.setColor({color:"grey"})
     } else {
       setPlanet("white");
       setSize(20)
-      props.setColor({color:"white"})
+      // props.setColor({color:"white"})
     }
     setToggler((prevCheck) => !prevCheck);
   }
