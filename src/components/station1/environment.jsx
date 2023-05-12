@@ -15,6 +15,7 @@ function DayScene(props) {
   const [size,setSize] = useState(40)
   const dayRef = useRef()
   const nightRef = useRef()
+  const sunRef = useRef()
 
   const [hovered, setHovered] = useState(false)
 
@@ -27,6 +28,7 @@ function DayScene(props) {
     if (toggler == true) {
       // setShow("");
       setPlanet("rgb(255, 244, 120)");
+
       setSize(40)
       // props.setColor({color:"grey"})
     } else {
@@ -38,6 +40,8 @@ function DayScene(props) {
   }
   useFrame(() => {
     dayRef.current.position.y = 0
+    
+    
   
 })
   return (
@@ -45,7 +49,7 @@ function DayScene(props) {
       
       <mesh ref={dayRef}>
         
-        <mesh onClick={handleShow}  onPointerOver={() => setHovered(true)}
+        <mesh ref={sunRef} onClick={handleShow}  onPointerOver={() => setHovered(true)}
     onPointerOut={() => setHovered(false)}  position={[200, 140, 50]}>
           <sphereGeometry args={[size, 32, 32]} />
           <meshBasicMaterial  color={planet} />
@@ -58,8 +62,6 @@ function DayScene(props) {
             <directionalLight castShadow intensity={.9} position={[200, 140, 50]} />
             <ambientLight intensity={.2} />
             </>
-            //  <directionalLight castShadow intensity={.7} position={[20, 70, 20]} shadow-mapSize={[1024, 1024]}/>
-            //  <ambientLight intensity={.4} />
         ) : (
             <>
           <Sky sunPosition={[0, -.1, .5]} distance={10000} inclination={0}

@@ -118,7 +118,7 @@ function Island(props) {
        
         <mesh  position={[0,-22,0]} onClick={() => { if (!zoom) { props.setPreset(2) } else { props.setPreset(0) }; setZoom(!zoom) }}>
           <cylinderGeometry args={[55, 5, 38]} />
-          <meshStandardMaterial color="pink"  flatShading clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25}/>
+          <meshStandardMaterial color="pink"  flatShading />
         </mesh>
         <mesh ref={domeRef} rotation={[-Math.PI / 2, 0, 0]} position={[0,-3,0]} >
           <sphereGeometry args={[55, 20,20, 0, Math.PI]} />
