@@ -34,6 +34,14 @@ const StationOne = (props) => {
   }
 )
   
+function AdaptivePixelRatio() {
+  const current = useThree((state) => state.performance.current)
+  // const setPixelRatio = useThree((state) => state.setPixelRatio)
+  useEffect(() => {
+    // setPixelRatio(window.devicePixelRatio * current)
+  }, [current])
+  return null
+}
   
 const t = new Vector3();
 
@@ -555,8 +563,10 @@ const [preset, setPreset] = useState(0)
         dpr={[1, 1.5]} 
         gl={{ localClippingEnabled: true, alpha: false }} 
           camera={{ position: [-180, 60, -150], fov: 85 }}
-          performance={{min: .5}}
-      >
+          performance={{ min: .5 }}
+          pixelRatio={window.devicePixelRatio}
+        >
+        <AdaptivePixelRatio/>
         <StoreOne />
         <StoreTwo />
         <StoreThree />
