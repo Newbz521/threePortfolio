@@ -1,17 +1,16 @@
-
-// import { useControls } from "leva";
 import { ReactNode, useRef, useState, useEffect } from "react";
 // import { Group } from "three";
-import {useProgress} from "@react-three/drei"
 
 
 function Loader(props) {
-  // const { progress } = useProgress();
+
+
+
+
 
   return (
     <div className="loader-container">
-      LOADING
-     {/* <div className="charMovement">
+     <div className="charMovement">
                                   <div className="largeContainer">
                                     <div className="boxer">
                                       <div className="character">
@@ -34,12 +33,11 @@ function Loader(props) {
                                       </div>
                                     </div>
                                   </div>
-      </div> */}
-      {/* <div className="loader-tag">{`${progress}%`}</div> */}
+      </div>
+      <div className="loader-tag">Loading...</div>
     </div>
   );
 }
 
 
 export default Loader;
-
