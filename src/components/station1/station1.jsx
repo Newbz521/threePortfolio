@@ -5,7 +5,7 @@ import { useSpring, a, config} from "@react-spring/three";
 import { Canvas, useFrame, useThree, PerspectiveCamera} from "@react-three/fiber"
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
 
-import { OrbitControls, RoundedBox, useCursor, Text, Preload, Html, AdaptiveEvents, AdaptiveDpr, PerformanceMonitor, Hud, useProgress} from '@react-three/drei'
+import { OrbitControls, RoundedBox, useCursor, Text, Preload, Html, AdaptiveEvents, AdaptiveDpr, PerformanceMonitor, Hud, useProgress, Loader} from '@react-three/drei'
 import PlatformOne from "./platform1";
 import DayScene from "./environment";
 import { OrbitingMesh, OrbitingMeshTwo } from "./satelite";
@@ -563,7 +563,7 @@ function EyeAnimation({ preset }) {
         <h4 onClick={function () { setPreset(7) }}>About Me</h4>
       </div>
 
-      <Suspense fallback={null}>
+      <Suspense fallback={<Loader/>}>
 
       <Canvas shadows
         far={50}

@@ -8,9 +8,6 @@ import {useProgress} from "@react-three/drei"
 function Loader(props) {
   const { progress } = useProgress();
 
-
-
-  
   return (
     <div className="loader-container">
      <div className="charMovement">
