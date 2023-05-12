@@ -165,7 +165,7 @@ function IslandTwo(props) {
         </mesh>
     
     
-        <OrbitingMeshFour />
+        {/* <OrbitingMeshFour /> */}
         <OrbitingMeshThree />
         
         <TextRing>

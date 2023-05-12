@@ -69,7 +69,7 @@ const farAway = {
   target: [18,10,15]
   }
   const Island2 = {
-    position: [490, -45, 20],
+    position: [490, -38, 20],
     target: [450,-40,0]
   }
 

@@ -82,6 +82,15 @@ function Banners(props) {
   const [git, setGit] = useState(false)
   const [linked, setLinked] = useState(false)
   const [hovered, setHovered] = useState(false)
+  const lightOneRef = useRef(null)
+  const targetOneRef = useRef(null)
+
+  const lightTwoRef = useRef(null)
+  const targetTwoRef = useRef(null)
+
+  const lightThreeRef = useRef(null)
+  const targetThreeRef = useRef(null)
+  
 
   useEffect(() => {
     document.body.style.cursor = hovered ? 'pointer' : 'auto'
@@ -93,6 +102,14 @@ function Banners(props) {
       rise += risespeed
       boardRef.current.receiveShadow = true;
       boardRef.current.castShadow = true;
+      targetTwoRef.current.position.set(460,-30,0)
+      lightTwoRef.current.target = targetTwoRef.current
+
+      targetOneRef.current.position.set(455,-30,20)
+      lightOneRef.current.target = targetOneRef.current
+
+      targetThreeRef.current.position.set(474,-30,-14.5)
+      lightThreeRef.current.target = targetThreeRef.current
       // leftRef.current.position.y = 0;
       // leftRef.current.receiveShadow = true;
       // leftRef.current.castShadow = true;
@@ -106,22 +123,62 @@ function Banners(props) {
   
     return (
       <mesh >
-        {/* <mesh ref={boardRef} scale={active ?[1.2,1.2,1]: [1,1,1] }onPointerOver={() => setActive(true)} onPointerOut={() => setActive(false)} rotation={[0, -Math.PI / 1.5, 0]} position={[460,-43,0]} >
-          <RoundedBox  args={[15, 10, 2]} radius={1} >
-          <meshStandardMaterial  attach="material" color={"lightgrey"} flatShading />
-          </RoundedBox>
-        </mesh> */}
-          <mesh ref={boardRef} scale={active ? [1.2, 1.2, 1] : [1, 1, 1]} onClick={() => { window.open({Resume}, "_blank"); }} onPointerOver={() => { setActive(true); setHovered(true) }} onPointerOut={() => { setActive(false); setHovered(false)}} rotation={[0, -Math.PI / 2, 0]} position={[460,-43,0]}>
+
+      <spotLight castShadow intensity={.7} angle={.2} ref={lightTwoRef} position={[460,-9,0]} color={"lightyellow"} penumbra={.5} />
+        <mesh ref={targetTwoRef} position={[460,-30,0]}>
+          <sphereGeometry args={[0.6, 32, 32]} />
+          <meshBasicMaterial color="lightyellow" />
+        </mesh>
+        <mesh  position={[460,-29.5,0]}>
+          <cylinderGeometry args={[0.2, 1, 1]} />
+          <meshBasicMaterial color="black" />
+        </mesh>
+        <mesh position={[460,-49,0]} receiveShadow castShadow >
+          <cylinderGeometry args={[8, 9, 2]} />
+          <meshStandardMaterial color="grey" />
+        </mesh>
+        <mesh receiveShadow castShadow ref={boardRef} scale={active ? [1.2, 1.2, 1] : [1, 1, 1]} onClick={() => { window.open(Resume, "_blank"); }} onPointerOver={() => { setActive(true); setHovered(true) }} onPointerOut={() => { setActive(false); setHovered(false)}} rotation={[0, -Math.PI / 2, 0]} position={[460,-43,0]}>
           <sphereGeometry  args={[4, 15, 15, 0]}  >
           </sphereGeometry>
             <meshStandardMaterial  attach="material" color={"white"} flatShading />
         </mesh>
-        <mesh ref={boardRef} scale={linked ? [1.2, 1.2, 1] : [1, 1, 1]} onClick={() => { window.open("https://www.linkedin.com/in/lawrenceyee91/", "_blank"); }} onPointerOver={() => { setLinked(true); setHovered(true) }} onPointerOut={() => { setLinked(false); setHovered(false)}} rotation={[0, -Math.PI / 2, 0]} position={[455,-43,20]}>
+
+        
+
+
+      <spotLight castShadow intensity={.7} angle={.2} ref={lightOneRef} position={[455,-9,20]} color={"lightyellow"} penumbra={.5} />
+        <mesh ref={targetOneRef} position={[455,-30,20]}>
+          <sphereGeometry args={[0.6, 32, 32]} />
+          <meshBasicMaterial color="lightyellow" />
+        </mesh>
+        <mesh  position={[455,-29.5,20]}>
+          <cylinderGeometry args={[0.2, 1, 1]} />
+          <meshBasicMaterial color="black" />
+        </mesh>
+        <mesh position={[455,-49,20]}  receiveShadow castShadow>
+          <cylinderGeometry args={[8, 9, 2]} />
+          <meshStandardMaterial color="grey"  />
+        </mesh>
+        <mesh receiveShadow castShadow ref={boardRef} scale={linked ? [1.2, 1.2, 1] : [1, 1, 1]} onClick={() => { window.open("https://www.linkedin.com/in/lawrenceyee91/", "_blank"); }} onPointerOver={() => { setLinked(true); setHovered(true) }} onPointerOut={() => { setLinked(false); setHovered(false)}} rotation={[0, -Math.PI / 2, 0]} position={[455,-43,20]}>
           <sphereGeometry  args={[4, 15, 15, 0]}  >
           </sphereGeometry>
             <meshStandardMaterial  attach="material" color={"lightblue"} flatShading />
         </mesh>
-        <mesh ref={boardRef} scale={git ? [1.2, 1.2, 1] : [1, 1, 1]} onClick={() => { window.open("https://github.com/Newbz521", "_blank"); }} onPointerOver={() => { setGit(true); setHovered(true) }} onPointerOut={() => { setGit(false);  setHovered(false)}} rotation={[0, Math.PI + .5, 0]} position={[474,-43,-12]}>
+
+        <spotLight castShadow intensity={.7} angle={.2} ref={lightThreeRef} position={[474,-9,-14.5]} color={"lightyellow"} penumbra={.5} />
+        <mesh ref={targetThreeRef} position={[474,-30,-14.5]}>
+          <sphereGeometry args={[0.6, 32, 32]} />
+          <meshBasicMaterial color="lightyellow" />
+        </mesh>
+        <mesh  position={[474,-29.5,-14.5]}>
+          <cylinderGeometry args={[0.2, 1, 1]} />
+          <meshBasicMaterial color="black" />
+        </mesh>
+        <mesh position={[474,-49,-14.5]}receiveShadow castShadow >
+          <cylinderGeometry args={[8, 9, 2]} />
+          <meshStandardMaterial color="grey"  />
+        </mesh>
+        <mesh receiveShadow castShadow ref={boardRef} scale={git ? [1.2, 1.2, 1] : [1, 1, 1]} onClick={() => { window.open("https://github.com/Newbz521", "_blank"); }} onPointerOver={() => { setGit(true); setHovered(true) }} onPointerOut={() => { setGit(false);  setHovered(false)}} rotation={[0, Math.PI + .5, 0]} position={[474,-43,-14.5]}>
           <sphereGeometry  args={[4, 15, 15, 0]}  >
           </sphereGeometry>
             <meshStandardMaterial  attach="material" color={"grey"} flatShading />
@@ -131,7 +188,7 @@ function Banners(props) {
         <TextRing position={[455,-43,20]}>
           LinkedIn
         </TextRing>
-        <TextRing position={[474,-43,-12]}>
+        <TextRing position={[474,-43,-14.5]}>
           GitHub
         </TextRing>
         <TextRing position={[460,-43,0]}>

@@ -65,7 +65,7 @@ function DayScene(props) {
           <Sky sunPosition={[0, -.1, .5]} distance={10000} inclination={0}
               azimuth={1} />
               <directionalLight castShadow intensity={.1} position={[200, 140, 50]} />
-              <ambientLight intensity={.2} />
+              <ambientLight intensity={.05} />
               </>
         )}
  
