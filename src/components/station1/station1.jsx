@@ -1,4 +1,4 @@
-import React, { Component, useMemo } from "react";
+import React, { Component, useMemo} from "react";
 import { useEffect, useState, useRef, Suspense } from "react";
 import { useSpring, a, config } from "@react-spring/three";
 
@@ -548,6 +548,8 @@ const [preset, setPreset] = useState(0)
         <h4 onClick={function () { setPreset(2) }}>Projects</h4>
         <h4 onClick={function () { setPreset(7) }}>About Me</h4>
       </div>
+
+      <Suspense fallback={<div>LOADING</div>}>
       <Canvas shadows
         far={50}
         dpr={[1, 1.5]} 
@@ -575,7 +577,9 @@ const [preset, setPreset] = useState(0)
         
         <IslandTwo setPreset={setPreset} />
 
-    </Canvas>
+      </Canvas>
+
+      </Suspense>
     </div>
   );
 }
