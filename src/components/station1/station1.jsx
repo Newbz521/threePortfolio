@@ -563,7 +563,8 @@ function EyeAnimation({ preset }) {
         <h4 onClick={function () { setPreset(7) }}>About Me</h4>
       </div>
 
-      <Suspense fallback={<LoadingScreen/>}>
+      <Suspense fallback={null}>
+
       <Canvas shadows
         far={50}
         dpr={dpr} 
@@ -611,7 +612,9 @@ function EyeAnimation({ preset }) {
           />
         </EffectComposer>
       </Canvas>
-     </Suspense>
+      </Suspense>
+      
+
     </div>
   );
 }
