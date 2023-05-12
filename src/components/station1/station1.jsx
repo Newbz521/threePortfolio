@@ -580,12 +580,12 @@ const [preset, setPreset] = useState(0)
         {/* <gridHelper args={[100, 100, 'white', 'grey']} position-x={0}  /> */}
         <Subway middle={-30} />
         <SubwayLeft middle={30} />
-        {/* <PlatformOne middle={-15} />
-        <PlatformOne middle={15} /> */}
+        <PlatformOne middle={-15} />
+        <PlatformOne middle={15} />
         <Island setPreset={setPreset} />
         <DayScene />
-        {/* <OrbitingMesh />
-        <OrbitingMeshTwo /> */}
+        <OrbitingMesh />
+        <OrbitingMeshTwo />
             
             <IslandTwo setPreset={setPreset} />
         <Preload all></Preload>
