@@ -5,7 +5,7 @@ import { useSpring, a, config} from "@react-spring/three";
 import { Canvas, useFrame, useThree, PerspectiveCamera} from "@react-three/fiber"
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
 
-import { OrbitControls, RoundedBox, useCursor, Text, Preload, Html, AdaptiveEvents, AdaptiveDpr, PerformanceMonitor, Hud} from '@react-three/drei'
+import { OrbitControls, RoundedBox, useCursor, Text, Preload, Html, AdaptiveEvents, AdaptiveDpr, PerformanceMonitor, Hud, useProgress} from '@react-three/drei'
 import PlatformOne from "./platform1";
 import DayScene from "./environment";
 import { OrbitingMesh, OrbitingMeshTwo } from "./satelite";
@@ -14,7 +14,6 @@ import IslandTwo from "../station2/island2";
 import * as THREE from 'three'
 import "./station1.css"
 import { Vector3 } from "three";
-import { LoadingScreen } from "../loader/loader";
 
 
 
@@ -22,6 +21,7 @@ const StationOne = (props) => {
   const [toggler, setToggler] = useState(false);
   const [dpr, setDpr] = useState(1.5)
   const [preset, setPreset] = useState(0)  
+  const [start, setStart] = useState(false);
 
   document.addEventListener('keydown', function (event) {
     // console.log(`Key: ${event.key} with keycode ${event.keyCode} has been pressed`);
@@ -460,6 +460,7 @@ function EyeAnimation({ preset }) {
     )
   }
 
+  function Loader() { const { active, progress, errors, item, loaded, total } = useProgress(); return (<Html center>{progress} % loaded</Html>); }
   // let rise4 = 0;
   // let risespeed4 = .015
   // function StoreFour() {
@@ -475,7 +476,7 @@ function EyeAnimation({ preset }) {
   
   //   useFrame((state) => {
   //     rise4 += risespeed4
-  //     bounceRef.current.position.y = 1.5 * Math.sin(rise4) 
+  //     bounceRef.current.position.y = 1.5 * Math.sin(rise4)
   //   })
   //   return (
   //     <mesh ref={bounceRef}>
@@ -501,7 +502,7 @@ function EyeAnimation({ preset }) {
      
   //   useFrame((state) => {
   //     rise5 += risespeed5
-  //     bounceRef.current.position.y = 1.5 * Math.sin(rise5) 
+  //     bounceRef.current.position.y = 1.5 * Math.sin(rise5)
   //   })
   //   return (
   //     <mesh ref={bounceRef}>
@@ -527,7 +528,7 @@ function EyeAnimation({ preset }) {
      
   //   useFrame((state) => {
   //     rise6 += risespeed6
-  //     bounceRef.current.position.y = 1.5 * Math.sin(rise6) 
+  //     bounceRef.current.position.y = 1.5 * Math.sin(rise6)
   //   })
   //   return (
   //     <mesh ref={bounceRef}>
@@ -539,6 +540,7 @@ function EyeAnimation({ preset }) {
   //   )
   // }
 
+  
   return (
     <div className="canvasContainer">
             <div className='title-block' >
@@ -558,31 +560,29 @@ function EyeAnimation({ preset }) {
         >
       <fog attach="fog" args={["white", 10, 220]} />
 
-      <Preload all/>
+      {/* <Preload all/> */}
       <AdaptiveDpr pixelated />
       <PerformanceMonitor flipflops={3} onFallback={() => setDpr(1)}/>
       <AdaptiveEvents/>
-      <Suspense  fallback={null}>
-          
-      
-        <DayScene />
-        <EyeAnimation preset={preset} />
-          <OrbitControls
-            makeDefault
-        minDistance={10}
-        maxDistance={200} />
-              
-        <StoreOne />
-        <StoreTwo />
-        <StoreThree />
-        <Subway middle={-30} />
-        <SubwayLeft middle={30} />
-        <PlatformOne middle={-15} />
-        <PlatformOne middle={15} />
-        <Island setPreset={setPreset} />
-        <OrbitingMesh />
-        <OrbitingMeshTwo />
-        <IslandTwo setPreset={setPreset} />
+        <Suspense fallback={Loader}> 
+ <DayScene />
+ <EyeAnimation preset={preset} />
+   <OrbitControls
+     makeDefault
+ minDistance={10}
+ maxDistance={200} />
+       
+ <StoreOne />
+ <StoreTwo />
+ <StoreThree />
+ <Subway middle={-30} />
+ <SubwayLeft middle={30} />
+ <PlatformOne middle={-15} />
+ <PlatformOne middle={15} />
+ <Island setPreset={setPreset} />
+ <OrbitingMesh />
+ <OrbitingMeshTwo />
+ <IslandTwo setPreset={setPreset} />     
         </Suspense>
         <EffectComposer>
           <Bloom
@@ -593,7 +593,7 @@ function EyeAnimation({ preset }) {
           />
         </EffectComposer>
       </Canvas>
-      <LoadingScreen/>
+
   
     </div>
   );

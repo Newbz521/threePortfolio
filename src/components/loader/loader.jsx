@@ -19,6 +19,7 @@ export const LoadingScreen = ({ started, onStarted }) => {
           disabled={progress < 100}
           onClick={onStarted}
         >
+          {`${progress} %`}
           Start
         </button>
       </div>
