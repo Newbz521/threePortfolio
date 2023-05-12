@@ -14,6 +14,7 @@ import IslandTwo from "../station2/island2";
 import * as THREE from 'three'
 import "./station1.css"
 import { Vector3 } from "three";
+import { LoadingScreen } from "../loader/loader";
 
 
 
@@ -460,13 +461,18 @@ function EyeAnimation({ preset }) {
     )
   }
 
-  function Loader() {
-    const { active, progress, errors, item, loaded, total } = useProgress()
-    useEffect(() => {
-      console.log(active, progress)
-    }, [active, progress])
-    return <Html center>{progress} % loaded</Html>
-  }
+  // function Loader() {
+  //   const { active, progress, errors, item, loaded, total } = useProgress()
+  //   useEffect(() => {
+  //     console.log(active, progress)
+  //     // if (progress == 100) {
+  //     //   setStart(true)
+  //     // }
+  //   }, [active, progress])
+  //   return (<Html center>{progress} % loaded</Html>
+
+  //   )
+  // }
 
   // let rise4 = 0;
   // let risespeed4 = .015
@@ -557,7 +563,7 @@ function EyeAnimation({ preset }) {
         <h4 onClick={function () { setPreset(7) }}>About Me</h4>
       </div>
 
-    
+      <Suspense fallback={<LoadingScreen/>}>
       <Canvas shadows
         far={50}
         dpr={dpr} 
@@ -567,30 +573,35 @@ function EyeAnimation({ preset }) {
         >
       <fog attach="fog" args={["white", 10, 220]} />
 
-      <Suspense fallback={<Loader/>}> 
       <Preload all/>
       <AdaptiveDpr pixelated />
       <PerformanceMonitor flipflops={3} onFallback={() => setDpr(1)}/>
-      <AdaptiveEvents/>
- <DayScene />
- <EyeAnimation preset={preset} />
+        <AdaptiveEvents />
+        <EyeAnimation preset={preset} />
    <OrbitControls
      makeDefault
  minDistance={10}
  maxDistance={200} />
+      
+          
+          {(
+            <>
+             <DayScene />    
+    <StoreOne />
+    <StoreTwo />
+    <StoreThree />
+    <Subway middle={-30} />
+    <SubwayLeft middle={30} />
+    <PlatformOne middle={-15} />
+    <PlatformOne middle={15} />
+    <Island setPreset={setPreset} />
+    <OrbitingMesh />
+    <OrbitingMeshTwo />
+    <IslandTwo setPreset={setPreset} />     
+            </>
+          )}
+   
        
- <StoreOne />
- <StoreTwo />
- <StoreThree />
- <Subway middle={-30} />
- <SubwayLeft middle={30} />
- <PlatformOne middle={-15} />
- <PlatformOne middle={15} />
- <Island setPreset={setPreset} />
- <OrbitingMesh />
- <OrbitingMeshTwo />
- <IslandTwo setPreset={setPreset} />     
-        </Suspense>
         <EffectComposer>
           <Bloom
             mipmapBlur
@@ -600,8 +611,7 @@ function EyeAnimation({ preset }) {
           />
         </EffectComposer>
       </Canvas>
-
-  
+     </Suspense>
     </div>
   );
 }
