@@ -549,12 +549,13 @@ const [preset, setPreset] = useState(0)
         <h4 onClick={function () { setPreset(7) }}>About Me</h4>
       </div>
 
-      <Suspense fallback={<div>LOADING</div>}>
+      <Suspense fallback={null}>
       <Canvas shadows
         far={50}
         dpr={[1, 1.5]} 
         gl={{ localClippingEnabled: true, alpha: false }} 
-        camera={{ position: [-180, 60, -150], fov: 85 }}
+          camera={{ position: [-180, 60, -150], fov: 85 }}
+          performance={{min: .5}}
       >
         <StoreOne />
         <StoreTwo />
@@ -574,8 +575,10 @@ const [preset, setPreset] = useState(0)
         <DayScene />
         <OrbitingMesh />
         <OrbitingMeshTwo />
-        
+          <Suspense fallback={null}>
+            
         <IslandTwo setPreset={setPreset} />
+        </Suspense>
 
       </Canvas>
 
