@@ -1,11 +1,11 @@
 import React, { Component, useMemo} from "react";
 import { useEffect, useState, useRef, Suspense } from "react";
-import { useSpring, a, config } from "@react-spring/three";
+import { useSpring, a, config} from "@react-spring/three";
 
 import { Canvas, useFrame, useThree, PerspectiveCamera} from "@react-three/fiber"
 // import { Outline } from '@react-three/postprocessing'
 // import { BlendFunction, Resizer, KernelSize } from 'postprocessing'
-import { OrbitControls, RoundedBox, useCursor, Text, Preload} from '@react-three/drei'
+import { OrbitControls, RoundedBox, useCursor, Text, Preload, Html} from '@react-three/drei'
 // import Cutter from '@r3f-cutter/r3f-cutter';
 // import { useCSG, Geometry, Base, Subtraction } from '@react-three/csg'
 import PlatformOne from "./platform1";
@@ -580,12 +580,12 @@ const [preset, setPreset] = useState(0)
         {/* <gridHelper args={[100, 100, 'white', 'grey']} position-x={0}  /> */}
         <Subway middle={-30} />
         <SubwayLeft middle={30} />
-        <PlatformOne middle={-15} />
-        <PlatformOne middle={15} />
+        {/* <PlatformOne middle={-15} />
+        <PlatformOne middle={15} /> */}
         <Island setPreset={setPreset} />
         <DayScene />
-        <OrbitingMesh />
-        <OrbitingMeshTwo />
+        {/* <OrbitingMesh />
+        <OrbitingMeshTwo /> */}
             
             <IslandTwo setPreset={setPreset} />
         <Preload all></Preload>
