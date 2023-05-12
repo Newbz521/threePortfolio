@@ -460,7 +460,14 @@ function EyeAnimation({ preset }) {
     )
   }
 
-  function Loader() { const { active, progress, errors, item, loaded, total } = useProgress(); return (<Html center>{progress} % loaded</Html>); }
+  function Loader() {
+    const { active, progress, errors, item, loaded, total } = useProgress()
+    useEffect(() => {
+      console.log(active, progress)
+    }, [active, progress])
+    return <Html center>{progress} % loaded</Html>
+  }
+
   // let rise4 = 0;
   // let risespeed4 = .015
   // function StoreFour() {
@@ -560,11 +567,11 @@ function EyeAnimation({ preset }) {
         >
       <fog attach="fog" args={["white", 10, 220]} />
 
-      {/* <Preload all/> */}
+      <Suspense fallback={<Loader/>}> 
+      <Preload all/>
       <AdaptiveDpr pixelated />
       <PerformanceMonitor flipflops={3} onFallback={() => setDpr(1)}/>
       <AdaptiveEvents/>
-        <Suspense fallback={Loader}> 
  <DayScene />
  <EyeAnimation preset={preset} />
    <OrbitControls
