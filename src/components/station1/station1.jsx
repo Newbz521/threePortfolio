@@ -5,7 +5,7 @@ import { useSpring, a, config} from "@react-spring/three";
 import { Canvas, useFrame, useThree, PerspectiveCamera} from "@react-three/fiber"
 // import { Outline } from '@react-three/postprocessing'
 // import { BlendFunction, Resizer, KernelSize } from 'postprocessing'
-import { OrbitControls, RoundedBox, useCursor, Text, Preload, Html} from '@react-three/drei'
+import { OrbitControls, RoundedBox, useCursor, Text, Preload, Html, AdaptiveEvents, AdaptiveDpr, PerformanceMonitor, Hud} from '@react-three/drei'
 // import Cutter from '@r3f-cutter/r3f-cutter';
 // import { useCSG, Geometry, Base, Subtraction } from '@react-three/csg'
 import PlatformOne from "./platform1";
@@ -22,8 +22,8 @@ import { Vector3 } from "three";
 
 const StationOne = (props) => {
   const [toggler, setToggler] = useState(false);
-  // const [fontColor, setFontColor] = useState({ "color": "grey"})
-
+  const [dpr, setDpr] = useState(1.5)
+  const [preset, setPreset] = useState(0)  
 
   document.addEventListener('keydown', function (event) {
     // console.log(`Key: ${event.key} with keycode ${event.keyCode} has been pressed`);
@@ -34,14 +34,7 @@ const StationOne = (props) => {
   }
 )
   
-function AdaptivePixelRatio() {
-  const current = useThree((state) => state.performance.current)
-  // const setPixelRatio = useThree((state) => state.setPixelRatio)
-  useEffect(() => {
-    // setPixelRatio(window.devicePixelRatio * current)
-  }, [current])
-  return null
-}
+
   
 const t = new Vector3();
 
@@ -163,7 +156,7 @@ function EyeAnimation({ preset }) {
   );
 }
   
-const [preset, setPreset] = useState(0)  
+
 
   function Subway({middle}) {
     let step = 0;
@@ -560,38 +553,43 @@ const [preset, setPreset] = useState(0)
       <Suspense fallback={<div> LOADING</div>}>
       <Canvas shadows
         far={50}
-        dpr={[1, 1.5]} 
+        dpr={dpr} 
         gl={{ localClippingEnabled: true, alpha: false }} 
           camera={{ position: [-180, 60, -150], fov: 85 }}
-          performance={{ min: .5 }}
-          pixelRatio={window.devicePixelRatio}
+        performance={{ min: .5 }}
         >
     
+      <Preload all/>
+          <AdaptiveDpr pixelated />
+      <PerformanceMonitor flipflops={3} onFallback={() => setDpr(1)}/>
+
+      <AdaptiveEvents/>
+
+      <DayScene />
+      <EyeAnimation preset={preset} />
+      <OrbitControls makeDefault  />
+            
+      {/* <Hud enderPriority={1}> */}
+            
         <StoreOne />
         <StoreTwo />
         <StoreThree />
-        {/* <StoreFour />
-        <StoreFive />
-        <StoreSix/> */}
-        <EyeAnimation preset={preset} />
-        <OrbitControls makeDefault  />
-       
-        {/* <gridHelper args={[100, 100, 'white', 'grey']} position-x={0}  /> */}
         <Subway middle={-30} />
         <SubwayLeft middle={30} />
         <PlatformOne middle={-15} />
         <PlatformOne middle={15} />
         <Island setPreset={setPreset} />
-        <DayScene />
         <OrbitingMesh />
         <OrbitingMeshTwo />
-            
+      {/* </Hud> */}
+        
+        {/* <Hud enderPriority={2}> */}
+
         <IslandTwo setPreset={setPreset} />
-        <Preload all></Preload>
+        {/* </Hud> */}
       
 
       </Canvas>
-
       </Suspense>
     </div>
   );
