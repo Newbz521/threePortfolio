@@ -1,46 +1,27 @@
+import { useProgress } from "@react-three/drei";
 
-// import { useControls } from "leva";
-import { ReactNode, useRef, useState, useEffect } from "react";
-// import { Group } from "three";
-
-
-function Loader(props) {
-  
-
-
-
-  
+export const LoadingScreen = ({ started, onStarted }) => {
+  const { progress } = useProgress();
   return (
-    <div className="loader-container">
-     <div className="charMovement">
-                                  <div className="largeContainer">
-                                    <div className="boxer">
-                                      <div className="character">
-                                        <div className="head">
-                                          <div className="face">
-                                            <div className="eyes"></div>
-                                            <div className="eyes2"></div>
-                                          </div>
-                                        </div>
-                                        <div className="upperBody">
-                                          <div className="leftArm"></div>
-                                          <div className="torso">
-                                            <div className="heart"></div>
-                                          </div>
-                                          <div className="rightArm"></div>
-                                        </div>
-                                        <div className="lowerBody">
-                                          <div className="leftLeg"></div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
+    <div className={`loadingScreen ${started ? "loadingScreen--started" : ""}`}>
+      <div className="loadingScreen__progress">
+        <div
+          className="loadingScreen__progress__value"
+          style={{
+            width: `${progress}%`,
+          }}
+        />
       </div>
-      <div className="loader-tag">Loading...</div>
+      <div className="loadingScreen__board">
+        <h1 className="loadingScreen__title">Please help me!</h1>
+        <button
+          className="loadingScreen__button"
+          disabled={progress < 100}
+          onClick={onStarted}
+        >
+          Start
+        </button>
+      </div>
     </div>
   );
-}
-
-
-export default Loader;
-
+};

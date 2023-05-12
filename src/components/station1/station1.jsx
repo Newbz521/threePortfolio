@@ -3,21 +3,18 @@ import { useEffect, useState, useRef, Suspense } from "react";
 import { useSpring, a, config} from "@react-spring/three";
 
 import { Canvas, useFrame, useThree, PerspectiveCamera} from "@react-three/fiber"
-// import { Outline } from '@react-three/postprocessing'
-// import { BlendFunction, Resizer, KernelSize } from 'postprocessing'
+import { Bloom, EffectComposer } from "@react-three/postprocessing";
+
 import { OrbitControls, RoundedBox, useCursor, Text, Preload, Html, AdaptiveEvents, AdaptiveDpr, PerformanceMonitor, Hud} from '@react-three/drei'
-// import Cutter from '@r3f-cutter/r3f-cutter';
-// import { useCSG, Geometry, Base, Subtraction } from '@react-three/csg'
 import PlatformOne from "./platform1";
 import DayScene from "./environment";
 import { OrbitingMesh, OrbitingMeshTwo } from "./satelite";
-// import { useControls } from "leva";
 import Island from "./island";
 import IslandTwo from "../station2/island2";
 import * as THREE from 'three'
 import "./station1.css"
 import { Vector3 } from "three";
-import Loader from "../loader/loader";
+import { LoadingScreen } from "../loader/loader";
 
 
 
@@ -551,7 +548,7 @@ function EyeAnimation({ preset }) {
         <h4 onClick={function () { setPreset(7) }}>About Me</h4>
       </div>
 
-      <Suspense fallback={<Loader></Loader>}>
+    
       <Canvas shadows
         far={50}
         dpr={dpr} 
@@ -559,19 +556,22 @@ function EyeAnimation({ preset }) {
           camera={{ position: [-180, 60, -150], fov: 85 }}
         performance={{ min: .5 }}
         >
-    
+      <fog attach="fog" args={["white", 10, 220]} />
+
       <Preload all/>
       <AdaptiveDpr pixelated />
       <PerformanceMonitor flipflops={3} onFallback={() => setDpr(1)}/>
-
       <AdaptiveEvents/>
-
-      <DayScene />
-      <EyeAnimation preset={preset} />
-      <OrbitControls makeDefault  />
-            
-      {/* <Hud enderPriority={1}> */}
-            
+      <Suspense  fallback={null}>
+          
+      
+        <DayScene />
+        <EyeAnimation preset={preset} />
+          <OrbitControls
+            makeDefault
+        minDistance={10}
+        maxDistance={200} />
+              
         <StoreOne />
         <StoreTwo />
         <StoreThree />
@@ -582,16 +582,19 @@ function EyeAnimation({ preset }) {
         <Island setPreset={setPreset} />
         <OrbitingMesh />
         <OrbitingMeshTwo />
-      {/* </Hud> */}
-        
-        {/* <Hud enderPriority={2}> */}
-
         <IslandTwo setPreset={setPreset} />
-        {/* </Hud> */}
-      
-
+        </Suspense>
+        <EffectComposer>
+          <Bloom
+            mipmapBlur
+            luminanceThreshold={1}
+            intensity={1.42}
+            radius={0.92}
+          />
+        </EffectComposer>
       </Canvas>
-      </Suspense>
+      <LoadingScreen/>
+  
     </div>
   );
 }
