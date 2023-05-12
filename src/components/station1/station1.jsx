@@ -14,8 +14,7 @@ import IslandTwo from "../station2/island2";
 import * as THREE from 'three'
 import "./station1.css"
 import { Vector3 } from "three";
-
-import Loader from "../loader/loader";
+// import Loader from "../loader/loader";
 
 
 
@@ -565,7 +564,7 @@ function EyeAnimation({ preset }) {
       </div>
 
 
-      <Suspense fallback={<Loader></Loader>}>
+      <Suspense fallback={null}>
       <Canvas shadows
         far={50}
         dpr={dpr} 

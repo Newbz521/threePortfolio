@@ -4,10 +4,6 @@ import { ReactNode, useRef, useState, useEffect } from "react";
 
 function Loader(props) {
 
-
-
-
-
   return (
     <div className="loader-container">
      <div className="charMovement">
