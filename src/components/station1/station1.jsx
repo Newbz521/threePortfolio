@@ -169,13 +169,13 @@ function EyeAnimation({ preset }) {
     let opacityLevel = 0
     useFrame(() => {
       step += speed
-      rise += risespeed
+      // rise += risespeed
       leftRef.current.position.z = midZ;
       leftRef.current.position.y = 7;
       leftRef.current.receiveShadow = true;
       leftRef.current.castShadow = true;
       leftRef.current.position.x = -20 * Math.sin(step) 
-      subRef.current.position.y = 1.5 * Math.sin(rise);
+      // subRef.current.position.y = 1.5 * Math.sin(rise);
       // if (leftRef.current.position.x < 200) {
       //   leftRef.current.position.x += .5
       //   opacityLevel += .1
@@ -206,14 +206,14 @@ function EyeAnimation({ preset }) {
     const subRef = useRef(null)
     useFrame(() => {
       step += speed
-      rise += risespeed
+      // rise += risespeed
       leftRef.current.position.z = midZ;
       leftRef.current.position.y = 7;
       leftRef.current.receiveShadow = true;
       leftRef.current.castShadow = true;
       leftRef.current.position.x = 20 * Math.sin(step) 
 
-      subRef.current.position.y = 1.5 * Math.sin(rise);
+      // subRef.current.position.y = 1.5 * Math.sin(rise);
       subRef.current.castShadow = true;
       // if (leftRef.current.position.x > -200) {
       //   leftRef.current.position.x -= .5
@@ -283,17 +283,17 @@ function EyeAnimation({ preset }) {
       
     
       useFrame((state) => {
-        rise += risespeed
-        bounceRef.current.position.y = 1.5 * Math.sin(rise) 
+        // rise += risespeed
+        // bounceRef.current.position.y = 1.5 * Math.sin(rise) 
       })
       return (
         <mesh ref={bounceRef}>
-          <mesh ref={ref} position={[-20, 8, -15]} receiveShadow castShadow onClick={() => { setPreset(1) } } onPointerOver={() => setActive(true)} onPointerOut={() => setActive(false)}>
+          <mesh ref={ref} position={[-20, 8, -15]} receiveShadow castShadow onClick={() => { setPreset(1) } } >
           <boxGeometry args={[8, 8, .5]} />
           <meshStandardMaterial color={active ? 'hotpink' : 'lightblue'}/>
           </mesh>
           <Video />
-          <mesh ref={ref} scale={git ?[1.2,1.2,1]: [1,1,1] } position={[-23, 14, -15]} receiveShadow castShadow onClick={() => { window.open("https://github.com/Newbz521/FiberKitchen", "_blank"); }} onPointerOver={() => setGit(true)} onPointerOut={() => setGit(false)}>
+          <mesh ref={ref} scale={git ?[1.2,1.2,1]: [1,1,1] } position={[-23, 14, -15]} receiveShadow castShadow onClick={() => { window.open("https://github.com/Newbz521/FiberKitchen", "_blank"); }} >
             <boxGeometry args={[2, 2, .5]} />
           <meshStandardMaterial color={git ? 'lightpink' : 'lightblue'}/>
           </mesh>
@@ -305,7 +305,7 @@ function EyeAnimation({ preset }) {
             GIT
           </Text>
             </mesh>
-          <mesh ref={ref}scale={deploy ?[1.2,1.2,1]: [1,1,1] } position={[-20, 14, -15]} receiveShadow castShadow onClick={() => {  window.open("https://kitchan.netlify.app/", "_blank"); }} onPointerOver={() => setDeploy(true)} onPointerOut={() => setDeploy(false)}>
+          <mesh ref={ref}scale={deploy ?[1.2,1.2,1]: [1,1,1] } position={[-20, 14, -15]} receiveShadow castShadow onClick={() => {  window.open("https://kitchan.netlify.app/", "_blank"); }} >
             <boxGeometry args={[2, 2, .5]} />
           <meshStandardMaterial color={deploy ? 'pink' : 'lightblue'} />
           </mesh>
@@ -317,7 +317,7 @@ function EyeAnimation({ preset }) {
             APP
           </Text>
             </mesh>
-          <mesh ref={ref} scale={world ?[1.2,1.2,1]: [1,1,1] } position={[-17, 14, -15]} receiveShadow castShadow onClick={() => { setPreset(0) }} onPointerOver={() => setWorld(true)} onPointerOut={() => setWorld(false)}>
+          <mesh ref={ref} scale={world ?[1.2,1.2,1]: [1,1,1] } position={[-17, 14, -15]} receiveShadow castShadow onClick={() => { setPreset(0) }}>
             <boxGeometry args={[2, 2, .5]} />
           <meshStandardMaterial color={world ? 'hotpink' : 'lightblue'} />
           </mesh>
@@ -347,17 +347,17 @@ function EyeAnimation({ preset }) {
      
   
     useFrame((state) => {
-      rise2 += risespeed2
-      bounceRef.current.position.y = 1.5 * Math.sin(rise2) 
+      // rise2 += risespeed2
+      // bounceRef.current.position.y = 1.5 * Math.sin(rise2) 
     })
     return (
       <mesh ref={bounceRef}>
-        <mesh ref={ref} position={[0, 8, -15]} receiveShadow castShadow onClick={() => { setPreset(2) }} onPointerOver={() => setActive(true)} onPointerOut={() => setActive(false)}>
+        <mesh ref={ref} position={[0, 8, -15]} receiveShadow castShadow onClick={() => { setPreset(2) }} >
         <boxGeometry args={[8, 8, .5]} />
         <meshStandardMaterial color={active ? 'hotpink' : 'lightblue'}  />
         </mesh>
         <VideoTwo />
-        <mesh ref={ref} scale={git ?[1.2,1.2,1]: [1,1,1] }position={[-3, 14, -15]} receiveShadow castShadow onClick={() => { window.open("https://github.com/Newbz521/Beacon-Defender-", "_blank"); }} onPointerOver={() => setGit(true)} onPointerOut={() => setGit(false)}>
+        <mesh ref={ref} scale={git ?[1.2,1.2,1]: [1,1,1] }position={[-3, 14, -15]} receiveShadow castShadow onClick={() => { window.open("https://github.com/Newbz521/Beacon-Defender-", "_blank"); }} >
             <boxGeometry args={[2, 2, .5]} />
           <meshStandardMaterial color={git ? 'lightpink' : 'lightblue'} clearcoat={1}  />
           </mesh>
@@ -369,7 +369,7 @@ function EyeAnimation({ preset }) {
             GIT
           </Text>
             </mesh>
-          <mesh ref={ref} scale={deploy ?[1.2,1.2,1]: [1,1,1] } position={[0, 14, -15]} receiveShadow castShadow onClick={() => { window.open("https://newbz521.github.io/Beacon-Defender-/", "_blank"); }} onPointerOver={() => setDeploy(true)} onPointerOut={() => setDeploy(false)}>
+          <mesh ref={ref} scale={deploy ?[1.2,1.2,1]: [1,1,1] } position={[0, 14, -15]} receiveShadow castShadow onClick={() => { window.open("https://newbz521.github.io/Beacon-Defender-/", "_blank"); }} >
             <boxGeometry args={[2, 2, .5]} />
           <meshStandardMaterial color={deploy ? 'lightpink' : 'lightblue'} />
           </mesh>
@@ -381,7 +381,7 @@ function EyeAnimation({ preset }) {
             APP
           </Text>
             </mesh>
-          <mesh ref={ref} scale={world ?[1.2,1.2,1]: [1,1,1] } position={[3, 14, -15]} receiveShadow castShadow onClick={() => { setPreset(0) }} onPointerOver={() => setWorld(true)} onPointerOut={() => setWorld(false)}>
+          <mesh ref={ref} scale={world ?[1.2,1.2,1]: [1,1,1] } position={[3, 14, -15]} receiveShadow castShadow onClick={() => { setPreset(0) }}>
             <boxGeometry args={[2, 2, .5]} />
           <meshStandardMaterial color={world ? 'lightpink' : 'lightblue'} />
           </mesh>
@@ -411,17 +411,17 @@ function EyeAnimation({ preset }) {
      
   
     useFrame((state) => {
-      rise3 += risespeed3
-      bounceRef.current.position.y = 1.5 * Math.sin(rise3) 
+      // rise3 += risespeed3
+      // bounceRef.current.position.y = 1.5 * Math.sin(rise3) 
     })
     return (
       <mesh ref={bounceRef}>
-        <mesh ref={ref} position={[20, 8, -15]} receiveShadow castShadow onClick={() => { setPreset(3) }} onPointerOver={() => setActive(true)} onPointerOut={() => setActive(false)}>
+        <mesh ref={ref} position={[20, 8, -15]} receiveShadow castShadow onClick={() => { setPreset(3) }} >
         <boxGeometry args={[8, 8, .5]} />
         <meshStandardMaterial color={active ? 'lightpink' : 'lightblue'} />
         </mesh>
         <VideoThree />
-        <mesh ref={ref} scale={git ?[1.2,1.2,1]: [1,1,1] } position={[17, 14, -15]} receiveShadow castShadow onClick={() => { window.open("https://github.com/Newbz521/virtufit-prototype", "_blank") }} onPointerOver={() => setGit(true)} onPointerOut={() => setGit(false)}>
+        <mesh ref={ref} scale={git ?[1.2,1.2,1]: [1,1,1] } position={[17, 14, -15]} receiveShadow castShadow onClick={() => { window.open("https://github.com/Newbz521/virtufit-prototype", "_blank") }} >
             <boxGeometry args={[2, 2, .5]} />
           <meshStandardMaterial  color={git ? 'lightpink' : 'lightblue'} />
           </mesh>
@@ -433,7 +433,7 @@ function EyeAnimation({ preset }) {
             GIT
           </Text>
             </mesh>
-          <mesh ref={ref} scale={deploy ?[1.2,1.2,1]: [1,1,1] } position={[20, 14, -15]} receiveShadow castShadow onClick={() => { window.open("https://virtualfit.netlify.app/", "_blank") }} onPointerOver={() => setDeploy(true)} onPointerOut={() => setDeploy(false)}>
+          <mesh ref={ref} scale={deploy ?[1.2,1.2,1]: [1,1,1] } position={[20, 14, -15]} receiveShadow castShadow onClick={() => { window.open("https://virtualfit.netlify.app/", "_blank") }} >
             <boxGeometry args={[2, 2, .5]} />
           <meshStandardMaterial color={deploy ? 'lightpink' : 'lightblue'} />
           </mesh>
@@ -445,7 +445,7 @@ function EyeAnimation({ preset }) {
             APP
           </Text>
             </mesh>
-          <mesh ref={ref} scale={world ?[1.2,1.2,1]: [1,1,1] } position={[23, 14, -15]} receiveShadow castShadow onClick={() => { setPreset(0) }} onPointerOver={() => setWorld(true)} onPointerOut={() => setWorld(false)}>
+          <mesh ref={ref} scale={world ?[1.2,1.2,1]: [1,1,1] } position={[23, 14, -15]} receiveShadow castShadow onClick={() => { setPreset(0) }} >
             <boxGeometry args={[2, 2, .5]} />
           <meshStandardMaterial color={world ? 'lightpink' : 'lightblue'} />
           </mesh>
@@ -572,7 +572,7 @@ function EyeAnimation({ preset }) {
           camera={{ position: [-180, 60, -150], fov: 85 }}
         performance={{ min: .5 }}
         >
-      <fog attach="fog" args={["white", 10, 220]} />
+      <fog attach="fog" args={["white", 1, 800]} />
 
       <Preload all/>
       <AdaptiveDpr pixelated />
@@ -603,14 +603,14 @@ function EyeAnimation({ preset }) {
           )}
    
        
-        <EffectComposer>
+        {/* <EffectComposer>
           <Bloom
             mipmapBlur
-            luminanceThreshold={1}
-            intensity={1.42}
-            radius={0.92}
+            luminanceThreshold={.7}
+            intensity={.1}
+            radius={0.02}
             />
-        </EffectComposer>
+        </EffectComposer> */}
       </Canvas>
     {/* </Suspense> */}
       

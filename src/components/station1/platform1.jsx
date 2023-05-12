@@ -30,7 +30,7 @@ import * as THREE from 'three'
     let risespeed = .005;
 
     useFrame(() => {
-      rise += risespeed
+      // rise += risespeed
 
       
       // leftRef.current.position.z = leftZ;
@@ -44,7 +44,7 @@ import * as THREE from 'three'
       rightRef.current.receiveShadow = true;
       // rightRef.current.castShadow = true;
 
-      mapRef.current.position.y = 1.5 * Math.sin(rise);
+      // mapRef.current.position.y = 1.5 * Math.sin(rise);
 
       
       bottomRef.current.position.z = bottomZ;

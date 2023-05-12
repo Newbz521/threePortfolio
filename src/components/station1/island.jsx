@@ -87,12 +87,12 @@ function Island(props) {
 
 
     useFrame(({ clock }) => {
-      rise += risespeed
+      // rise += risespeed
       const angle = clock.getElapsedTime() * speed;
       // leftRef.current.position.y = 0;
       leftRef.current.receiveShadow = true;
       // leftRef.current.castShadow = true;
-      leftRef.current.position.y = 1.5 * Math.sin(rise) 
+      // leftRef.current.position.y = 1.5 * Math.sin(rise) 
      
       // platRef.current.receiveShadow = true;
       platRef.current.castShadow = true;

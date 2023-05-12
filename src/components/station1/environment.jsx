@@ -40,7 +40,7 @@ function DayScene(props) {
   }
   useFrame(() => {
     dayRef.current.position.y = 0
-    
+
     
   
 })
