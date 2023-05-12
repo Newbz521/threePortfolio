@@ -6,7 +6,7 @@ import {useProgress} from "@react-three/drei"
 
 
 function Loader(props) {
-  const { progress } = useProgress();
+  // const { progress } = useProgress();
 
   return (
     <div className="loader-container">
@@ -34,7 +34,7 @@ function Loader(props) {
                                     </div>
                                   </div>
       </div>
-      <div className="loader-tag">{`${progress}%`}</div>
+      {/* <div className="loader-tag">{`${progress}%`}</div> */}
     </div>
   );
 }
