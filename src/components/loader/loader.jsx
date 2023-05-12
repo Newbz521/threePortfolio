@@ -10,7 +10,8 @@ function Loader(props) {
 
   return (
     <div className="loader-container">
-     <div className="charMovement">
+      LOADING
+     {/* <div className="charMovement">
                                   <div className="largeContainer">
                                     <div className="boxer">
                                       <div className="character">
@@ -33,7 +34,7 @@ function Loader(props) {
                                       </div>
                                     </div>
                                   </div>
-      </div>
+      </div> */}
       {/* <div className="loader-tag">{`${progress}%`}</div> */}
     </div>
   );
