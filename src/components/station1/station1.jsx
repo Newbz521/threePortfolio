@@ -17,6 +17,7 @@ import IslandTwo from "../station2/island2";
 import * as THREE from 'three'
 import "./station1.css"
 import { Vector3 } from "three";
+import Loader from "../loader/loader";
 
 
 
@@ -550,7 +551,7 @@ function EyeAnimation({ preset }) {
         <h4 onClick={function () { setPreset(7) }}>About Me</h4>
       </div>
 
-      <Suspense fallback={<div> LOADING</div>}>
+      <Suspense fallback={<Loader></Loader>}>
       <Canvas shadows
         far={50}
         dpr={dpr} 
@@ -560,7 +561,7 @@ function EyeAnimation({ preset }) {
         >
     
       <Preload all/>
-          <AdaptiveDpr pixelated />
+      <AdaptiveDpr pixelated />
       <PerformanceMonitor flipflops={3} onFallback={() => setDpr(1)}/>
 
       <AdaptiveEvents/>
