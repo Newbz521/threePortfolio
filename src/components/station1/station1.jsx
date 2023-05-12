@@ -5,7 +5,7 @@ import { useSpring, a, config } from "@react-spring/three";
 import { Canvas, useFrame, useThree, PerspectiveCamera} from "@react-three/fiber"
 // import { Outline } from '@react-three/postprocessing'
 // import { BlendFunction, Resizer, KernelSize } from 'postprocessing'
-import { OrbitControls, RoundedBox, useCursor, Text} from '@react-three/drei'
+import { OrbitControls, RoundedBox, useCursor, Text, Preload} from '@react-three/drei'
 // import Cutter from '@r3f-cutter/r3f-cutter';
 // import { useCSG, Geometry, Base, Subtraction } from '@react-three/csg'
 import PlatformOne from "./platform1";
@@ -557,7 +557,7 @@ const [preset, setPreset] = useState(0)
         <h4 onClick={function () { setPreset(7) }}>About Me</h4>
       </div>
 
-      <Suspense fallback={null}>
+      <Suspense fallback={<div> LOADING</div>}>
       <Canvas shadows
         far={50}
         dpr={[1, 1.5]} 
@@ -566,6 +566,7 @@ const [preset, setPreset] = useState(0)
           performance={{ min: .5 }}
           pixelRatio={window.devicePixelRatio}
         >
+        
         <AdaptivePixelRatio/>
         <StoreOne />
         <StoreTwo />
@@ -585,10 +586,10 @@ const [preset, setPreset] = useState(0)
         <DayScene />
         <OrbitingMesh />
         <OrbitingMeshTwo />
-          <Suspense fallback={null}>
             
-        <IslandTwo setPreset={setPreset} />
-        </Suspense>
+            <IslandTwo setPreset={setPreset} />
+        <Preload all></Preload>
+      
 
       </Canvas>
 
