@@ -2,7 +2,7 @@ import { ReactNode, useRef, useState, useEffect } from "react";
 // import { Group } from "three";
 
 
-function Loader(props) {
+function LoaderScreen(props) {
 
   return (
     <div className="loader-container">
@@ -36,4 +36,4 @@ function Loader(props) {
 }
 
 
-export default Loader;
+export default LoaderScreen;
