@@ -116,11 +116,11 @@ function IslandTwo(props) {
        
         <mesh  position={[450,-68,0]} onClick={() => { props.setPreset(7) }} >
           <cylinderGeometry args={[70, 10, 30]} />
-          <meshStandardMaterial color="lightgrey"  flatShading clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25}/>
+          <meshStandardMaterial color="lightgrey"  flatShading />
         </mesh>
         <mesh ref={domeRef} rotation={[-Math.PI / 2, 0, 0]} position={[450,-53,0]} >
           <sphereGeometry args={[70, 20,20, 0, Math.PI]} />
-          <meshStandardMaterial side={THREE.DoubleSide} color="blue" clearcoat={1} transparent opacity={.1} clearcoatRoughness={0} roughness={0} metalness={0.25}/>
+          <meshStandardMaterial side={THREE.DoubleSide} color="blue"  transparent opacity={.1} />
         </mesh>
         
         <mesh scale={[.9,.9,.5]} ref={domeRef} rotation={[-Math.PI / 2, 0, 0]} position={[450,-27,-20]}  >

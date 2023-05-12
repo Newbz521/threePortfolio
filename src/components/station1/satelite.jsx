@@ -25,12 +25,12 @@ export function OrbitingMesh(props) {
       </mesh>
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0,7,0]} >
           <sphereGeometry args={[9, 20,20, 0, Math.PI]} />
-          <meshStandardMaterial color="blue"  transparent opacity={.1} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25}/>
+          <meshStandardMaterial color="blue"  transparent opacity={.1} />
       </mesh>
       <spotLight castShadow ref={lightRef} angle={.4} position={[0,1.5,0]} color={"white"} intensity={.5}  penumbra={0.2} />
         <mesh ref={targetRef} position={[0, 1.5, 0]}>
           <sphereGeometry args={[2, 32, 32]} />
-          <meshStandardMaterial color="white" clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25}/>
+          <meshStandardMaterial color="white" />
         </mesh>
     </mesh>
   );
@@ -58,12 +58,12 @@ export function OrbitingMeshTwo(props) {
       </mesh>
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 20, 0]} >
         <sphereGeometry args={[9, 20, 20, 0, Math.PI]} />
-        <meshStandardMaterial color="blue" transparent opacity={.05} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25}/>
+        <meshStandardMaterial color="blue" transparent opacity={.05} />
       </mesh>
       <spotLight castShadow ref={lightRef} angle={.4} position={[0, 15, 0]} color={"white"} intensity={.5} penumbra={0.2} />
       <mesh ref={targetRef} position={[0, 15, 0]}>
         <sphereGeometry args={[2, 32, 32]} />
-        <meshStandardMaterial attach="material"color="white" clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
+        <meshStandardMaterial attach="material"color="white"  />
       </mesh>
     </mesh>
   );
@@ -94,12 +94,12 @@ export function OrbitingMeshThree(props) {
       </mesh>
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[450,7,0]} >
           <sphereGeometry args={[9, 20,20, 0, Math.PI]} />
-          <meshStandardMaterial color="blue"  transparent opacity={.1} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25}/>
+          <meshStandardMaterial color="blue"  transparent opacity={.1} />
       </mesh>
       <spotLight castShadow ref={lightRef} angle={.2} position={[450,1.5,0]} color={"white"} intensity={.4}  penumbra={0.1} />
         <mesh ref={targetRef} position={[450, 1.5, 0]}>
           <sphereGeometry args={[2, 32, 32]} />
-          <meshStandardMaterial color="white" clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25}/>
+          <meshStandardMaterial color="white" />
       </mesh>
     </mesh>
       <mesh ref={middleRef} position={[450,-35,0]}></mesh>
@@ -131,12 +131,12 @@ export function OrbitingMeshFour(props) {
       </mesh>
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[450,20,0]} >
           <sphereGeometry args={[9, 20,20, 0, Math.PI]} />
-          <meshStandardMaterial color="blue"  transparent opacity={.1} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25}/>
+          <meshStandardMaterial color="blue"  transparent opacity={.1} />
       </mesh>
       <spotLight castShadow ref={lightRef} angle={.3} position={[450,15,0]} color={"white"} intensity={.3}  penumbra={0.5} />
         <mesh ref={targetRef} position={[450, 15, 0]}>
           <sphereGeometry args={[2, 32, 32]} />
-          <meshStandardMaterial color="white" clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25}/>
+          <meshStandardMaterial color="white" />
       </mesh>
     </mesh>
       <mesh ref={middleRef} position={[450,-35,0]}></mesh>

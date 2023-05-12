@@ -43,10 +43,10 @@ function Island(props) {
       texture.current.offset.x = clock.getElapsedTime() / 9
     })
   
-    const cylArgs = [1, 1, 1, 64, 1, true]
+    const cylArgs = [1, 1, 1, 60, 1, true]
   
     return (
-      <group rotation-y={Math.PI / 4} scale={[60, 60, 60]}>
+      <group rotation-y={Math.PI / 4} scale={[60, 60, 60]} >
         {/* <primitive object={target.texture} ref={texture} wrapS={THREE.RepeatWrapping} wrapT={THREE.RepeatWrapping} repeat={[1, 1]} /> */}
   
         <Cylinder args={cylArgs} side={THREE.FrontSide}>
@@ -72,9 +72,7 @@ function Island(props) {
 
     let rise = 0;
     let risespeed = .005;
-    // const [hovered, setHover] = useState(false)
-    // const loader = new THREE.TextureLoader();
-    // const volumeRef = useRef(null);
+
   const textRef = useRef()
     const leftRef = useRef(null);
     const domeRef = useRef(null);
@@ -124,7 +122,7 @@ function Island(props) {
         </mesh>
         <mesh ref={domeRef} rotation={[-Math.PI / 2, 0, 0]} position={[0,-3,0]} >
           <sphereGeometry args={[55, 20,20, 0, Math.PI]} />
-          <meshStandardMaterial side={THREE.DoubleSide} color="blue" clearcoat={1} transparent opacity={.1} clearcoatRoughness={0} roughness={0} metalness={0.25}/>
+          <meshStandardMaterial side={THREE.DoubleSide} color="blue" transparent opacity={.1}/>
         </mesh>
         <TextRing>
           PROJECTS ISLAND
