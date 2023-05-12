@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App">
       {/* <Loader></Loader> */}
-      <LoaderScreen/>
+      {/* <LoaderScreen/> */}
       <Suspense fallback={<LoaderScreen/>}>
 
       <StationOne />
