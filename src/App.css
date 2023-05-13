@@ -47,7 +47,13 @@ h1:hover, h4:hover {
   cursor: pointer;
   color: pink;
 }
-
+.loader-tag{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 20vh;
+}
 .loader-container{
   display: flex;
   justify-content: center;
