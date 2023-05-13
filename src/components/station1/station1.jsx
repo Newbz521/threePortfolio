@@ -463,7 +463,10 @@ function EyeAnimation({ preset }) {
       </mesh>
     )
   }
-
+  function QuickLoad() {
+    const { progress } = useProgress()
+    return <Html center> {progress} % loaded</Html>
+  }
   
   
   return (
@@ -492,7 +495,7 @@ function EyeAnimation({ preset }) {
         <EyeAnimation preset={preset} />
    <OrbitControls minDistance={10} maxDistance={200} makeDefault/>
       
-    <Suspense fallback={null}>    
+    <Suspense fallback={<QuickLoad/>}>    
           {(
             
             <>
@@ -529,7 +532,7 @@ function EyeAnimation({ preset }) {
         </EffectComposer>
       
       </Canvas>
-      <Loader/>
+      {/* <Loader/> */}
 
 
     </div>
