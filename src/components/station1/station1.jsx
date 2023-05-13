@@ -596,8 +596,8 @@ function EyeAnimation({ preset }) {
     {/* <StoreOne />
     <StoreTwo />
     <StoreThree /> */}
-    {/* <Subway middle={-30} />
-    <SubwayLeft middle={30} /> */}
+    <Subway middle={-30} />
+    <SubwayLeft middle={30} />
     <PlatformOne middle={-15} />
     <PlatformOne middle={15} />
     <Island setPreset={setPreset} />
