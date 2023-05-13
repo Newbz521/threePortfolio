@@ -53,6 +53,7 @@ h1:hover, h4:hover {
   align-items: center;
   position: absolute;
   bottom: 20vh;
+  color: black;
 }
 .loader-container{
   display: flex;
