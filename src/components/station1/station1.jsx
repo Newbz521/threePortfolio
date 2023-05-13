@@ -585,7 +585,7 @@ function EyeAnimation({ preset }) {
    <OrbitControls
  minDistance={10}
  maxDistance={200}
- regress
+//  regress
  makeDefault
         />
       
@@ -593,17 +593,17 @@ function EyeAnimation({ preset }) {
           {(
             <>
              <DayScene />    
-    <StoreOne />
+    {/* <StoreOne />
     <StoreTwo />
-    <StoreThree />
-    <Subway middle={-30} />
-    <SubwayLeft middle={30} />
+    <StoreThree /> */}
+    {/* <Subway middle={-30} />
+    <SubwayLeft middle={30} /> */}
     <PlatformOne middle={-15} />
     <PlatformOne middle={15} />
     <Island setPreset={setPreset} />
-    <OrbitingMesh />
+    {/* <OrbitingMesh />
     <OrbitingMeshTwo />
-    <IslandTwo setPreset={setPreset} />     
+    <IslandTwo setPreset={setPreset} />      */}
             </>
           )}
    
