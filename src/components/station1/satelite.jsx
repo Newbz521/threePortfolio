@@ -27,7 +27,7 @@ export function OrbitingMesh(props) {
           <sphereGeometry args={[9, 20,20, 0, Math.PI]} />
           <meshStandardMaterial color="blue"  transparent opacity={.1} />
       </mesh>
-      {/* <spotLight castShadow ref={lightRef} angle={.4} position={[0,1.5,0]} color={"white"} intensity={.5}  penumbra={0.2} /> */}
+      <spotLight castShadow ref={lightRef} angle={.4} position={[0,1.5,0]} color={"white"} intensity={.5}  penumbra={0.2} />
         <mesh ref={targetRef} position={[0, 1.5, 0]}>
           <sphereGeometry args={[2, 32, 32]} />
           <meshStandardMaterial color="white" />
@@ -82,7 +82,7 @@ export function OrbitingMeshThree(props) {
     const angle = clock.getElapsedTime() * speed;
     meshRef.current.position.set(Math.cos(angle) * radius, 10, Math.sin(angle) * radius);
 
-    // lightRef.current.target = middleRef.current
+    lightRef.current.target = middleRef.current
   });
 
   return (
@@ -96,9 +96,9 @@ export function OrbitingMeshThree(props) {
           <sphereGeometry args={[9, 20,20, 0, Math.PI]} />
           <meshStandardMaterial color="blue"  transparent opacity={.1} />
       </mesh>
-        {/* <spotLight  castShadow ref={lightRef} angle={.2} position={[450, 1.5, 0]} color={"white"} intensity={.4} penumbra={0.1} >
+        <spotLight  castShadow ref={lightRef} angle={.2} position={[450, 1.5, 0]} color={"white"} intensity={.4} penumbra={0.1} >
 
-      </spotLight> */}
+      </spotLight>
         <mesh ref={targetRef} position={[450, 1.5, 0]}>
           <sphereGeometry args={[2, 32, 32]} />
           <meshStandardMaterial color="white" />

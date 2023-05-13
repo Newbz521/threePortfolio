@@ -602,7 +602,7 @@ function EyeAnimation({ preset }) {
     <PlatformOne middle={15} />
     <Island setPreset={setPreset} />
     <OrbitingMesh />
-    <OrbitingMeshTwo />
+    {/* <OrbitingMeshTwo /> */}
     <IslandTwo setPreset={setPreset} />     
             </>
           )}
