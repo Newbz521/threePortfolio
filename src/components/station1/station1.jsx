@@ -495,7 +495,7 @@ function EyeAnimation({ preset }) {
         <EyeAnimation preset={preset} />
    <OrbitControls minDistance={10} maxDistance={200} makeDefault/>
       
-    <Suspense fallback={<QuickLoad/>}>    
+    <Suspense fallback={null}>    
           {(
             
             <>
@@ -532,7 +532,7 @@ function EyeAnimation({ preset }) {
         </EffectComposer>
       
       </Canvas>
-      {/* <Loader/> */}
+      <Loader/>
 
 
     </div>
