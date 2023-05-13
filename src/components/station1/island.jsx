@@ -113,16 +113,16 @@ function Island(props) {
       
         <mesh ref={platRef} position={[0,-1.5,0]} onClick={() => { if (!zoom) { props.setPreset(2) } else { props.setPreset(0) }; setZoom(!zoom) }} >
           <cylinderGeometry args={[48, 48, 3]} />
-          <meshStandardMaterial color="darkgrey" />
+          <meshLambertMaterial color="darkgrey" />
         </mesh>
        
         <mesh  position={[0,-22,0]} onClick={() => { if (!zoom) { props.setPreset(2) } else { props.setPreset(0) }; setZoom(!zoom) }}>
           <cylinderGeometry args={[55, 5, 38]} />
-          <meshStandardMaterial color="pink"  flatShading />
+          <meshLambertMaterial color="pink"  flatShading />
         </mesh>
         <mesh ref={domeRef} rotation={[-Math.PI / 2, 0, 0]} position={[0,-3,0]} >
           <sphereGeometry args={[55, 20,20, 0, Math.PI]} />
-          <meshStandardMaterial side={THREE.DoubleSide} color="blue" transparent opacity={.1}/>
+          <meshLambertMaterial side={THREE.DoubleSide} color="blue" transparent opacity={.1}/>
         </mesh>
         <TextRing>
           PROJECTS ISLAND
