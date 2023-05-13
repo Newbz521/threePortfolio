@@ -294,7 +294,7 @@ function EyeAnimation({ preset }) {
           <boxGeometry args={[8, 8, .5]} />
           <meshStandardMaterial color={active ? 'hotpink' : 'lightblue'}/>
           </mesh>
-          <Video />
+          {/* <Video /> */}
           <mesh ref={ref} scale={git ?[1.2,1.2,1]: [1,1,1] } position={[-23, 14, -15]} receiveShadow castShadow onClick={() => { window.open("https://github.com/Newbz521/FiberKitchen", "_blank"); }} >
             <boxGeometry args={[2, 2, .5]} />
           <meshStandardMaterial color={git ? 'lightpink' : 'lightblue'}/>
@@ -358,7 +358,7 @@ function EyeAnimation({ preset }) {
         <boxGeometry args={[8, 8, .5]} />
         <meshStandardMaterial color={active ? 'hotpink' : 'lightblue'}  />
         </mesh>
-        <VideoTwo />
+        {/* <VideoTwo /> */}
         <mesh ref={ref} scale={git ?[1.2,1.2,1]: [1,1,1] }position={[-3, 14, -15]} receiveShadow castShadow onClick={() => { window.open("https://github.com/Newbz521/Beacon-Defender-", "_blank"); }} >
             <boxGeometry args={[2, 2, .5]} />
           <meshStandardMaterial color={git ? 'lightpink' : 'lightblue'} clearcoat={1}  />
@@ -422,7 +422,7 @@ function EyeAnimation({ preset }) {
         <boxGeometry args={[8, 8, .5]} />
         <meshStandardMaterial color={active ? 'lightpink' : 'lightblue'} />
         </mesh>
-        <VideoThree />
+        {/* <VideoThree /> */}
         <mesh ref={ref} scale={git ?[1.2,1.2,1]: [1,1,1] } position={[17, 14, -15]} receiveShadow castShadow onClick={() => { window.open("https://github.com/Newbz521/virtufit-prototype", "_blank") }} >
             <boxGeometry args={[2, 2, .5]} />
           <meshStandardMaterial  color={git ? 'lightpink' : 'lightblue'} />
