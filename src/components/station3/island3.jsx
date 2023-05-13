@@ -109,7 +109,7 @@ function IslandThree(props) {
 
       
         <mesh ref={platRef} position={[300,48,-500]} onClick={() => {  props.setPreset(8)}} >
-          <cylinderGeometry args={[60, 60, 2]} />
+          <cylinderGeometry args={[65, 65, 2]} />
           <meshStandardMaterial color="lightgreen"  />
         </mesh>
        
@@ -119,7 +119,7 @@ function IslandThree(props) {
         </mesh>
         <mesh ref={domeRef} rotation={[-Math.PI / 2, 0, 0]} position={[300,47,-500]} >
           <sphereGeometry args={[70, 20,20, 0, Math.PI]} />
-          <meshStandardMaterial side={THREE.DoubleSide} color="blue"  transparent opacity={.1} />
+          <meshStandardMaterial side={THREE.DoubleSide} color="blue"  transparent opacity={.03} />
         </mesh>
         
        

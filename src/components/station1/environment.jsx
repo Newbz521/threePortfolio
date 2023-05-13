@@ -54,6 +54,7 @@ function DayScene(props) {
           <sphereGeometry args={[size, 32, 32]} />
           <meshBasicMaterial  color={planet} />
         </mesh>
+       
         
         {!toggler ? (
           <>
@@ -61,6 +62,7 @@ function DayScene(props) {
             azimuth={1} />
             <directionalLight castShadow intensity={.9} position={[200, 140, 50]} />
             <ambientLight intensity={.25} />
+            
             </>
         ) : (
             <>

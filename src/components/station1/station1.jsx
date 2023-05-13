@@ -15,6 +15,8 @@ import IslandThree from "../station3/island3";
 import * as THREE from 'three'
 import "./station1.css"
 import { Vector3 } from "three";
+import { BlurPass, Resizer, KernelSize, Resolution } from 'postprocessing'
+
 import LoaderScreen from "../loader/loader";
 
 
@@ -77,8 +79,8 @@ const farAway = {
     target: [450,-40,0]
   }
   const Island3 = {
-    position: [305,60,-550],
-    target: [300, 49,-500]
+    position: [315,85,-575],
+    target: [300, 50,-500]
   }
 
 const CameraWrapper = ({ cameraPosition, target }) => {
@@ -477,11 +479,11 @@ function EyeAnimation({ preset }) {
   
   return (
     <div className="canvasContainer">
-            <div className='title-block' >
+      <div className='title-block' >
         <h1 onClick={function () { setPreset(0) }}>LAWRENCE YEE</h1>
         <h4 onClick={function () { setPreset(2) }}>Projects</h4>
-        <h4 onClick={function () { setPreset(8) }}>ABOUT ME</h4>
         <h4 onClick={function () { setPreset(7) }}>CONTACTS</h4>
+        <h4 onClick={function () { setPreset(8) }}>ABOUT ME</h4>
       </div>
 
 
@@ -493,8 +495,7 @@ function EyeAnimation({ preset }) {
         camera={{ position: [-180, 60, -150], fov: 85 }}
         performance={{ min: .1 }}
         >
-      <fog attach="fog" args={["white", 1, 950]} />
-
+        <fog attach="fog" args={["white", 1, 950]} />
       
         <AdaptiveDpr pixelated />
 
@@ -530,14 +531,19 @@ function EyeAnimation({ preset }) {
    </Suspense>
 
        
-        {/* <EffectComposer>
-          <Bloom
-            mipmapBlur
-            luminanceThreshold={.7}
-            intensity={.1}
-            radius={0.02}
-            />
-        </EffectComposer> */}
+        <EffectComposer>
+   
+            <Bloom
+    intensity={.1} // The bloom intensity.
+    blurPass={undefined} // A blur pass.
+    kernelSize={KernelSize.LARGE} // blur kernel size
+    luminanceThreshold={0.1} // luminance threshold. Raise this value to mask out darker elements in the scene.
+    luminanceSmoothing={1} // smoothness of the luminance threshold. Range is [0, 1]
+    mipmapBlur={false} // Enables or disables mipmap blur.
+    resolutionX={Resolution.AUTO_SIZE} // The horizontal resolution.
+    resolutionY={Resolution.AUTO_SIZE} // The vertical resolution.
+  />
+        </EffectComposer>
       </Canvas>
       
 
