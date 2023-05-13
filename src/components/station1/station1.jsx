@@ -23,12 +23,15 @@ const StationOne = (props) => {
   const [dpr, setDpr] = useState(1.5)
   const [preset, setPreset] = useState(0)  
   const [start, setStart] = useState(false);
+  
 
   document.addEventListener('keydown', function (event) {
+    
     // console.log(`Key: ${event.key} with keycode ${event.keyCode} has been pressed`);
     if (event.key == "Escape") {
       console.log("escape has been pressed!")
       setPreset(0)
+      
     }
   }
 )
@@ -124,7 +127,6 @@ function AnimateEyeToTarget({ position, target }) {
 
 function EyeAnimation({ preset }) {
   const [cameraSettings, setCameraSettings] = useState(defaultPosition);
-
   useEffect(() => {
     if (preset === 0) {
       setCameraSettings(defaultPosition);
@@ -570,19 +572,20 @@ function EyeAnimation({ preset }) {
         dpr={dpr} 
         gl={{ localClippingEnabled: true, alpha: false }} 
           camera={{ position: [-180, 60, -150], fov: 85 }}
-        performance={{ min: .5 }}
+        performance={{ min: .1 }}
         >
       <fog attach="fog" args={["white", 1, 800]} />
 
       <Preload all/>
-      <AdaptiveDpr pixelated />
+        <AdaptiveDpr pixelated />
+
       <PerformanceMonitor flipflops={3} onFallback={() => setDpr(1)}/>
         <AdaptiveEvents />
         <EyeAnimation preset={preset} />
    <OrbitControls
      makeDefault
  minDistance={10}
- maxDistance={200} />
+ maxDistance={200}/>
       
           
           {(
