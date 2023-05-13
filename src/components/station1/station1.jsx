@@ -566,7 +566,7 @@ function EyeAnimation({ preset }) {
       </div>
 
 
-      {/* <Suspense fallback={<LoaderScreen/>}> */}
+      <Suspense fallback={<LoaderScreen/>}>
       <Canvas shadows
         far={50}
         dpr={dpr} 
@@ -617,7 +617,7 @@ function EyeAnimation({ preset }) {
             />
         </EffectComposer> */}
       </Canvas>
-    {/* </Suspense> */}
+    </Suspense>
       
 
     </div>
