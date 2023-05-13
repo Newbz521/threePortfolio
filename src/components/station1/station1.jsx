@@ -583,9 +583,11 @@ function EyeAnimation({ preset }) {
         <AdaptiveEvents />
         <EyeAnimation preset={preset} />
    <OrbitControls
-     makeDefault
  minDistance={10}
- maxDistance={200}/>
+ maxDistance={200}
+ regress
+ makeDefault
+        />
       
           
           {(
