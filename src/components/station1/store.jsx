@@ -33,9 +33,9 @@ export function StoreOne({rise}) {
   })
   return (
     <mesh ref={bounceRef}>
-    <mesh ref={ref} position={[-20,8,-15]} receiveShadow castShadow onClick={() => set(!zoom)} >
+    <mesh ref={ref} position={[-20,8,-15]} receiveShadow castShadow onClick={() => set(!zoom)} onPointerOver={() => setActive(true)} onPointerOut={() => setActive(false)}>
       <boxGeometry args={[8, 8, 5]} />
-      <meshStandardMaterial color={active ? 'hotpink' : 'lightblue'} />
+      <meshStandardMaterial color={active ? 'hotpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
     </mesh>
     </mesh>
   )
@@ -62,7 +62,7 @@ export function StoreTwo(rise, risespeed) {
     <mesh ref={bounceRef}>
     <mesh ref={ref} position={[-20,8,-15]} receiveShadow castShadow onClick={() => set(!zoom)} >
       <boxGeometry args={[8, 8, 5]} />
-      <meshStandardMaterial color={active ? 'hotpink' : 'lightblue'}  />
+      <meshStandardMaterial color={active ? 'hotpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
     </mesh>
     </mesh>
   )

@@ -16,9 +16,7 @@ import * as THREE from 'three'
 import "./station1.css"
 import { Vector3 } from "three";
 import { BlurPass, Resizer, KernelSize, Resolution } from 'postprocessing'
-
-import LoaderScreen from "../loader/loader";
-
+import { LoadingScreen } from "../loader/loader";
 
 
 const StationOne = (props) => {
@@ -26,9 +24,10 @@ const StationOne = (props) => {
   const [dpr, setDpr] = useState(1.5)
   const [preset, setPreset] = useState(0)  
   const [start, setStart] = useState(false);
-  const [dov,setDov] = useState(95)
+  const [dov, setDov] = useState(95);
+
   useEffect(()=>{
-    console.log(window.innerWidth)
+    // console.log(window.innerWidth)
     if (window.innerWidth < 500) {
       setDov(110)
     } 
@@ -44,9 +43,7 @@ const StationOne = (props) => {
     }
   }
 )
-  
-
-  
+    
 const t = new Vector3();
 
 const defaultPosition = {
@@ -173,8 +170,6 @@ function EyeAnimation({ preset }) {
   );
 }
   
-
-
   function Subway({middle}) {
     let step = 0;
     let speed = .005;
@@ -287,8 +282,7 @@ function EyeAnimation({ preset }) {
   //   )
   // }
 
-  let rise = 0;
-  let risespeed = .005;
+
   function StoreOne() {
       const ref = useRef()
       const bounceRef = useRef()
@@ -351,8 +345,6 @@ function EyeAnimation({ preset }) {
       )
     }
 
-  let rise2 = 0;
-  let risespeed2 = .005
   function StoreTwo() {
     const ref = useRef()
     const bounceRef = useRef()
@@ -363,11 +355,6 @@ function EyeAnimation({ preset }) {
     const [zoom, setZoom] = useState(false)
     useCursor(active)
      
-  
-    useFrame((state) => {
-      // rise2 += risespeed2
-      // bounceRef.current.position.y = 1.5 * Math.sin(rise2) 
-    })
     return (
       <mesh ref={bounceRef}>
         <mesh ref={ref} position={[0, 8, -15]} receiveShadow castShadow onClick={() => { setPreset(2) }} >
@@ -415,8 +402,6 @@ function EyeAnimation({ preset }) {
     )
   }
 
-  let rise3 = 0;
-  let risespeed3 = .005
   function StoreThree() {
     const ref = useRef()
     const bounceRef = useRef()
@@ -479,9 +464,7 @@ function EyeAnimation({ preset }) {
     )
   }
 
-
-
-
+  
   
   return (
     <div className="canvasContainer">
@@ -504,19 +487,14 @@ function EyeAnimation({ preset }) {
         <fog attach="fog" args={["white", 1, 950]} />
       
         <AdaptiveDpr pixelated />
-
-      <PerformanceMonitor flipflops={3} onFallback={() => setDpr(1)}/>
+        <PerformanceMonitor flipflops={3} onFallback={() => setDpr(1)}/>
         <AdaptiveEvents />
         <EyeAnimation preset={preset} />
-   <OrbitControls
- minDistance={10}
- maxDistance={200}
-//  regress
- makeDefault
-        />
+   <OrbitControls minDistance={10} maxDistance={200} makeDefault/>
       
-    {/* <Suspense fallback={null}>     */}
+    <Suspense fallback={null}>    
           {(
+            
             <>
     <Preload all/>
     <DayScene />    
@@ -534,8 +512,7 @@ function EyeAnimation({ preset }) {
     <IslandThree setPreset={setPreset} />
             </>
           )}
-   {/* </Suspense> */}
-
+   </Suspense>
        
         <EffectComposer>
    
@@ -550,8 +527,10 @@ function EyeAnimation({ preset }) {
     resolutionY={Resolution.AUTO_SIZE} // The vertical resolution.
   />
         </EffectComposer>
-      </Canvas>
       
+      </Canvas>
+      <Loader/>
+
 
     </div>
   );
