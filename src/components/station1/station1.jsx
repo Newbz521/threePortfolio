@@ -515,7 +515,7 @@ function EyeAnimation({ preset }) {
  makeDefault
         />
       
-    <Suspense fallback={null}>    
+    {/* <Suspense fallback={null}>     */}
           {(
             <>
     <Preload all/>
@@ -534,7 +534,7 @@ function EyeAnimation({ preset }) {
     <IslandThree setPreset={setPreset} />
             </>
           )}
-   </Suspense>
+   {/* </Suspense> */}
 
        
         <EffectComposer>
