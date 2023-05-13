@@ -11,6 +11,7 @@ import DayScene from "./environment";
 import { OrbitingMesh, OrbitingMeshTwo } from "./satelite";
 import Island from "./island";
 import IslandTwo from "../station2/island2";
+import IslandThree from "../station3/island3";
 import * as THREE from 'three'
 import "./station1.css"
 import { Vector3 } from "three";
@@ -74,6 +75,10 @@ const farAway = {
   const Island2 = {
     position: [490, -38, 20],
     target: [450,-40,0]
+  }
+  const Island3 = {
+    position: [305,60,-550],
+    target: [300, 49,-500]
   }
 
 const CameraWrapper = ({ cameraPosition, target }) => {
@@ -144,7 +149,10 @@ function EyeAnimation({ preset }) {
       setCameraSettings(storeSix);
     }else if (preset === 7) {
       setCameraSettings(Island2);
+    }else if (preset === 8) {
+      setCameraSettings(Island3);
     }
+    
   }, [preset]);
 
   return (
@@ -234,42 +242,42 @@ function EyeAnimation({ preset }) {
       </mesh>
     )
   }
-  function Video() {
-    const [video] = useState(() => Object.assign(document.createElement('video'), { src: "/Kitchan.mp4", crossOrigin: 'Anonymous', loop: true, muted: true }))
-    useEffect(() => void video.play(), [video])
-    return (
-      <mesh position={[-20, 8, -14.7]} rotation={[0, Math.PI / 2, 0]}>
-        <boxGeometry args={[.1,8,8]}/>
-        <meshBasicMaterial  toneMapped={false}>
-          <videoTexture attach="map" args={[video]} encoding={THREE.sRGBEncoding} />
-        </meshBasicMaterial>
-      </mesh>
-    )
-  }
-  function VideoTwo() {
-    const [video] = useState(() => Object.assign(document.createElement('video'), { src: "/Bubble.mp4", crossOrigin: 'Anonymous', loop: true, muted: true }))
-    useEffect(() => void video.play(), [video])
-    return (
-      <mesh position={[0, 8, -14.7]} rotation={[0, Math.PI / 2, 0]}>
-        <boxGeometry args={[.1,8,8]}/>
-        <meshBasicMaterial  toneMapped={false}>
-          <videoTexture attach="map" args={[video]} encoding={THREE.sRGBEncoding} />
-        </meshBasicMaterial>
-      </mesh>
-    )
-  }
-  function VideoThree() {
-    const [video] = useState(() => Object.assign(document.createElement('video'), { src: "/Levi.mp4", crossOrigin: 'Anonymous', loop: true, muted: true }))
-    useEffect(() => void video.play(), [video])
-    return (
-      <mesh position={[20, 8, -14.7]} rotation={[0, Math.PI / 2, 0]}>
-        <boxGeometry args={[.1,8,8]}/>
-        <meshBasicMaterial  toneMapped={false}>
-          <videoTexture attach="map" args={[video]} encoding={THREE.sRGBEncoding} />
-        </meshBasicMaterial>
-      </mesh>
-    )
-  }
+  // function Video() {
+  //   const [video] = useState(() => Object.assign(document.createElement('video'), { src: "/Kitchan.mp4", crossOrigin: 'Anonymous', loop: true, muted: true }))
+  //   useEffect(() => void video.play(), [video])
+  //   return (
+  //     <mesh position={[-20, 8, -14.7]} rotation={[0, Math.PI / 2, 0]}>
+  //       <boxGeometry args={[.1,8,8]}/>
+  //       <meshBasicMaterial  toneMapped={false}>
+  //         <videoTexture attach="map" args={[video]} encoding={THREE.sRGBEncoding} />
+  //       </meshBasicMaterial>
+  //     </mesh>
+  //   )
+  // }
+  // function VideoTwo() {
+  //   const [video] = useState(() => Object.assign(document.createElement('video'), { src: "/Bubble.mp4", crossOrigin: 'Anonymous', loop: true, muted: true }))
+  //   useEffect(() => void video.play(), [video])
+  //   return (
+  //     <mesh position={[0, 8, -14.7]} rotation={[0, Math.PI / 2, 0]}>
+  //       <boxGeometry args={[.1,8,8]}/>
+  //       <meshBasicMaterial  toneMapped={false}>
+  //         <videoTexture attach="map" args={[video]} encoding={THREE.sRGBEncoding} />
+  //       </meshBasicMaterial>
+  //     </mesh>
+  //   )
+  // }
+  // function VideoThree() {
+  //   const [video] = useState(() => Object.assign(document.createElement('video'), { src: "/Levi.mp4", crossOrigin: 'Anonymous', loop: true, muted: true }))
+  //   useEffect(() => void video.play(), [video])
+  //   return (
+  //     <mesh position={[20, 8, -14.7]} rotation={[0, Math.PI / 2, 0]}>
+  //       <boxGeometry args={[.1,8,8]}/>
+  //       <meshBasicMaterial  toneMapped={false}>
+  //         <videoTexture attach="map" args={[video]} encoding={THREE.sRGBEncoding} />
+  //       </meshBasicMaterial>
+  //     </mesh>
+  //   )
+  // }
 
   let rise = 0;
   let risespeed = .005;
@@ -471,21 +479,21 @@ function EyeAnimation({ preset }) {
     <div className="canvasContainer">
             <div className='title-block' >
         <h1 onClick={function () { setPreset(0) }}>LAWRENCE YEE</h1>
-      
         <h4 onClick={function () { setPreset(2) }}>Projects</h4>
-        <h4 onClick={function () { setPreset(7) }}>About Me</h4>
+        <h4 onClick={function () { setPreset(8) }}>ABOUT ME</h4>
+        <h4 onClick={function () { setPreset(7) }}>CONTACTS</h4>
       </div>
 
 
       
       <Canvas shadows
-        far={50}
+        far={1000}
         dpr={dpr} 
         gl={{ localClippingEnabled: true, alpha: false }} 
-          camera={{ position: [-180, 60, -150], fov: 85 }}
+        camera={{ position: [-180, 60, -150], fov: 85 }}
         performance={{ min: .1 }}
         >
-      <fog attach="fog" args={["white", 1, 800]} />
+      <fog attach="fog" args={["white", 1, 950]} />
 
       
         <AdaptiveDpr pixelated />
@@ -516,7 +524,7 @@ function EyeAnimation({ preset }) {
     <OrbitingMesh />
     {/* <OrbitingMeshTwo /> */}
     <IslandTwo setPreset={setPreset} />  
-       
+    <IslandThree setPreset={setPreset} />
             </>
           )}
    </Suspense>
