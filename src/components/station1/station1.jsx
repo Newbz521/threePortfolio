@@ -529,12 +529,9 @@ function EyeAnimation({ preset }) {
     resolutionX={Resolution.AUTO_SIZE} // The horizontal resolution.
     resolutionY={Resolution.AUTO_SIZE} // The vertical resolution.
   />
-        </EffectComposer>
-      
+        </EffectComposer>    
       </Canvas>
       {/* <Loader/> */}
-
-
     </div>
   );
 }

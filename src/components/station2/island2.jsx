@@ -125,42 +125,42 @@ function IslandTwo(props) {
         
         <mesh scale={[.9,.9,.5]} ref={domeRef} rotation={[-Math.PI / 2, 0, 0]} position={[450,-27,-20]}  >
           <sphereGeometry args={[20, 8,7, 40]} />
-          <meshStandardMaterial side={THREE.DoubleSide} color="pink" flatShading/>
+          <meshLambertMaterial side={THREE.DoubleSide} color="pink" flatShading/>
         </mesh>
         <mesh scale={[.4,.4,.2]} ref={domeRef} rotation={[-Math.PI / 2, 0, 0]} position={[450,-34,-7.5]}  >
           <sphereGeometry args={[20, 5,5, 0]} />
-          <meshStandardMaterial side={THREE.DoubleSide} color="pink" flatShading/>
+          <meshLambertMaterial side={THREE.DoubleSide} color="pink" flatShading/>
         </mesh>
         <mesh scale={[.2,.2,.1]} ref={domeRef} rotation={[-Math.PI / 2, 0, 0]} position={[455,-39,-28.5]}  >
           <sphereGeometry args={[20, 5,5, 0]} />
-          <meshStandardMaterial side={THREE.DoubleSide} color="pink" flatShading/>
+          <meshLambertMaterial side={THREE.DoubleSide} color="pink" flatShading/>
         </mesh>
         <mesh  ref={domeRef} rotation={[0, 0, 0]} position={[450,-43,-20]}  >
           <cylinderGeometry args={[2, 3, 17]}  />
-          <meshStandardMaterial side={THREE.DoubleSide} color="rgb(193, 154, 107)" flatShading />
+          <meshLambertMaterial side={THREE.DoubleSide} color="rgb(193, 154, 107)" flatShading />
         </mesh>
         <mesh  ref={domeRef} rotation={[1, 0, 0]} position={[450,-40,-15]}  >
           <cylinderGeometry args={[.5, 2, 15]}  />
-          <meshStandardMaterial side={THREE.DoubleSide} color="rgb(193, 154, 107)" flatShading />
+          <meshLambertMaterial side={THREE.DoubleSide} color="rgb(193, 154, 107)" flatShading />
         </mesh>
 
         <mesh  ref={domeRef} rotation={[-1, 0, -.5]} position={[453.5,-42,-25]}  >
           <cylinderGeometry args={[.3, 1, 10]}  />
-          <meshStandardMaterial side={THREE.DoubleSide} color="rgb(193, 154, 107)" flatShading/>
+          <meshLambertMaterial side={THREE.DoubleSide} color="rgb(193, 154, 107)" flatShading/>
         </mesh>
         <mesh ref={fenceRef} scale={[50,.5,50]} side={THREE.BackSide} position={[450,-47,0]}>
           <Cylinder args={[1, 1, 1, 64, 1, true]} >
-          <meshStandardMaterial attach="material" color="rgb(193, 154, 107)" side={THREE.DoubleSide} receiveShadow castShadow/>
+          <meshLambertMaterial attach="material" color="rgb(193, 154, 107)" side={THREE.DoubleSide} receiveShadow castShadow/>
           </Cylinder>
         </mesh>
         <mesh ref={fenceRef} scale={[50,.5,50]} side={THREE.BackSide} position={[450,-48,0]}>
           <Cylinder args={[1, 1, 1, 64, 1, true]} color="brown">
-          <meshStandardMaterial attach="material" color="rgb(193, 154, 107)" side={THREE.DoubleSide} receiveShadow castShadow/>
+          <meshLambertMaterial attach="material" color="rgb(193, 154, 107)" side={THREE.DoubleSide} receiveShadow castShadow/>
           </Cylinder>
         </mesh>
         <mesh ref={fenceRef} scale={[50,.5,50]} side={THREE.BackSide} position={[450,-49,0]}>
           <Cylinder args={[1, 1, 1, 64, 1, true]} color="brown">
-          <meshStandardMaterial attach="material" color="rgb(193, 154, 107)" side={THREE.DoubleSide} receiveShadow castShadow/>
+          <meshLambertMaterial attach="material" color="rgb(193, 154, 107)" side={THREE.DoubleSide} receiveShadow castShadow/>
           </Cylinder>
         </mesh>
     

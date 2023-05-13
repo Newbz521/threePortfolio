@@ -140,7 +140,7 @@ function Banners(props) {
         <mesh receiveShadow castShadow ref={boardRef} scale={active ? [1.2, 1.2, 1] : [1, 1, 1]} onClick={() => { window.open(Resume, "_blank"); }} onPointerOver={() => { setActive(true); setHovered(true) }} onPointerOut={() => { setActive(false); setHovered(false)}} rotation={[0, -Math.PI / 2, 0]} position={[460,-43,0]}>
           <sphereGeometry  args={[4, 15, 15, 0]}  >
           </sphereGeometry>
-            <meshStandardMaterial  attach="material" color={"white"} flatShading />
+            <meshLambertMaterial  attach="material" color={"white"} flatShading />
         </mesh>
 
         
@@ -162,7 +162,7 @@ function Banners(props) {
         <mesh receiveShadow castShadow ref={boardRef} scale={linked ? [1.2, 1.2, 1] : [1, 1, 1]} onClick={() => { window.open("https://www.linkedin.com/in/lawrenceyee91/", "_blank"); }} onPointerOver={() => { setLinked(true); setHovered(true) }} onPointerOut={() => { setLinked(false); setHovered(false)}} rotation={[0, -Math.PI / 2, 0]} position={[455,-43,20]}>
           <sphereGeometry  args={[4, 15, 15, 0]}  >
           </sphereGeometry>
-            <meshStandardMaterial  attach="material" color={"lightblue"} flatShading />
+            <meshLambertMaterial  attach="material" color={"lightblue"} flatShading />
         </mesh>
 
         <spotLight castShadow intensity={.7} angle={.2} ref={lightThreeRef} position={[474,-9,-14.5]} color={"lightyellow"} penumbra={.5} />
@@ -181,7 +181,7 @@ function Banners(props) {
         <mesh receiveShadow castShadow ref={boardRef} scale={git ? [1.2, 1.2, 1] : [1, 1, 1]} onClick={() => { window.open("https://github.com/Newbz521", "_blank"); }} onPointerOver={() => { setGit(true); setHovered(true) }} onPointerOut={() => { setGit(false);  setHovered(false)}} rotation={[0, Math.PI + .5, 0]} position={[474,-43,-14.5]}>
           <sphereGeometry  args={[4, 15, 15, 0]}  >
           </sphereGeometry>
-            <meshStandardMaterial  attach="material" color={"grey"} flatShading />
+            <meshLambertMaterial  attach="material" color={"grey"} flatShading />
         </mesh>
        
         
