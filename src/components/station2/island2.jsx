@@ -8,8 +8,8 @@ import { act } from "react-dom/test-utils";
 import Banners from "./banners";
 
 function IslandTwo(props) {
-  const loader = new THREE.TextureLoader();
-  const grassTexture = loader.load(Grass)
+  // const loader = new THREE.TextureLoader();
+  // const grassTexture = loader.load(Grass)
   function ccccc(children, color) {
     const fontSize = 200
   
@@ -111,7 +111,7 @@ function IslandTwo(props) {
        <Banners/>
         <mesh ref={platRef} position={[450,-51,0]} onClick={() => {  props.setPreset(7)}} >
           <cylinderGeometry args={[60, 60, 2]} />
-          <meshStandardMaterial color="lightgreen" normalMap={grassTexture} normalMapType={1} normalScale={20} attach="material" />
+          <meshStandardMaterial color="lightgreen"  />
         </mesh>
        
         <mesh  position={[450,-68,0]} onClick={() => { props.setPreset(7) }} >

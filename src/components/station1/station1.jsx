@@ -463,97 +463,8 @@ function EyeAnimation({ preset }) {
     )
   }
 
-  // function Loader() {
-  //   const { active, progress, errors, item, loaded, total } = useProgress()
-  //   useEffect(() => {
-  //     console.log(active, progress)
-  //     // if (progress == 100) {
-  //     //   setStart(true)
-  //     // }
-  //   }, [active, progress])
-  //   return (<Html center>{progress} % loaded</Html>
 
-  //   )
-  // }
 
-  // let rise4 = 0;
-  // let risespeed4 = .015
-  // function StoreFour() {
-  //   const ref = useRef()
-  //   const bounceRef = useRef()
-  //   const [active, setActive] = useState(false)
-  //   const [git, setGit] = useState(false)
-  //   const [deploy, setDeploy] = useState(false)
-  //   const [world,setWorld] = useState(false)
-  //   const [zoom, setZoom] = useState(false)
-  //   useCursor(active)
-     
-  
-  //   useFrame((state) => {
-  //     rise4 += risespeed4
-  //     bounceRef.current.position.y = 1.5 * Math.sin(rise4)
-  //   })
-  //   return (
-  //     <mesh ref={bounceRef}>
-  //       <mesh ref={ref} position={[-20, 8, 15]} receiveShadow castShadow onClick={() => { if (!zoom) { setPreset(4) } else { setPreset(0) }; setZoom(!zoom) }} onPointerOver={() => setActive(true)} onPointerOut={() => setActive(false)}>
-  //       <boxGeometry args={[8, 8, .5]} />
-  //       <meshStandardMaterial color={active ? 'hotpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
-  //     </mesh>
-  //     </mesh>
-  //   )
-  // }
-
-  // let rise5 = 0;
-  // let risespeed5 = .015
-  // function StoreFive() {
-  //   const ref = useRef()
-  //   const bounceRef = useRef()
-  //   const [active, setActive] = useState(false)
-  //   const [git, setGit] = useState(false)
-  //   const [deploy, setDeploy] = useState(false)
-  //   const [world,setWorld] = useState(false)
-  //   const [zoom, setZoom] = useState(false)
-  //   useCursor(active)
-     
-  //   useFrame((state) => {
-  //     rise5 += risespeed5
-  //     bounceRef.current.position.y = 1.5 * Math.sin(rise5)
-  //   })
-  //   return (
-  //     <mesh ref={bounceRef}>
-  //       <mesh ref={ref} position={[0, 8, 15]} receiveShadow castShadow onClick={() => { if (!zoom) { setPreset(5) } else { setPreset(0) }; setZoom(!zoom) }} onPointerOver={() => setActive(true)} onPointerOut={() => setActive(false)}>
-  //       <boxGeometry args={[8, 8, .5]} />
-  //       <meshStandardMaterial color={active ? 'hotpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
-  //     </mesh>
-  //     </mesh>
-  //   )
-  // }
-
-  // let rise6 = 0;
-  // let risespeed6 = .015
-  // function StoreSix() {
-  //   const ref = useRef()
-  //   const bounceRef = useRef()
-  //   const [active, setActive] = useState(false)
-  //   const [git, setGit] = useState(false)
-  //   const [deploy, setDeploy] = useState(false)
-  //   const [world,setWorld] = useState(false)
-  //   const [zoom, setZoom] = useState(false)
-  //   useCursor(active)
-     
-  //   useFrame((state) => {
-  //     rise6 += risespeed6
-  //     bounceRef.current.position.y = 1.5 * Math.sin(rise6)
-  //   })
-  //   return (
-  //     <mesh ref={bounceRef}>
-  //       <mesh ref={ref} position={[20, 8, 15]} receiveShadow castShadow onClick={() => { if (!zoom) { setPreset(6) } else { setPreset(0) }; setZoom(!zoom) }} onPointerOver={() => setActive(true)} onPointerOut={() => setActive(false)}>
-  //       <boxGeometry args={[8, 8, .5]} />
-  //       <meshStandardMaterial color={active ? 'hotpink' : 'lightblue'} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.25} />
-  //     </mesh>
-  //     </mesh>
-  //   )
-  // }
 
   
   return (
@@ -566,7 +477,7 @@ function EyeAnimation({ preset }) {
       </div>
 
 
-      <Suspense fallback={<LoaderScreen/>}>
+      
       <Canvas shadows
         far={50}
         dpr={dpr} 
@@ -576,7 +487,7 @@ function EyeAnimation({ preset }) {
         >
       <fog attach="fog" args={["white", 1, 800]} />
 
-      <Preload all/>
+      
         <AdaptiveDpr pixelated />
 
       <PerformanceMonitor flipflops={3} onFallback={() => setDpr(1)}/>
@@ -589,10 +500,11 @@ function EyeAnimation({ preset }) {
  makeDefault
         />
       
-          
+    <Suspense fallback={null}>    
           {(
             <>
-             <DayScene />    
+    <Preload all/>
+    <DayScene />    
     <StoreOne />
     <StoreTwo />
     <StoreThree />
@@ -603,10 +515,12 @@ function EyeAnimation({ preset }) {
     <Island setPreset={setPreset} />
     <OrbitingMesh />
     {/* <OrbitingMeshTwo /> */}
-    <IslandTwo setPreset={setPreset} />     
+    <IslandTwo setPreset={setPreset} />  
+       
             </>
           )}
-   
+   </Suspense>
+
        
         {/* <EffectComposer>
           <Bloom
@@ -617,7 +531,6 @@ function EyeAnimation({ preset }) {
             />
         </EffectComposer> */}
       </Canvas>
-    </Suspense>
       
 
     </div>
