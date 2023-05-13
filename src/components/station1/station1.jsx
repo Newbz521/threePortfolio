@@ -26,7 +26,13 @@ const StationOne = (props) => {
   const [dpr, setDpr] = useState(1.5)
   const [preset, setPreset] = useState(0)  
   const [start, setStart] = useState(false);
-  
+  const [dov,setDov] = useState(95)
+  useEffect(()=>{
+    console.log(window.innerWidth)
+    if (window.innerWidth < 500) {
+      setDov(110)
+    } 
+  },[])
 
   document.addEventListener('keydown', function (event) {
     
@@ -492,7 +498,7 @@ function EyeAnimation({ preset }) {
         far={1000}
         dpr={dpr} 
         gl={{ localClippingEnabled: true, alpha: false }} 
-        camera={{ position: [-180, 60, -150], fov: 85 }}
+        camera={{ position: [-180, 60, -150], fov: dov }}
         performance={{ min: .1 }}
         >
         <fog attach="fog" args={["white", 1, 950]} />

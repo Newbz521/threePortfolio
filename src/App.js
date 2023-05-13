@@ -8,7 +8,6 @@ import LoaderScreen from './components/loader/loader';
 
 function App() {
 
-
   return (
     <div className="App">
       {/* <Loader></Loader> */}
