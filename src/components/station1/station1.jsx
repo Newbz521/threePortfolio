@@ -593,9 +593,9 @@ function EyeAnimation({ preset }) {
           {(
             <>
              <DayScene />    
-    {/* <StoreOne />
+    <StoreOne />
     <StoreTwo />
-    <StoreThree /> */}
+    <StoreThree />
     <Subway middle={-30} />
     <SubwayLeft middle={30} />
     <PlatformOne middle={-15} />
