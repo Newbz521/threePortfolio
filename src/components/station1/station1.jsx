@@ -25,6 +25,7 @@ const StationOne = (props) => {
   const [preset, setPreset] = useState(0)  
   const [start, setStart] = useState(false);
   const [dov, setDov] = useState(95);
+  const [day, setDay] = useState(true);
 
   useEffect(()=>{
     // console.log(window.innerWidth)
@@ -486,8 +487,9 @@ function EyeAnimation({ preset }) {
         gl={{ localClippingEnabled: true, alpha: false }} 
         camera={{ position: [-180, 60, -150], fov: dov }}
         performance={{ min: .1 }}
-        >
-        <fog attach="fog" args={["white", 1, 950]} />
+      >
+        {day ? <fog attach="fog" args={["white", 1, 880]} /> : <fog attach="fog" args={["black", 1, 880]} />}
+        {/* <fog attach="fog" args={["white", 1, 950]} /> */}
       
         <AdaptiveDpr pixelated />
         <PerformanceMonitor flipflops={3} onFallback={() => setDpr(1)}/>
@@ -500,7 +502,7 @@ function EyeAnimation({ preset }) {
             
             <>
     <Preload all/>
-    <DayScene />    
+              <DayScene setDay={setDay} />    
     <StoreOne />
     <StoreTwo />
     <StoreThree />
