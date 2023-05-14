@@ -3,7 +3,7 @@ import { useFrame } from "@react-three/fiber"
 import { useCursor, Cylinder, RoundedBox} from '@react-three/drei'
 import * as THREE from 'three'
 import { OrbitingMeshThree,OrbitingMeshFour } from "../station1/satelite";
-
+import Propel from "../station1/propel";
 import { act } from "react-dom/test-utils";
 
 
@@ -129,7 +129,8 @@ function IslandThree(props) {
     
         {/* <OrbitingMeshFour /> */}
         {/* <OrbitingMeshThree /> */}
-        
+        <Propel location={[300,14,-500]} />
+
         <TextRing>
           BIO
         </TextRing>

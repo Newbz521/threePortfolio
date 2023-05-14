@@ -2,7 +2,7 @@ import {useState, useRef,useMemo } from "react";
 
 import { useFrame } from "@react-three/fiber"
 import {useCursor, Text3D, Text,  Cylinder, MeshWobbleMaterial, Icosahedron} from '@react-three/drei'
-
+import Propel from "./propel";
 import * as THREE from 'three'
 
 
@@ -76,7 +76,8 @@ function Island(props) {
   const textRef = useRef()
     const leftRef = useRef(null);
     const domeRef = useRef(null);
-  const platRef = useRef(null)
+  const platRef = useRef(null);
+  const propelRef = useRef(null);
   const [zoom, setZoom] = useState(false)
   const [active, setActive] = useState(false)
   const radius = 70;
@@ -94,13 +95,14 @@ function Island(props) {
       // leftRef.current.castShadow = true;
       // leftRef.current.position.y = 1.5 * Math.sin(rise) 
      
-      // platRef.current.receiveShadow = true;
+      platRef.current.receiveShadow = true;
       platRef.current.castShadow = true;
       // textRef.current.position.set(Math.cos(angle) * radius, 10, Math.sin(angle) * radius);
 
+  
 
-      // domeRef.current.castShadow = true;
-      // domeRef.current.receiveShadow = true;
+      domeRef.current.castShadow = true;
+      domeRef.current.receiveShadow = true;
     })
   
   
@@ -112,8 +114,8 @@ function Island(props) {
  
       
         <mesh ref={platRef} position={[0,-1.5,0]} onClick={() => { if (!zoom) { props.setPreset(2) } else { props.setPreset(0) }; setZoom(!zoom) }} >
-          <cylinderGeometry args={[48, 48, 3]} />
-          <meshLambertMaterial color="darkgrey" />
+          <cylinderGeometry args={[48, 48, 3]} castShadow receiveShadow/>
+          <meshLambertMaterial color="darkgrey" castShadow receiveShadow/>
         </mesh>
        
         <mesh  position={[0,-22,0]} onClick={() => { if (!zoom) { props.setPreset(2) } else { props.setPreset(0) }; setZoom(!zoom) }}>
@@ -124,6 +126,7 @@ function Island(props) {
           <sphereGeometry args={[55, 20,20, 0, Math.PI]} />
           <meshLambertMaterial side={THREE.DoubleSide} color="blue" transparent opacity={.1}/>
         </mesh>
+        <Propel location={[0,-44,0]} />
         <TextRing>
           PROJECTS ISLAND
         </TextRing>

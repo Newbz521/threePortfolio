@@ -6,6 +6,7 @@ import { OrbitingMeshThree,OrbitingMeshFour } from "../station1/satelite";
 import Grass from "./Grass.png"
 import { act } from "react-dom/test-utils";
 import Banners from "./banners";
+import Propel from "../station1/propel";
 
 function IslandTwo(props) {
   // const loader = new THREE.TextureLoader();
@@ -113,9 +114,10 @@ function IslandTwo(props) {
           <cylinderGeometry args={[60, 60, 2]} />
           <meshStandardMaterial color="lightgreen"  />
         </mesh>
-       
+        <Propel location={[450,-86,0]} />
+
         <mesh  position={[450,-68,0]} onClick={() => { props.setPreset(7) }} >
-          <cylinderGeometry args={[70, 10, 30]} />
+          <cylinderGeometry args={[70, 5, 30]} />
           <meshStandardMaterial color="lightgrey"  flatShading />
         </mesh>
         <mesh ref={domeRef} rotation={[-Math.PI / 2, 0, 0]} position={[450,-53,0]} >

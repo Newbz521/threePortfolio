@@ -303,7 +303,7 @@ function EyeAnimation({ preset }) {
         <mesh ref={bounceRef}>
           <mesh ref={ref} position={[-20, 8, -15]} receiveShadow castShadow onClick={() => { setPreset(1) } } >
           <boxGeometry args={[8, 8, .5]} />
-          <meshStandardMaterial color={active ? 'hotpink' : 'lightblue'}/>
+          <meshStandardMaterial color={active ? 'lightpink' : 'lightblue'}/>
           </mesh>
           {/* <Video /> */}
           <mesh ref={ref} scale={git ?[1.2,1.2,1]: [1,1,1] } position={[-23, 14, -15]} receiveShadow castShadow onClick={() => { window.open("https://github.com/Newbz521/FiberKitchen", "_blank"); }} >
@@ -332,7 +332,7 @@ function EyeAnimation({ preset }) {
             </mesh>
           <mesh ref={ref} scale={world ?[1.2,1.2,1]: [1,1,1] } position={[-17, 14, -15]} receiveShadow castShadow onClick={() => { setPreset(0) }}>
             <boxGeometry args={[2, 2, .5]} />
-          <meshStandardMaterial color={world ? 'hotpink' : 'lightblue'} />
+          <meshStandardMaterial color={world ? 'lightpink' : 'lightblue'} />
           </mesh>
           <mesh position={[-17, 14, -14.7]} >
           <Text
@@ -360,7 +360,7 @@ function EyeAnimation({ preset }) {
       <mesh ref={bounceRef}>
         <mesh ref={ref} position={[0, 8, -15]} receiveShadow castShadow onClick={() => { setPreset(2) }} >
         <boxGeometry args={[8, 8, .5]} />
-        <meshStandardMaterial color={active ? 'hotpink' : 'lightblue'}  />
+        <meshStandardMaterial color={active ? 'lightpink' : 'lightblue'}  />
         </mesh>
         {/* <VideoTwo /> */}
         <mesh ref={ref} scale={git ?[1.2,1.2,1]: [1,1,1] }position={[-3, 14, -15]} receiveShadow castShadow onClick={() => { window.open("https://github.com/Newbz521/Beacon-Defender-", "_blank"); }} >
