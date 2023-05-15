@@ -18,12 +18,20 @@ function Propel({location}) {
 })
   return (
     <mesh ref={propelRef} position={location}>
-          <mesh  rotation={[-Math.PI / 4,0,0]}>
-            <boxGeometry args={[70, 1, 5]} castShadow receiveShadow/>
+          <mesh position={[15,0,0]} rotation={[-Math.PI / 4,0,0]}>
+            <boxGeometry args={[30, 1, 5]} castShadow receiveShadow/>
             <meshNormalMaterial color="black" castShadow receiveShadow/>
-          </mesh>
-          <mesh rotation={[0,0,Math.PI / 4]}>
-            <boxGeometry args={[5, 1, 70]} castShadow receiveShadow/>
+      </mesh>
+      <mesh position={[-15,0,0]} rotation={[Math.PI / 4,0,0]}>
+            <boxGeometry args={[30, 1, 5]} castShadow receiveShadow/>
+            <meshNormalMaterial color="black" castShadow receiveShadow/>
+      </mesh>
+          <mesh position={[0,0,-15]}  rotation={[0,0,Math.PI / 4]}>
+            <boxGeometry args={[5, 1, 30]} castShadow receiveShadow/>
+            <meshNormalMaterial color="black" castShadow receiveShadow/>
+      </mesh>
+      <mesh position={[0,0,15]}  rotation={[0,0,-Math.PI / 4]}>
+            <boxGeometry args={[5, 1, 30]} castShadow receiveShadow/>
             <meshNormalMaterial color="black" castShadow receiveShadow/>
           </mesh>
           <mesh >
