@@ -77,6 +77,7 @@ function Island(props) {
     const leftRef = useRef(null);
     const domeRef = useRef(null);
   const platRef = useRef(null);
+  const coneRef =useRef(null)
   const propelRef = useRef(null);
   const [zoom, setZoom] = useState(false)
   const [active, setActive] = useState(false)
@@ -100,7 +101,8 @@ function Island(props) {
       // textRef.current.position.set(Math.cos(angle) * radius, 10, Math.sin(angle) * radius);
 
   
-
+      coneRef.current.castShadow = true;
+      coneRef.current.receiveShadow = true;
       domeRef.current.castShadow = true;
       domeRef.current.receiveShadow = true;
     })
@@ -118,9 +120,9 @@ function Island(props) {
           <meshLambertMaterial color="darkgrey" castShadow receiveShadow/>
         </mesh>
        
-        <mesh  position={[0,-22,0]} onClick={() => { if (!zoom) { props.setPreset(2) } else { props.setPreset(0) }; setZoom(!zoom) }}>
+        <mesh ref={coneRef}  position={[0,-22,0]} onClick={() => { if (!zoom) { props.setPreset(2) } else { props.setPreset(0) }; setZoom(!zoom) }}>
           <cylinderGeometry args={[55, 5, 38]} />
-          <meshLambertMaterial color="pink"  flatShading />
+          <meshLambertMaterial color="pink"  flatShading castShadow receiveShadow />
         </mesh>
         <mesh ref={domeRef} rotation={[-Math.PI / 2, 0, 0]} position={[0,-3,0]} >
           <sphereGeometry args={[55, 20,20, 0, Math.PI]} />

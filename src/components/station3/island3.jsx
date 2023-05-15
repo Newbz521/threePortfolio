@@ -1,10 +1,11 @@
 import { useState, useRef, useMemo } from "react";
 import { useFrame } from "@react-three/fiber"
-import { useCursor, Cylinder, RoundedBox} from '@react-three/drei'
+import { useCursor, Cylinder, RoundedBox, Text3D, Text} from '@react-three/drei'
 import * as THREE from 'three'
 import { OrbitingMeshThree,OrbitingMeshFour } from "../station1/satelite";
 import Propel from "../station1/propel";
 import { act } from "react-dom/test-utils";
+import Texter from "./texter.jsx"
 
 
 function IslandThree(props) {
@@ -49,7 +50,7 @@ function IslandThree(props) {
     const cylArgs = [1, 1, 1, 64, 1, true]
   
     return (
-      <group rotation-y={Math.PI / 4} scale={[80, 80, 80]} position={[300,50,-500]}>
+      <group rotation-y={Math.PI / 4} scale={[80, 80, 80]} position={[300,0,-500]}>
         {/* <primitive object={target.texture} ref={texture} wrapS={THREE.RepeatWrapping} wrapT={THREE.RepeatWrapping} repeat={[1, 1]} /> */}
   
         <Cylinder args={cylArgs} side={THREE.FrontSide}>
@@ -92,9 +93,9 @@ function IslandThree(props) {
 
       // platRef.current.receiveShadow = true;
       platRef.current.castShadow = true;
-      domeRef.current.castShadow = true;
-      domeRef.current.receiveShadow = true;
-      domeRef.current.flatShading = true;
+      // domeRef.current.castShadow = true;
+      // domeRef.current.receiveShadow = true;
+      // domeRef.current.flatShading = true;
  
       // domeRef.current.castShadow = true;
       // domeRef.current.receiveShadow = true;
@@ -109,17 +110,74 @@ function IslandThree(props) {
 
       
         <mesh ref={platRef} position={[300,48,-500]} onClick={() => {  props.setPreset(8)}} >
-          <cylinderGeometry args={[65, 65, 2]} />
-          <meshStandardMaterial color="lightgreen"  />
+          <cylinderGeometry args={[69, 69, 2]} />
+          <meshStandardMaterial color="green"  />
         </mesh>
        
-        <mesh  position={[300,32,-500]} onClick={() => { props.setPreset(8) }} >
-          <cylinderGeometry args={[70, 10, 30]} />
+        <mesh  position={[300,29,-500]} onClick={() => { props.setPreset(8) }} >
+          <cylinderGeometry args={[73, 10, 36]} />
           <meshStandardMaterial color="lightgrey"  flatShading />
         </mesh>
-        <mesh ref={domeRef} rotation={[-Math.PI / 2, 0, 0]} position={[300,47,-500]} >
+        {/* <mesh ref={domeRef} rotation={[-Math.PI / 2, 0, 0]} position={[300,47,-500]} >
           <sphereGeometry args={[70, 20,20, 0, Math.PI]} />
           <meshStandardMaterial side={THREE.DoubleSide} color="blue"  transparent opacity={.03} />
+        </mesh> */}
+        
+        <mesh position={[300,51,-500]} rotation={[-Math.PI / 1.2,0,-Math.PI ]}>
+          <Text
+        scale={[3, 3, 3]}
+            color="white" // default
+            resolution={1000}
+        >
+           Software engineer with a background in architecture,
+          </Text>
+        </mesh>
+        <mesh position={[300,51,-510]} rotation={[-Math.PI / 1.2,0,-Math.PI ]}>
+          <Text
+        scale={[3, 3, 3]}
+            color="white" // default
+            resolution={1000}
+        >
+            I have a foundation in mathematics, physics, and visualization approach
+          </Text>
+        </mesh>
+        <mesh position={[300,51,-520]} rotation={[-Math.PI / 1.2,0,-Math.PI ]}>
+          <Text
+        scale={[3, 3, 3]}
+            color="white" // default
+            resolution={1000}
+        >
+             to software development from a rigorous and analytical perspective.
+          </Text>
+        </mesh>
+        <mesh position={[300,51,-530]} rotation={[-Math.PI / 1.2,0,-Math.PI ]}>
+          <Text
+        scale={[3, 3, 3]}
+            color="white" // default
+            resolution={1000}
+        >
+             With a keen eye for design and an emphasis on user experience,
+          </Text>
+        </mesh>
+        <mesh position={[300,51,-540]} rotation={[-Math.PI / 1.2,0,-Math.PI ]}>
+          <Text
+        scale={[3, 3, 3]}
+            color="white" // default
+            resolution={1000}
+        >
+              I strive to create elegant and intuitive software solutions
+          </Text>
+        </mesh>
+        <mesh position={[300,51,-550]} rotation={[-Math.PI / 1.2,0,-Math.PI ]}>
+          <Text
+        scale={[3, 3, 3]}
+            color="white" // default
+            resolution={1000}
+          
+        >
+            that meet the needs of clients and users alike.
+          </Text>
+       
         </mesh>
         
        
@@ -129,7 +187,7 @@ function IslandThree(props) {
     
         {/* <OrbitingMeshFour /> */}
         {/* <OrbitingMeshThree /> */}
-        <Propel location={[300,14,-500]} />
+        <Propel location={[300,9,-500]} />
 
         <TextRing>
           BIO

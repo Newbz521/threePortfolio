@@ -3,7 +3,8 @@ import { useEffect, useState, useRef, Suspense } from "react";
 import { useSpring, a, config} from "@react-spring/three";
 
 import { Canvas, useFrame, useThree, PerspectiveCamera} from "@react-three/fiber"
-import { Bloom, EffectComposer } from "@react-three/postprocessing";
+import { Bloom, EffectComposer,Vignette } from "@react-three/postprocessing";
+import { BlendFunction } from "postprocessing";
 
 import { OrbitControls, RoundedBox, useCursor, Text, Preload, Html, AdaptiveEvents, AdaptiveDpr, PerformanceMonitor, Hud, useProgress, Loader} from '@react-three/drei'
 import PlatformOne from "./platform1";
@@ -518,7 +519,7 @@ function EyeAnimation({ preset }) {
             </>
           )}
    </Suspense>
-       
+{/*        
         <EffectComposer>
    
             <Bloom
@@ -531,7 +532,9 @@ function EyeAnimation({ preset }) {
     resolutionX={Resolution.AUTO_SIZE} // The horizontal resolution.
     resolutionY={Resolution.AUTO_SIZE} // The vertical resolution.
   />
-        </EffectComposer>    
+          
+   
+        </EffectComposer>     */}
       </Canvas>
       {/* <Loader/> */}
     </div>
