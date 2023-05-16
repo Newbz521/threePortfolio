@@ -18,6 +18,7 @@ import "./station1.css"
 import { Vector3 } from "three";
 import { BlurPass, Resizer, KernelSize, Resolution } from 'postprocessing'
 import { LoadingScreen } from "../loader/loader";
+import Bot from "../station3/bot";
 
 
 const StationOne = (props) => {
@@ -84,7 +85,7 @@ const farAway = {
     target: [450,-40,0]
   }
   const Island3 = {
-    position: [315,85,-575],
+    position: [300,90,-575],
     target: [300, 50,-500]
   }
 
@@ -503,7 +504,7 @@ function EyeAnimation({ preset }) {
             
             <>
     <Preload all/>
-              <DayScene setDay={setDay} />    
+    <DayScene setDay={setDay} />    
     <StoreOne />
     <StoreTwo />
     <StoreThree />
@@ -511,9 +512,11 @@ function EyeAnimation({ preset }) {
     <SubwayLeft middle={30} />
     <PlatformOne middle={-15} />
     <PlatformOne middle={15} />
-    <Island setPreset={setPreset} />
+              <Island setPreset={setPreset} />
+              <Bot position={[-10, 7, -12]} />
+              <Bot position={[0,7,15]}/>
     <OrbitingMesh />
-    {/* <OrbitingMeshTwo /> */}
+    <OrbitingMeshTwo />
     <IslandTwo setPreset={setPreset} />  
     <IslandThree setPreset={setPreset} />
             </>

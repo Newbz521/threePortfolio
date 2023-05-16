@@ -12,7 +12,7 @@ function DayScene(props) {
   
   const [toggler, setToggler] = useState(false);
   const [planet, setPlanet] = useState("rgb(255, 244, 120)")
-  const [size,setSize] = useState(40)
+  const [size,setSize] = useState(50)
   const dayRef = useRef()
   const nightRef = useRef()
   const sunRef = useRef()
@@ -28,12 +28,12 @@ function DayScene(props) {
     if (toggler == true) {
       // setShow("");
       setPlanet("rgb(255, 244, 120)");
-      setSize(40)
+      setSize(50)
       props.setDay(true)
       // props.setColor({color:"grey"})
     } else {
       setPlanet("white");
-      setSize(20)
+      setSize(30)
       props.setDay(false)
       // props.setColor({color:"white"})
     }
@@ -51,7 +51,7 @@ function DayScene(props) {
       <mesh ref={dayRef}>
         
         <mesh ref={sunRef} onClick={handleShow}  onPointerOver={() => setHovered(true)}
-    onPointerOut={() => setHovered(false)}  position={[200, 140, 50]}>
+    onPointerOut={() => setHovered(false)}  position={[200, 200, 50]}>
           <sphereGeometry args={[size, 32, 32]} />
           <meshBasicMaterial  color={planet} />
         </mesh>

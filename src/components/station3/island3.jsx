@@ -6,6 +6,7 @@ import { OrbitingMeshThree,OrbitingMeshFour } from "../station1/satelite";
 import Propel from "../station1/propel";
 import { act } from "react-dom/test-utils";
 import Texter from "./texter.jsx"
+import Bot from "./bot";
 
 
 function IslandThree(props) {
@@ -75,7 +76,8 @@ function IslandThree(props) {
 
     let rise = 0;
     let risespeed = 0;
-    const leftRef = useRef(null);
+  const leftRef = useRef(null);
+  const textRef= useRef(null)
   const domeRef = useRef(null);
   const platRef = useRef(null)
   const [zoom, setZoom] = useState(false)
@@ -89,7 +91,7 @@ function IslandThree(props) {
       leftRef.current.receiveShadow = true;
       
       // leftRef.current.castShadow = true;
-      
+      // textRef.quaternion.copy(camera.quaternion)
 
       // platRef.current.receiveShadow = true;
       platRef.current.castShadow = true;
@@ -188,7 +190,7 @@ function IslandThree(props) {
         {/* <OrbitingMeshFour /> */}
         {/* <OrbitingMeshThree /> */}
         <Propel location={[300,9,-500]} />
-
+        {/* <Bot position={[0,5,0]}/> */}
         <TextRing>
           BIO
         </TextRing>

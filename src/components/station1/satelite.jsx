@@ -23,12 +23,13 @@ export function OrbitingMesh(props) {
         <cylinderGeometry args={[9, 2, 5]}  />
       <meshStandardMaterial  />
       </mesh>
+      
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0,7,0]} >
           <sphereGeometry args={[9, 20,20, 0, Math.PI]} />
           <meshStandardMaterial color="blue"  transparent opacity={.1} />
       </mesh>
-      <spotLight castShadow ref={lightRef} angle={.4} position={[0,1.5,0]} color={"white"} intensity={.5}  penumbra={0.2} />
-        <mesh ref={targetRef} position={[0, 1.5, 0]}>
+      <spotLight castShadow ref={lightRef} angle={.4} position={[0,1.5,0]} color={"white"} intensity={.4}  penumbra={0.2} />
+        <mesh ref={targetRef} position={[0, 1, 0]}>
           <sphereGeometry args={[2, 32, 32]} />
           <meshStandardMaterial color="white" />
         </mesh>
@@ -60,7 +61,7 @@ export function OrbitingMeshTwo(props) {
         <sphereGeometry args={[9, 20, 20, 0, Math.PI]} />
         <meshStandardMaterial color="blue" transparent opacity={.05} />
       </mesh>
-      {/* <spotLight castShadow ref={lightRef} angle={.4} position={[0, 15, 0]} color={"white"} intensity={.5} penumbra={0.2} /> */}
+      <spotLight castShadow ref={lightRef} angle={.4} position={[0, 15, 0]} color={"white"} intensity={.8} penumbra={0.2} />
       <mesh ref={targetRef} position={[0, 15, 0]}>
         <sphereGeometry args={[2, 32, 32]} />
         <meshStandardMaterial attach="material"color="white"  />
