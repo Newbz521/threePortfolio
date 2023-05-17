@@ -6,14 +6,14 @@ import { OrbitingMeshThree,OrbitingMeshFour } from "../station1/satelite";
 import Propel from "../station1/propel";
 import { act } from "react-dom/test-utils";
 import Texter from "./texter.jsx"
-import Bot from "./bot";
+import { Bot, Statue } from "./bot";
 
 
 function IslandThree(props) {
   // const loader = new THREE.TextureLoader();
   // const grassTexture = loader.load(Grass)
   function ccccc(children, color) {
-    const fontSize = 200
+    const fontSize = 400
   
     const canvas = document.createElement('canvas')
     canvas.width = 2048
@@ -73,6 +73,45 @@ function IslandThree(props) {
       </group>
     )
   }
+  function TextRingTwo({ children }) {
+  
+    const canvas = useMemo(() => {
+      return ccccc(children, "white")
+    }, [children])
+  
+ 
+  
+    const texture = useRef()
+
+    useFrame(({ clock }) => {
+      texture.current.offset.x = clock.getElapsedTime() / 9
+    })
+  
+    const cylArgs = [1, 1, .5, 64, 1, true]
+  
+    return (
+      <group rotation-y={Math.PI / 4} scale={[15, 20, 15]} position={[300, 55, -470]}>
+        {/* <primitive object={target.texture} ref={texture} wrapS={THREE.RepeatWrapping} wrapT={THREE.RepeatWrapping} repeat={[1, 1]} /> */}
+  
+        <Cylinder args={cylArgs} side={THREE.FrontSide}>
+          <meshStandardMaterial transparent opacity={1} attach="material">
+            <canvasTexture
+              attach="map"
+              repeat={[4, 1]}
+              image={canvas}
+              premultiplyAlpha
+              ref={texture}
+              wrapS={THREE.RepeatWrapping}
+              wrapT={THREE.RepeatWrapping}
+              onUpdate={(s) => (s.needsUpdate = true)}
+            />
+          </meshStandardMaterial>
+        </Cylinder>
+  
+       
+      </group>
+    )
+  }
 
     let rise = 0;
     let risespeed = 0;
@@ -112,12 +151,12 @@ function IslandThree(props) {
 
       
         <mesh ref={platRef} position={[300,48,-500]} onClick={() => {  props.setPreset(8)}} >
-          <cylinderGeometry args={[69, 69, 2]} />
+          <cylinderGeometry args={[60, 65, 2]} />
           <meshStandardMaterial color="green"  />
         </mesh>
        
         <mesh  position={[300,29,-500]} onClick={() => { props.setPreset(8) }} >
-          <cylinderGeometry args={[73, 10, 36]} />
+          <cylinderGeometry args={[67, 10, 36]} />
           <meshStandardMaterial color="lightgrey"  flatShading />
         </mesh>
         {/* <mesh ref={domeRef} rotation={[-Math.PI / 2, 0, 0]} position={[300,47,-500]} >
@@ -189,11 +228,23 @@ function IslandThree(props) {
     
         {/* <OrbitingMeshFour /> */}
         {/* <OrbitingMeshThree /> */}
-        <Propel location={[300,9,-500]} />
-        {/* <Bot position={[0,5,0]}/> */}
+        <Propel location={[300, 9, -500]} />
+        <Bot position={[329, 52, -473]} rotation={[0, Math.PI, 0]} />
+        <Bot position={[326, 52, -470]} rotation={[0, Math.PI, 0]} />
+        <Bot position={[323, 52, -473]} rotation={[0, Math.PI, 0]} />
+        <Bot position={[320, 52, -470]} rotation={[0, Math.PI, 0]} />
+
+        <Bot position={[280, 52, -470]} rotation={[0, Math.PI, 0]} />
+        <Bot position={[277, 52, -473]} rotation={[0, Math.PI, 0]} />
+        <Bot position={[274, 52, -470]} rotation={[0, Math.PI, 0]} />
+        <Bot position={[271, 52, -473]} rotation={[0, Math.PI, 0]} />
+        <Statue position={[300, 65, -470]} rotation={[0,Math.PI,0]} />
         <TextRing>
           BIO
         </TextRing>
+        <TextRingTwo>
+          Lawrence
+        </TextRingTwo>
       </mesh>
     )
   }

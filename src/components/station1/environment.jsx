@@ -51,7 +51,7 @@ function DayScene(props) {
       <mesh ref={dayRef}>
         
         <mesh ref={sunRef} onClick={handleShow}  onPointerOver={() => setHovered(true)}
-    onPointerOut={() => setHovered(false)}  position={[200, 200, 50]}>
+    onPointerOut={() => setHovered(false)}  position={[200, 250, -150]}>
           <sphereGeometry args={[size, 32, 32]} />
           <meshBasicMaterial  color={planet} />
         </mesh>
