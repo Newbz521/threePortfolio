@@ -136,7 +136,7 @@ export function OrbitingMeshFour(props) {
           <sphereGeometry args={[9, 20,20, 0, Math.PI]} />
           <meshStandardMaterial color="blue"  transparent opacity={.1} />
       </mesh>
-      <spotLight distance={363.5} ref={lightRef} angle={.35} position={[300,95,-470]} color={"white"} intensity={5}  penumbra={.5} />
+      <spotLight distance={65} ref={lightRef} angle={.35} position={[300,95,-470]} color={"white"} intensity={10}  penumbra={.2} />
         <mesh scale={[.5,.5,.5]} position={[300, 95, -470]}>
           <sphereGeometry args={[2, 32, 32]} />
           <meshStandardMaterial color="white" />
