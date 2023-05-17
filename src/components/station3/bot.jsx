@@ -170,7 +170,7 @@ export function Bot({position, rotation}) {
         rightArmRef.current.rotation.x = - Math.PI * .7
         rightArmRef.current.rotation.z =  Math.PI * 2.2
         leftArmRef.current.rotation.z =  -Math.PI * 2.08
-        hatRef.current.rotation.x = -Math.PI * .05
+        hatRef.current.rotation.x = -Math.PI * .2
 
       })
     
@@ -267,7 +267,7 @@ export function Bot({position, rotation}) {
           </mesh>
 
 
-          <mesh ref={hatRef} position={[0,-.6,.5]}>
+          <mesh ref={hatRef} position={[0,-.07,2]}>
           <mesh ref={domeRef} position={[0,4,0]}  >
             <cylinderGeometry args={[.65, .65, .25, 64,1, true]} />
             <meshStandardMaterial color="lightgreen" side={THREE.DoubleSide} />
