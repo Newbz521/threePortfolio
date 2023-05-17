@@ -242,9 +242,9 @@ function IslandThree(props) {
         <TextRing>
           BIO
         </TextRing>
-        <TextRingTwo>
+        {/* <TextRingTwo>
           Lawrence
-        </TextRingTwo>
+        </TextRingTwo> */}
       </mesh>
     )
   }
