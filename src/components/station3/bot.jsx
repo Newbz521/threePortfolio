@@ -202,7 +202,7 @@ export function Bot({position, rotation}) {
           
           <mesh ref={domeRef} position={[0,0,0]}  >
             <cylinderGeometry args={[1, .5, 3]} />
-            <meshStandardMaterial color="lightgreen"  />
+            <meshStandardMaterial  color="lightgreen"  />
           </mesh>
           <mesh scale={[1,1,.5]} ref={domeRef} rotation={[-Math.PI / 2, 0, 0]} position={[0,1.5,0]} >
             <sphereGeometry args={[1, 15,15, 0, Math.PI]} />

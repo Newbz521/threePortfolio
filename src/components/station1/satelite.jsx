@@ -115,9 +115,9 @@ export function OrbitingMeshFour(props) {
   const targetRef = useRef()
   const lightRef = useRef()
   const middleRef = useRef()
-  const radius = 20;
+  const radius = 15;
   const speed = 0.5;
-  // useHelper(lightRef, THREE.SpotLightHelper, 'lightblue')
+  useHelper(lightRef, THREE.SpotLightHelper, 'lightblue')
 
   useFrame(({ clock }) => {
     const angle = clock.getElapsedTime() * -speed;
@@ -128,21 +128,21 @@ export function OrbitingMeshFour(props) {
   return (
     <>
     <mesh ref={meshRef} {...props}>
-      <mesh position={[300,97.5,-470]}>
+        <mesh scale={[.5,.5,.5]} position={[300,97.5,-470]}>
         <cylinderGeometry args={[9, 2, 5]}  />
       <meshStandardMaterial color="rgb(255, 172, 28)" />
       </mesh>
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[300,100,-470]} >
+      <mesh scale={[.5,.3,.5]} rotation={[-Math.PI / 2, 0, 0]} position={[300,99,-470]} >
           <sphereGeometry args={[9, 20,20, 0, Math.PI]} />
           <meshStandardMaterial color="blue"  transparent opacity={.1} />
       </mesh>
-      <spotLight distance={63.5} ref={lightRef} angle={.35} position={[300,95,-470]} color={"white"} intensity={10}  penumbra={.5} />
-        <mesh  position={[300, 95, -470]}>
+      <spotLight distance={363.5} ref={lightRef} angle={.35} position={[300,95,-470]} color={"white"} intensity={5}  penumbra={.5} />
+        <mesh scale={[.5,.5,.5]} position={[300, 95, -470]}>
           <sphereGeometry args={[2, 32, 32]} />
           <meshStandardMaterial color="white" />
       </mesh>
     </mesh>
-    <mesh ref={middleRef} position={[300,45,-470]}></mesh>
+    <mesh  ref={middleRef} position={[300,45,-470]}></mesh>
     </>
   );
 }
