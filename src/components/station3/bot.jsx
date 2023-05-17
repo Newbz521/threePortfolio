@@ -155,6 +155,7 @@ export function Bot({position, rotation}) {
     const light2Ref = useRef(null)
     const light3Ref = useRef(null)
     const targetRef = useRef(null)
+    const hatRef=useRef(null)
 
     const [zoom, setZoom] = useState(false)
     const [active, setActive] = useState(false)
@@ -169,7 +170,7 @@ export function Bot({position, rotation}) {
         rightArmRef.current.rotation.x = - Math.PI * .7
         rightArmRef.current.rotation.z =  Math.PI * 2.2
         leftArmRef.current.rotation.z =  -Math.PI * 2.08
-
+        hatRef.current.rotation.x = -Math.PI * .05
 
       })
     
@@ -264,8 +265,40 @@ export function Bot({position, rotation}) {
             <sphereGeometry args={[.3, 0,3, 0, Math.PI]} />
             <meshStandardMaterial flatShading side={THREE.DoubleSide} color="grey"  transparent opacity={1} />
           </mesh>
+
+
+          <mesh ref={hatRef} position={[0,-.6,.5]}>
+          <mesh ref={domeRef} position={[0,4,0]}  >
+            <cylinderGeometry args={[.65, .65, .25, 64,1, true]} />
+            <meshStandardMaterial color="lightgreen" side={THREE.DoubleSide} />
+          </mesh>
+          <mesh ref={domeRef} rotation={[Math.PI * 1.5,0,0]} position={[0,4,.77]}  >
+            <cylinderGeometry args={[.1, 0, .25, 64,1, false]} />
+            <meshStandardMaterial color="lightgreen" side={THREE.DoubleSide} />
+          </mesh>
+
+          
+          <mesh ref={domeRef} rotation={[0,0,Math.PI * 1.5]} position={[-.77,4,0]}  >
+            <cylinderGeometry args={[.1, 0, .25, 64,1, false]} />
+            <meshStandardMaterial color="lightgreen" side={THREE.DoubleSide} />
+          </mesh>
+          <mesh ref={domeRef} rotation={[0,0,-Math.PI * 1.5]} position={[.77,4,0]}  >
+            <cylinderGeometry args={[.1, 0, .25, 64,1, false]} />
+            <meshStandardMaterial color="lightgreen" side={THREE.DoubleSide} />
+          </mesh>
+          <mesh ref={domeRef} rotation={[0,-Math.PI * 2.25,-Math.PI * 1.5]} position={[.55,4,.55]}  >
+            <cylinderGeometry args={[.1, 0, .25, 64,1, false]} />
+            <meshStandardMaterial color="lightgreen" side={THREE.DoubleSide} />
+          </mesh>
+          <mesh ref={domeRef} rotation={[0,Math.PI * 2.25,Math.PI * 1.5]} position={[-.55,4,.55]}  >
+            <cylinderGeometry args={[.1, 0, .25, 64,1, false]} />
+            <meshStandardMaterial color="lightgreen" side={THREE.DoubleSide} />
+            </mesh>
+            </mesh>
         </mesh>
-        <OrbitingMeshFour/>
+        <OrbitingMeshFour />
+        
+
 
         </mesh>
           
