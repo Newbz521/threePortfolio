@@ -18,7 +18,7 @@ import "./station1.css"
 import { Vector3 } from "three";
 import { BlurPass, Resizer, KernelSize, Resolution } from 'postprocessing'
 import { LoadingScreen } from "../loader/loader";
-import {Bot} from "../station3/bot";
+import {Bot, BotTwo} from "../station3/bot";
 
 
 const StationOne = (props) => {
@@ -513,8 +513,13 @@ function EyeAnimation({ preset }) {
     <PlatformOne middle={-15} />
     <PlatformOne middle={15} />
               <Island setPreset={setPreset} />
+              <mesh position={[-11.5, 15, -12]} rotation={[-Math.PI / 1.2, 0, -Math.PI]}>
+          <Html distanceFactor={50}>
+            <div className="chat-bubble">Take a look at my projects!</div>
+          </Html>
+        </mesh>
               <Bot position={[-10, 7, -12]} rotation={[0,0,0]} />
-              <Bot position={[0, 7, 15]} rotation={[0,0,0]} />
+              <BotTwo position={[0, 7, 15]} rotation={[0,0,0]} />
     <OrbitingMesh />
     <OrbitingMeshTwo />
     <IslandTwo setPreset={setPreset} />  

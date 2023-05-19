@@ -7,7 +7,7 @@ import Grass from "./Grass.png"
 import { act } from "react-dom/test-utils";
 import Banners from "./banners";
 import Propel from "../station1/propel";
-import {Bot} from "../station3/bot";
+import {Bot, BotTwo} from "../station3/bot";
 
 function IslandTwo(props) {
   // const loader = new THREE.TextureLoader();
@@ -171,7 +171,7 @@ function IslandTwo(props) {
         {/* <OrbitingMeshFour /> */}
         <OrbitingMeshThree />
         <Bot position={[470, -47, -5]} rotation={[0, Math.PI * 2.2, 0]} />
-        <Bot position={[460, -47, 11]} rotation={[0,Math.PI * 2.4,0]} />
+        <BotTwo position={[460, -47, 11]} rotation={[0,Math.PI * 2.4,0]} />
 
 
         <TextRing>

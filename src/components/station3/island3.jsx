@@ -1,12 +1,12 @@
 import { useState, useRef, useMemo } from "react";
 import { useFrame } from "@react-three/fiber"
-import { useCursor, Cylinder, RoundedBox, Text3D, Text} from '@react-three/drei'
+import { useCursor, Cylinder, RoundedBox, Text3D, Text, Html} from '@react-three/drei'
 import * as THREE from 'three'
 import { OrbitingMeshThree,OrbitingMeshFour } from "../station1/satelite";
 import Propel from "../station1/propel";
 import { act } from "react-dom/test-utils";
 import Texter from "./texter.jsx"
-import { Bot, Statue } from "./bot";
+import { Bot,BotTwo, Statue } from "./bot";
 
 
 function IslandThree(props) {
@@ -163,8 +163,13 @@ function IslandThree(props) {
           <sphereGeometry args={[70, 20,20, 0, Math.PI]} />
           <meshStandardMaterial side={THREE.DoubleSide} color="blue"  transparent opacity={.03} />
         </mesh> */}
-        
-        <mesh position={[300,51,-500]} rotation={[-Math.PI / 1.2,0,-Math.PI ]}>
+        <mesh position={[300, 105, -470]} rotation={[-Math.PI / 1.2, 0, -Math.PI]}>
+          <Html distanceFactor={175}>
+            <div className="chat-bubble">Hi, welcome to Lawrence's Land!</div>
+          </Html>
+        </mesh>
+
+        <mesh position={[300, 51, -500]} rotation={[-Math.PI / 1.2, 0, -Math.PI]}>
           <Text
         scale={[3, 3, 3]}
             color="white" // default
@@ -229,15 +234,18 @@ function IslandThree(props) {
         {/* <OrbitingMeshFour /> */}
         {/* <OrbitingMeshThree /> */}
         <Propel location={[300, 9, -500]} />
+        <BotTwo position={[332, 52, -470]} rotation={[0, Math.PI, 0]} />
         <Bot position={[329, 52, -473]} rotation={[0, Math.PI, 0]} />
-        <Bot position={[326, 52, -470]} rotation={[0, Math.PI, 0]} />
+        <BotTwo position={[326, 52, -470]} rotation={[0, Math.PI, 0]} />
         <Bot position={[323, 52, -473]} rotation={[0, Math.PI, 0]} />
-        <Bot position={[320, 52, -470]} rotation={[0, Math.PI, 0]} />
+        <BotTwo position={[320, 52, -470]} rotation={[0, Math.PI, 0]} />
 
-        <Bot position={[280, 52, -470]} rotation={[0, Math.PI, 0]} />
+        <Bot position={[283, 52, -473]} rotation={[0, Math.PI, 0]} />
+        <BotTwo position={[280, 52, -470]} rotation={[0, Math.PI, 0]} />
         <Bot position={[277, 52, -473]} rotation={[0, Math.PI, 0]} />
-        <Bot position={[274, 52, -470]} rotation={[0, Math.PI, 0]} />
+        <BotTwo position={[274, 52, -470]} rotation={[0, Math.PI, 0]} />
         <Bot position={[271, 52, -473]} rotation={[0, Math.PI, 0]} />
+
         <Statue position={[300, 65, -470]} rotation={[0,Math.PI,0]} />
         <TextRing>
           BIO

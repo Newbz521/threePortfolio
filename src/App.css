@@ -458,6 +458,17 @@ h1:hover, h4:hover {
   }
 }
 
+.chat-bubble{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  color: grey;
+  background: white;
+  padding: 5px;
+  border-radius: 20px;
+  border: 5px solid grey;
+  /* box-shadow: 0 0 1px 1px rgb(255, 255, 255); */
+}
 
 @media only screen and (max-width: 600px) {
   h1{display:none;}
