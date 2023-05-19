@@ -392,7 +392,7 @@ export function Bot({position, rotation}) {
               </mesh>
           <mesh scale={[7,7,2]} ref={domeRef} rotation={[-Math.PI / 2, 0, 0]} position={[0,-2.5,0]} >
             <sphereGeometry args={[.3, 0,3, 0, Math.PI]} />
-            <meshStandardMaterial flatShading side={THREE.DoubleSide} color="grey"  transparent opacity={1} />
+            <meshStandardMaterial flatShading side={THREE.DoubleSide} emissive="#404057" transparent opacity={1} />
           </mesh>
 
 
@@ -421,7 +421,7 @@ export function Bot({position, rotation}) {
           </mesh>
           <mesh ref={domeRef} rotation={[0,Math.PI * 2.25,Math.PI * 1.5]} position={[-.55,4,.55]}  >
             <cylinderGeometry args={[.1, 0, .25, 64,1, false]} />
-            <meshStandardMaterial color="lightgreen" side={THREE.DoubleSide} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={.5}/>
+            <meshStandardMaterial  color="lightgreen" side={THREE.DoubleSide} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={.5}/>
             </mesh>
             </mesh>
         </mesh>
