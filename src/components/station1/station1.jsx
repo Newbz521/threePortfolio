@@ -504,20 +504,7 @@ function EyeAnimation({ preset }) {
               
     <Preload all/>
               <DayScene setDay={setDay} />   
-              <mesh position={[0, 0, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-            <planeGeometry args={[1000, 1050]} />
-            <MeshReflectorMaterial
-              blur={[400, 100]}
-              resolution={1024}
-              mixBlur={1}
-              mixStrength={3.5}
-              depthScale={1}
-              minDepthThreshold={8.85}
-              color="#505050"
-              metalness={0.6}
-              roughness={1}
-            />
-          </mesh>
+          
     <StoreOne />
     <StoreTwo />
     <StoreThree />
