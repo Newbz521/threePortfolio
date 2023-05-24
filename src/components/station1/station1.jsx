@@ -1,9 +1,7 @@
 import React, { Component, useMemo} from "react";
 import { useEffect, useState, useRef, Suspense } from "react";
 import { useSpring, a, config} from "@react-spring/three";
-
 import { Canvas, useFrame, useThree, PerspectiveCamera} from "@react-three/fiber"
-
 import {MeshReflectorMaterial,OrbitControls, RoundedBox, useCursor, Text, Preload, Html, AdaptiveEvents, AdaptiveDpr, PerformanceMonitor, Hud, useProgress, Loader, Reflector} from '@react-three/drei'
 import PlatformOne from "./platform1";
 import DayScene from "./environment";
@@ -11,13 +9,15 @@ import { OrbitingMesh, OrbitingMeshTwo } from "./satelite";
 import Island from "./island";
 import IslandTwo from "../station2/island2";
 import IslandThree from "../station3/island3";
-import * as THREE from 'three'
 import "./station1.css"
 import { Vector3 } from "three";
-import { BlurPass, Resizer, KernelSize, Resolution } from 'postprocessing'
-import { LoadingScreen } from "../loader/loader";
-import { useControls } from "leva";
-import {Bot, BotTwo} from "../station3/bot";
+import { Bot, BotTwo } from "../station3/bot";
+import { Perf } from 'r3f-perf'
+
+// import * as THREE from 'three'
+// import { BlurPass, Resizer, KernelSize, Resolution } from 'postprocessing'
+// import { LoadingScreen } from "../loader/loader";
+// import { useControls } from "leva";
 
 
 const StationOne = (props) => {
@@ -500,13 +500,9 @@ function EyeAnimation({ preset }) {
     <AdaptiveEvents />
       
     <Suspense fallback={null}>    
-          {(
-            
+          {(      
             <>
-              
-    
-    <DayScene setDay={setDay} />   
-          
+    <DayScene setDay={setDay} />      
     <StoreOne />
     <StoreTwo />
     <StoreThree />
@@ -529,23 +525,8 @@ function EyeAnimation({ preset }) {
               <Preload all/>
             </>
           )}
-   </Suspense>
-{/*        
-        <EffectComposer>
-   
-            <Bloom
-    intensity={.1} // The bloom intensity.
-    blurPass={undefined} // A blur pass.
-    kernelSize={KernelSize.LARGE} // blur kernel size
-    luminanceThreshold={0.1} // luminance threshold. Raise this value to mask out darker elements in the scene.
-    luminanceSmoothing={1} // smoothness of the luminance threshold. Range is [0, 1]
-    mipmapBlur={false} // Enables or disables mipmap blur.
-    resolutionX={Resolution.AUTO_SIZE} // The horizontal resolution.
-    resolutionY={Resolution.AUTO_SIZE} // The vertical resolution.
-  />
-          
-   
-        </EffectComposer>     */}
+        </Suspense>
+        <Perf/>
       </Canvas>
       <Loader/>
     </div>
