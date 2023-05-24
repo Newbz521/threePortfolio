@@ -92,19 +92,19 @@ function Island(props) {
       // rise += risespeed
       const angle = clock.getElapsedTime() * speed;
       // leftRef.current.position.y = 0;
-      leftRef.current.receiveShadow = true;
       // leftRef.current.castShadow = true;
       // leftRef.current.position.y = 1.5 * Math.sin(rise) 
-     
-      platRef.current.receiveShadow = true;
-      platRef.current.castShadow = true;
+      
+      leftRef.current.receiveShadow = props.shaded;
+      platRef.current.receiveShadow = props.shaded;
+      platRef.current.castShadow = props.shaded;
       // textRef.current.position.set(Math.cos(angle) * radius, 10, Math.sin(angle) * radius);
 
   
-      coneRef.current.castShadow = true;
-      coneRef.current.receiveShadow = true;
-      domeRef.current.castShadow = true;
-      domeRef.current.receiveShadow = true;
+      coneRef.current.castShadow = props.shaded;
+      coneRef.current.receiveShadow = props.shaded;
+      domeRef.current.castShadow = props.shaded;
+      domeRef.current.receiveShadow = props.shaded;
     })
   
   

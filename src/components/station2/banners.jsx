@@ -100,8 +100,8 @@ function Banners(props) {
   
     useFrame(() => {
       rise += risespeed
-      boardRef.current.receiveShadow = true;
-      boardRef.current.castShadow = true;
+      boardRef.current.receiveShadow = props.shaded;
+      boardRef.current.castShadow = props.shaded;
       targetTwoRef.current.position.set(460,-30,0)
       lightTwoRef.current.target = targetTwoRef.current
 

@@ -12,7 +12,7 @@ import IslandThree from "../station3/island3";
 import "./station1.css"
 import { Vector3 } from "three";
 import { Bot, BotTwo } from "../station3/bot";
-import { Perf } from 'r3f-perf'
+import { PerfHeadless, usePerf, Perf , getReport } from 'r3f-perf'
 
 // import * as THREE from 'three'
 // import { BlurPass, Resizer, KernelSize, Resolution } from 'postprocessing'
@@ -27,7 +27,7 @@ const StationOne = (props) => {
   const [start, setStart] = useState(false);
   const [dov, setDov] = useState(95);
   const [day, setDay] = useState(true);
-
+  const [shaded, setShaded] = useState(false);
   useEffect(()=>{
     // console.log(window.innerWidth)
     if (window.innerWidth < 500) {
@@ -187,9 +187,9 @@ function EyeAnimation({ preset }) {
       // rise += risespeed
       leftRef.current.position.z = midZ;
       leftRef.current.position.y = 7;
-      leftRef.current.receiveShadow = true;
-      leftRef.current.castShadow = true;
       leftRef.current.position.x = -20 * Math.sin(step) 
+      leftRef.current.receiveShadow = shaded;
+      leftRef.current.castShadow = shaded;
       // subRef.current.position.y = 1.5 * Math.sin(rise);
       // if (leftRef.current.position.x < 200) {
       //   leftRef.current.position.x += .5
@@ -225,11 +225,11 @@ function EyeAnimation({ preset }) {
       leftRef.current.position.z = midZ;
       leftRef.current.position.y = 7;
       leftRef.current.receiveShadow = true;
-      leftRef.current.castShadow = true;
       leftRef.current.position.x = 20 * Math.sin(step) 
+      leftRef.current.castShadow = shaded;
+      subRef.current.castShadow = shaded;
 
       // subRef.current.position.y = 1.5 * Math.sin(rise);
-      subRef.current.castShadow = true;
       // if (leftRef.current.position.x > -200) {
       //   leftRef.current.position.x -= .5
       // } else if (leftRef.current.position.x = -200) {
@@ -470,6 +470,28 @@ function EyeAnimation({ preset }) {
     return <Html center> {progress} % loaded</Html>
   }
   
+  const Debug = () => {
+    const { width } = useThree((s) => s.size)
+    return (
+      /* This is it -> */
+      <Perf
+        minimal={width < 712}
+        // matrixUpdate
+        // deepAnalyze
+        // overClock
+        position="bottom-right"
+      
+      />
+    )
+  }
+
+  const PerfHook = () => {
+    // getPerf() is also available for non-reactive way
+    const [getReport] = usePerf((s) => s[(s.getReport)])
+    console.log(getReport())
+    return <PerfHeadless />
+  }
+
   return (
     <div className="canvasContainer" load>
       <div className='title-block' >
@@ -510,7 +532,7 @@ function EyeAnimation({ preset }) {
     <SubwayLeft middle={30} />
     <PlatformOne middle={-15} />
     <PlatformOne middle={15} />
-              <Island setPreset={setPreset} />
+              <Island setPreset={setPreset} shaded={shaded} />
               <mesh position={[-11.5, 15, -12]} rotation={[-Math.PI / 1.2, 0, -Math.PI]}>
           <Html distanceFactor={50}>
             <div className="chat-bubble">Take a look at my projects!</div>
@@ -518,15 +540,16 @@ function EyeAnimation({ preset }) {
         </mesh>
               <Bot position={[-10, 7, -12]} rotation={[0,0,0]} />
               <BotTwo position={[0, 7, 15]} rotation={[0,0,0]} />
-    <OrbitingMesh />
-    <OrbitingMeshTwo />
-    <IslandTwo setPreset={setPreset} />  
+    {/* <OrbitingMesh />
+    <OrbitingMeshTwo /> */}
+              <IslandTwo setPreset={setPreset} shaded={shaded} />  
               <IslandThree setPreset={setPreset} />
               <Preload all/>
             </>
           )}
         </Suspense>
-        <Perf/>
+        <Debug/>
+        {/* <PerfHook/> */}
       </Canvas>
       <Loader/>
     </div>

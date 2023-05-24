@@ -110,7 +110,7 @@ function IslandTwo(props) {
     return (
       <mesh ref={leftRef}>
  
-       <Banners/>
+        <Banners shaded={props.shaded} />
         <mesh ref={platRef} position={[450,-51,0]} onClick={() => {  props.setPreset(7)}} >
           <cylinderGeometry args={[60, 60, 2]} />
           <meshStandardMaterial color="lightgreen"  />
@@ -167,9 +167,7 @@ function IslandTwo(props) {
           </Cylinder>
         </mesh>
     
-    
-        {/* <OrbitingMeshFour /> */}
-        <OrbitingMeshThree />
+        {/* <OrbitingMeshThree /> */}
         <Bot position={[470, -47, -5]} rotation={[0, Math.PI * 2.2, 0]} />
         <BotTwo position={[460, -47, 11]} rotation={[0,Math.PI * 2.4,0]} />
 
