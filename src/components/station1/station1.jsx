@@ -471,7 +471,7 @@ function EyeAnimation({ preset }) {
   }
   
   return (
-    <div className="canvasContainer">
+    <div className="canvasContainer" load>
       <div className='title-block' >
         <h1 onClick={function () { setPreset(0) }}>WORLD</h1>
         <h4 onClick={function () { setPreset(2) }}>Projects</h4>
@@ -503,7 +503,7 @@ function EyeAnimation({ preset }) {
             <>
               
     <Preload all/>
-              <DayScene setDay={setDay} />   
+    <DayScene setDay={setDay} />   
           
     <StoreOne />
     <StoreTwo />
