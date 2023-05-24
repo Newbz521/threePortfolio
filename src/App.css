@@ -3,12 +3,18 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  color: black;
+  flex-direction: column;
+  overflow: none;
+  overflow-y: none;
 }
 .canvasContainer{
-  
+  position: fixed;
+  top: 60px;
   width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+  height: calc(100vh - 60px);
+  overflow: none;
+  overflow-y: none;
 }
 .title-block{
   /* color: rgb(252, 211, 218); */

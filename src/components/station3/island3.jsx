@@ -1,13 +1,14 @@
 import { useState, useRef, useMemo } from "react";
 import { useFrame } from "@react-three/fiber"
-import { useCursor, Cylinder, RoundedBox, Text3D, Text, Html} from '@react-three/drei'
+import { MeshReflectorMaterial,useCursor, Cylinder, RoundedBox, Text3D, Text, Html} from '@react-three/drei'
 import * as THREE from 'three'
 import { OrbitingMeshThree,OrbitingMeshFour } from "../station1/satelite";
 import Propel from "../station1/propel";
 import { act } from "react-dom/test-utils";
+import { useControls } from "leva";
 import Texter from "./texter.jsx"
 import { Bot,BotTwo, Statue } from "./bot";
-
+import { Arch } from "./arch";
 
 function IslandThree(props) {
   // const loader = new THREE.TextureLoader();
@@ -113,6 +114,33 @@ function IslandThree(props) {
     )
   }
 
+  function Reflection() {
+    const {mixBlur, mixStrength, depthScale} = useControls({
+      mixBlur: {value: 0.5, min: 0, max: 1},
+      mixStrength: {value: 100, min: 0, max: 100},
+      depthScale: {value: 0, min: 0, max: 1 }
+    });
+    return (
+      <mesh rotation={[Math.PI/2, 0, 0]} position={[300,48,-500]} >
+        <planeGeometry args={[50,50]} />
+        <MeshReflectorMaterial 
+          resolution={2048}
+          blur={[100,100]}
+          mixBlur={mixBlur}
+          mixStrength={mixStrength}
+          depthScale={depthScale}
+          minDepthThreshold={0}
+          maxDepthThreshold={1}
+          depthToBlurRatioBias={1}
+          roughness={1}
+          mirror={1}
+          metalness={0.4}
+          color='0x009090'
+        />
+      </mesh>
+    )
+  }
+
     let rise = 0;
     let risespeed = 0;
   const leftRef = useRef(null);
@@ -133,7 +161,7 @@ function IslandThree(props) {
       // textRef.quaternion.copy(camera.quaternion)
 
       // platRef.current.receiveShadow = true;
-      platRef.current.castShadow = true;
+      // platRef.current.castShadow = true;
       // domeRef.current.castShadow = true;
       // domeRef.current.receiveShadow = true;
       // domeRef.current.flatShading = true;
@@ -148,11 +176,11 @@ function IslandThree(props) {
   
     return (
       <mesh ref={leftRef}>
-
-      
+ 
         <mesh ref={platRef} position={[300,48,-500]} onClick={() => {  props.setPreset(8)}} >
-          <cylinderGeometry args={[60, 65, 2]} />
-          <meshStandardMaterial color="green"  />
+          <cylinderGeometry args={[65, 65, 2, 100]} />
+          <meshStandardMaterial color="blue" transparent opacity={.6} clearcoat={1} clearcoatRoughness={.5} roughness={0.2} metalness={.01} />
+    
         </mesh>
        
         <mesh  position={[300,29,-500]} onClick={() => { props.setPreset(8) }} >
@@ -246,7 +274,10 @@ function IslandThree(props) {
         <BotTwo position={[274, 52, -470]} rotation={[0, Math.PI, 0]} />
         <Bot position={[271, 52, -473]} rotation={[0, Math.PI, 0]} />
 
-        <Statue position={[300, 65, -470]} rotation={[0,Math.PI,0]} />
+        <Statue position={[300, 65, -470]} rotation={[0, Math.PI, 0]} />
+        
+        {/* <Arch position={[335, 47, -510]} />
+        <Arch position={[265,47,-510]} /> */}
         <TextRing>
           BIO
         </TextRing>

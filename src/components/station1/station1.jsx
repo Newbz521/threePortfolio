@@ -3,10 +3,8 @@ import { useEffect, useState, useRef, Suspense } from "react";
 import { useSpring, a, config} from "@react-spring/three";
 
 import { Canvas, useFrame, useThree, PerspectiveCamera} from "@react-three/fiber"
-import { Bloom, EffectComposer,Vignette } from "@react-three/postprocessing";
-import { BlendFunction } from "postprocessing";
 
-import { OrbitControls, RoundedBox, useCursor, Text, Preload, Html, AdaptiveEvents, AdaptiveDpr, PerformanceMonitor, Hud, useProgress, Loader} from '@react-three/drei'
+import {MeshReflectorMaterial,OrbitControls, RoundedBox, useCursor, Text, Preload, Html, AdaptiveEvents, AdaptiveDpr, PerformanceMonitor, Hud, useProgress, Loader, Reflector} from '@react-three/drei'
 import PlatformOne from "./platform1";
 import DayScene from "./environment";
 import { OrbitingMesh, OrbitingMeshTwo } from "./satelite";
@@ -18,6 +16,7 @@ import "./station1.css"
 import { Vector3 } from "three";
 import { BlurPass, Resizer, KernelSize, Resolution } from 'postprocessing'
 import { LoadingScreen } from "../loader/loader";
+import { useControls } from "leva";
 import {Bot, BotTwo} from "../station3/bot";
 
 
@@ -471,11 +470,10 @@ function EyeAnimation({ preset }) {
     return <Html center> {progress} % loaded</Html>
   }
   
-  
   return (
     <div className="canvasContainer">
       <div className='title-block' >
-        <h1 onClick={function () { setPreset(0) }}>LAWRENCE YEE</h1>
+        <h1 onClick={function () { setPreset(0) }}>WORLD</h1>
         <h4 onClick={function () { setPreset(2) }}>Projects</h4>
         <h4 onClick={function () { setPreset(7) }}>CONTACTS</h4>
         <h4 onClick={function () { setPreset(8) }}>ABOUT ME</h4>
@@ -503,8 +501,23 @@ function EyeAnimation({ preset }) {
           {(
             
             <>
+              
     <Preload all/>
-    <DayScene setDay={setDay} />    
+              <DayScene setDay={setDay} />   
+              <mesh position={[0, 0, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+            <planeGeometry args={[1000, 1050]} />
+            <MeshReflectorMaterial
+              blur={[400, 100]}
+              resolution={1024}
+              mixBlur={1}
+              mixStrength={3.5}
+              depthScale={1}
+              minDepthThreshold={8.85}
+              color="#505050"
+              metalness={0.6}
+              roughness={1}
+            />
+          </mesh>
     <StoreOne />
     <StoreTwo />
     <StoreThree />

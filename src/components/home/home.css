@@ -1,0 +1,95 @@
+.home-container{
+  display: flex;
+  width: 100vw;
+  position: absolute;
+  top: 60px;
+  background: linear-gradient(0deg,   rgb(240, 240, 240) 0%, rgb(255, 255, 255) 100%);
+
+}
+.screen{
+  width: 100%;
+  height: calc(100vh - 60px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.home-box{
+  flex-direction: column;
+  color: rgb(177, 135, 249);
+  /* font-family: 'Silkscreen', cursive; */
+}
+
+.home-box > h1, h3{
+  margin: 0;
+  width: 400px;
+}
+.home-box > h1{
+  font-size: 60px;
+  /* color:rgb(180, 228, 250); */
+  /* text-shadow: 0px 0px 15px rgb(177, 135, 249); */
+  color: rgb(255, 143, 103);
+  width: fit-content;
+  animation: slideFromLeft 1.2s;
+}
+/* .home-box > h3{
+} */
+.home-box > .text-one{
+  padding-top: 10px;
+  font-size: 30px;
+  width: fit-content;
+  animation: slideFromLeft 1.6s;
+}
+.home-box > .text-two{
+  padding-top: 10px;
+  font-size: 20px;
+  width: fit-content;
+  animation: slideFromLeft 2s;
+}
+.home-box > .text-three{
+  padding-top: 10px;
+  font-size: 20px;
+  width: fit-content;
+  animation: lagSlide 3s;
+}
+.hello{
+  font-size: 30px;
+  color:  rgb(177, 135, 249);
+  text-shadow: none;
+  animation: slideFromLeft 1s;
+}
+
+@keyframes slideFromRight {
+  0%{
+    transform: translateX(100vw)
+  }
+  100%{
+    transform: translateX(0)
+  }
+}
+@keyframes slideFromLeft {
+  0%{
+    transform: translateX(-100vw)
+  }
+  100%{
+    transform: translateX(0)
+  }
+}
+@keyframes lagSlide {
+  0%{
+    transform: translateX(-100vw)
+  }
+  90%{
+    transform: translateX(5vw)
+  }
+  95%{
+    transform: translateX(-5vw)
+  }
+  100%{
+    transform: translateX(0)
+  }
+}
+@media (max-width: 600px){
+  .home-box > h1, h3{
+    width: 80vw;
+  }
+}
