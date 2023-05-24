@@ -4,7 +4,7 @@ import StationOne from "./components/station1/station1"
 // import Station2 from './components/station2/station2';
 import './App.css';
 import { useState, Suspense } from 'react';
-import { Routes, Route, useParams } from "react-router-dom";
+import {BrowserRouter, Routes, Route, useParam } from "react-router-dom";
 import LoaderScreen from './components/loader/loader';
 import Navbar from './components/navbar/navbar';
 import Home from './components/home/home';
@@ -13,7 +13,7 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar/>
+      <Navbar />
       <Routes>
             <Route path="/" element={<Home/>}></Route>
 

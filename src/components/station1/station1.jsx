@@ -482,6 +482,7 @@ function EyeAnimation({ preset }) {
 
       
       <Canvas shadows
+        
         far={1000}
         dpr={dpr} 
         gl={{ localClippingEnabled: true, alpha: false }} 
@@ -491,13 +492,14 @@ function EyeAnimation({ preset }) {
         {day ? <fog attach="fog" args={["white", 1, 880]} /> : <fog attach="fog" args={["black", 1, 880]} />}
         {/* <fog attach="fog" args={["white", 1, 950]} /> */}
       
-        <AdaptiveDpr pixelated />
         <PerformanceMonitor flipflops={3} onFallback={() => setDpr(1)}/>
-        <AdaptiveEvents />
         <EyeAnimation preset={preset} />
-   <OrbitControls minDistance={10} maxDistance={200} makeDefault/>
+        <OrbitControls minDistance={10} maxDistance={200} makeDefault />
+        
+    <AdaptiveDpr pixelated />
+    <AdaptiveEvents />
       
-    <Suspense fallback={<QuickLoad/>}>    
+    <Suspense fallback={null}>    
           {(
             
             <>
@@ -544,7 +546,7 @@ function EyeAnimation({ preset }) {
    
         </EffectComposer>     */}
       </Canvas>
-      {/* <Loader/> */}
+      <Loader/>
     </div>
   );
 }
