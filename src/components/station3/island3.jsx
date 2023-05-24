@@ -114,32 +114,7 @@ function IslandThree(props) {
     )
   }
 
-  function Reflection() {
-    const {mixBlur, mixStrength, depthScale} = useControls({
-      mixBlur: {value: 0.5, min: 0, max: 1},
-      mixStrength: {value: 100, min: 0, max: 100},
-      depthScale: {value: 0, min: 0, max: 1 }
-    });
-    return (
-      <mesh rotation={[Math.PI/2, 0, 0]} position={[300,48,-500]} >
-        <planeGeometry args={[50,50]} />
-        <MeshReflectorMaterial 
-          resolution={2048}
-          blur={[100,100]}
-          mixBlur={mixBlur}
-          mixStrength={mixStrength}
-          depthScale={depthScale}
-          minDepthThreshold={0}
-          maxDepthThreshold={1}
-          depthToBlurRatioBias={1}
-          roughness={1}
-          mirror={1}
-          metalness={0.4}
-          color='0x009090'
-        />
-      </mesh>
-    )
-  }
+  
 
     let rise = 0;
     let risespeed = 0;
@@ -179,7 +154,7 @@ function IslandThree(props) {
  
         <mesh ref={platRef} position={[300,48,-500]} onClick={() => {  props.setPreset(8)}} >
           <cylinderGeometry args={[65, 65, 2, 100]} />
-          <meshStandardMaterial color="blue" transparent opacity={.6} clearcoat={1} clearcoatRoughness={.5} roughness={0.2} metalness={.01} />
+          <meshStandardMaterial color="blue" transparent opacity={.6}  />
     
         </mesh>
        
