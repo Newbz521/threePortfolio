@@ -504,7 +504,7 @@ function EyeAnimation({ preset }) {
             
             <>
               
-    <Preload all/>
+    
     <DayScene setDay={setDay} />   
           
     <StoreOne />
@@ -525,7 +525,8 @@ function EyeAnimation({ preset }) {
     <OrbitingMesh />
     <OrbitingMeshTwo />
     <IslandTwo setPreset={setPreset} />  
-    <IslandThree setPreset={setPreset} />
+              <IslandThree setPreset={setPreset} />
+              <Preload all/>
             </>
           )}
    </Suspense>
