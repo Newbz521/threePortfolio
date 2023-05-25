@@ -12,7 +12,8 @@ import IslandThree from "../station3/island3";
 import "./station1.css"
 import { Vector3 } from "three";
 import { Bot, BotTwo } from "../station3/bot";
-import { PerfHeadless, usePerf, Perf , getReport } from 'r3f-perf'
+import { PerfHeadless, usePerf, Perf, getReport } from 'r3f-perf'
+import Stats from "../fps/fps.jsx"
 
 // import * as THREE from 'three'
 // import { BlurPass, Resizer, KernelSize, Resolution } from 'postprocessing'
@@ -548,6 +549,7 @@ function EyeAnimation({ preset }) {
             </>
           )}
         </Suspense>
+        <Stats/>
         <Debug/>
         {/* <PerfHook/> */}
       </Canvas>

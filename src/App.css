@@ -8,6 +8,14 @@
   overflow: none;
   overflow-y: none;
 }
+.fps {
+  margin: 2em;
+  padding: 10px 20px;
+  min-width: 100px;
+  background: black;
+  color: white;
+  border-radius: 3px;
+}
 .canvasContainer{
   position: fixed;
   top: 60px;
