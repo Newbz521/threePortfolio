@@ -26,7 +26,7 @@ const StationOne = (props) => {
   const [dpr, setDpr] = useState(1.5)
   const [preset, setPreset] = useState(0)  
   const [start, setStart] = useState(false);
-  const [dov, setDov] = useState(95);
+  const [dov, setDov] = useState(75);
   const [day, setDay] = useState(true);
   const [shaded, setShaded] = useState(false);
   useEffect(()=>{
@@ -50,43 +50,43 @@ const StationOne = (props) => {
 const t = new Vector3();
 
 const defaultPosition = {
-  position: [-100, 30, 80],
+  position: [-1.00, .30, .80],
   target: [0, 0, 0]
 };
 
 const farAway = {
-  position: [-18, 10, 0],
-  target: [-18, 10, -15]
+  position: [-.18, .10, 0],
+  target: [-.18, .10, -.15]
 };
   
   const storeTwo = {
-    position: [0, 10, 0],
-    target: [0,10,-15]
+    position: [0, .10, 0],
+    target: [0,.10,-.15]
   }
   
   const storeThree = {
-    position: [18, 10, 0],
-    target: [18,10,-15]
+    position: [.18, .10, 0],
+    target: [.18,.10,-.15]
   }
   const storeFour = {
-    position: [-18, 10, 0],
-    target: [-18,10,15]
+    position: [-.18, .10, 0],
+    target: [-.18,.10,.15]
   }
   const storeFive = {
-    position: [0, 10, 0],
-    target: [0,10,15]
+    position: [0, .10, 0],
+    target: [0,.10,.15]
   }
   const storeSix = {
-  position: [18, 10, 0],
-  target: [18,10,15]
+  position: [.18, .10, 0],
+  target: [.18,.10,.15]
   }
   const Island2 = {
-    position: [490, -38, 20],
-    target: [450,-40,0]
+    position: [4.90, -.38, .20],
+    target: [4.50,-.40,0]
   }
   const Island3 = {
-    position: [300,90,-575],
-    target: [300, 50,-500]
+    position: [3.00,.90,-5.75],
+    target: [3.00, .50,-5.00]
   }
 
 const CameraWrapper = ({ cameraPosition, target }) => {
@@ -481,7 +481,6 @@ function EyeAnimation({ preset }) {
         // deepAnalyze
         // overClock
         position="bottom-right"
-      
       />
     )
   }
@@ -515,9 +514,12 @@ function EyeAnimation({ preset }) {
         {day ? <fog attach="fog" args={["white", 1, 880]} /> : <fog attach="fog" args={["black", 1, 880]} />}
         {/* <fog attach="fog" args={["white", 1, 950]} /> */}
       
+        <mesh scale={[.01, .01, .01]}>
+          
+        
         <PerformanceMonitor flipflops={3} onFallback={() => setDpr(1)}/>
         <EyeAnimation preset={preset} />
-        <OrbitControls minDistance={10} maxDistance={200} makeDefault />
+        <OrbitControls minDistance={0} maxDistance={10} makeDefault />
         
     <AdaptiveDpr pixelated />
     <AdaptiveEvents />
@@ -535,7 +537,7 @@ function EyeAnimation({ preset }) {
     <PlatformOne middle={15} />
               <Island setPreset={setPreset} shaded={shaded} />
               <mesh position={[-11.5, 15, -12]} rotation={[-Math.PI / 1.2, 0, -Math.PI]}>
-          <Html distanceFactor={50}>
+          <Html distanceFactor={.50}>
             <div className="chat-bubble">Take a look at my projects!</div>
           </Html>
         </mesh>
@@ -548,7 +550,8 @@ function EyeAnimation({ preset }) {
               <Preload all/>
             </>
           )}
-        </Suspense>
+          </Suspense>
+          </mesh>
         <Stats/>
         <Debug/>
         {/* <PerfHook/> */}
