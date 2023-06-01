@@ -3,7 +3,7 @@
   width: 100vw;
   position: absolute;
   top: 60px;
-  background: linear-gradient(0deg,   rgb(120, 252, 250) 0%, rgb(187, 251, 251) 100%);
+  background: linear-gradient(0deg,   rgb(220, 249, 248) 0%, rgb(224, 251, 251) 100%);
 
 }
 .screen{
@@ -31,9 +31,8 @@
   width: fit-content;
   animation: slideFromLeft 1.2s;
 }
-.home-box > .name{
-  color: rgb(255, 143, 103);
-}
+/* .home-box > h3{
+} */
 .home-box > .text-one{
   padding-top: 10px;
   font-size: 30px;
@@ -90,7 +89,7 @@
   }
 }
 @media (max-width: 600px){
-  .home-box > h1{
+  .home-box > h1, h3{
     width: 80vw;
   }
 }

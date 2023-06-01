@@ -8,6 +8,7 @@ import {BrowserRouter, Routes, Route, useParam } from "react-router-dom";
 import LoaderScreen from './components/loader/loader';
 import Navbar from './components/navbar/navbar';
 import Home from './components/home/home';
+import Architecture from './components/architecture/architecture';
 
 function App() {
   useEffect(()=>{
@@ -55,7 +56,7 @@ function App() {
       <Routes>
             <Route path="/" element={<Home/>}></Route>
 
-            <Route path="/architecture" element={<div >Architecture</div>}></Route>
+            <Route path="/architecture" element={<Architecture/>}></Route>
             <Route path="/software" element={<StationOne/>}></Route>
           </Routes>
     </div>

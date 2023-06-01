@@ -26,13 +26,13 @@ const StationOne = (props) => {
   const [dpr, setDpr] = useState(1.5)
   const [preset, setPreset] = useState(0)  
   const [start, setStart] = useState(false);
-  const [dov, setDov] = useState(75);
+  const [dov, setDov] = useState(85);
   const [day, setDay] = useState(true);
   const [shaded, setShaded] = useState(false);
   useEffect(()=>{
     // console.log(window.innerWidth)
     if (window.innerWidth < 500) {
-      setDov(110)
+      setDov(105)
     } 
   },[])
 
@@ -511,9 +511,9 @@ function EyeAnimation({ preset }) {
         camera={{ position: [-180, 60, -150], fov: dov }}
         performance={{ min: .1 }}
       >
-        {day ? <fog attach="fog" args={["white", 1, 880]} /> : <fog attach="fog" args={["black", 1, 880]} />}
         {/* <fog attach="fog" args={["white", 1, 950]} /> */}
       
+        {day ? <fog attach="fog" args={["white", 1, 8.80]} /> : <fog attach="fog" args={["black", 1, 8.80]} />}
         <mesh scale={[.01, .01, .01]}>
           
         
@@ -552,7 +552,7 @@ function EyeAnimation({ preset }) {
           )}
           </Suspense>
           </mesh>
-        <Stats/>
+        {/* <Stats/> */}
         <Debug/>
         {/* <PerfHook/> */}
       </Canvas>
