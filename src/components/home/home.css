@@ -8,6 +8,7 @@
   justify-content: center;
   
   align-items: center;
+  overflow: none;
   /* background: linear-gradient(0deg,   rgb(120, 252, 250) 0%, rgb(187, 251, 251) 100%); */
 }
 
@@ -16,9 +17,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: calc(100vw - 30px);
-  height: calc(100% - 30px);
+  width: calc(100vw - 40px);
+  height: calc(100% - 40px);
   background-color: white;
+  background-size: cover;
+  background-position: center;
+  background-image: url("https://img.freepik.com/premium-photo/small-white-flowers-white-background-mockup-design-element-valentines-day-mother-day_92695-1204.jpg?w=2000");
   border-radius: 2px;
   box-shadow: 0 0 10px 2px rgb(128, 128, 128, .5);
   /* border: 5px solid rgb(42, 254, 180); */

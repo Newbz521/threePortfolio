@@ -34,7 +34,7 @@ function Home(props) {
       <div className="hello name">
         Lawrence Yee  
       </div>
-        <h3 className='text-one' style={props.slideH3}>I am a Software Engineer/Architecture Designer</h3>
+        <h3 className='text-one' style={props.slideH3}>I am a Software Engineer | Architecture Designer</h3>
         {/* <h3 className='text-two' style={props.slideH3}>based in New York, NY</h3> */}
         <h3 className='text-three' style={props.slideH3}>Passion for turning designs into reality</h3>
         <button className="resume-home">Resume ⇩</button>
