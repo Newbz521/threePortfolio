@@ -2,43 +2,61 @@
   display: flex;
   width: 100vw;
   position: absolute;
+  height: calc(100vh - 60px);
   top: 60px;
-  background: linear-gradient(0deg,   rgb(120, 252, 250) 0%, rgb(187, 251, 251) 100%);
-
+  background: rgb(220, 246, 247);
+  justify-content: center;
+  
+  align-items: center;
+  /* background: linear-gradient(0deg,   rgb(120, 252, 250) 0%, rgb(187, 251, 251) 100%); */
 }
+
 .screen{
   width: 100%;
-  height: calc(100vh - 60px);
   display: flex;
   justify-content: center;
   align-items: center;
+  width: calc(100vw - 30px);
+  height: calc(100% - 30px);
+  background-color: white;
+  border-radius: 2px;
+  box-shadow: 0 0 10px 2px rgb(128, 128, 128, .5);
+  /* border: 5px solid rgb(42, 254, 180); */
 }
 .home-box{
   flex-direction: column;
-  color: rgb(177, 135, 249);
+  color:  rgb(121, 121, 122);
   /* font-family: 'Silkscreen', cursive; */
 }
 
 .home-box > h1, h3{
   margin: 0;
   width: 400px;
+  letter-spacing: 1px;
+  font-family: 'Abril Fatface', cursive;
+
 }
-.home-box > h1{
-  font-size: 60px;
-  /* color:rgb(180, 228, 250); */
-  /* text-shadow: 0px 0px 15px rgb(177, 135, 249); */
-  color: rgb(255, 143, 103);
-  width: fit-content;
-  animation: slideFromLeft 1.2s;
+
+.hello{
+  font-size: 30px;
+  color:  rgb(121, 121, 122);
+  text-shadow: none;
+  animation: slideFromLeft .75s;
 }
 .home-box > .name{
-  color: rgb(255, 143, 103);
+  font-size: 50px;
+  /* color:rgb(180, 228, 250); */
+  /* text-shadow: 0px 0px 15px rgb(177, 135, 249); */
+  color: rgb(152, 197, 161);
+  width: fit-content;
+  animation: slideFromLeft 1s;
+  font-family: 'Abril Fatface', cursive;
 }
 .home-box > .text-one{
   padding-top: 10px;
   font-size: 30px;
   width: fit-content;
-  animation: slideFromLeft 1.6s;
+  animation: slideFromLeft 1.25s;
 }
 .home-box > .text-two{
   padding-top: 10px;
@@ -48,17 +66,44 @@
 }
 .home-box > .text-three{
   padding-top: 10px;
-  font-size: 20px;
+  font-size: 18px;
   width: fit-content;
-  animation: lagSlide 3s;
+  animation: lagSlide 2s;
 }
-.hello{
-  font-size: 30px;
-  color:  rgb(177, 135, 249);
-  text-shadow: none;
-  animation: slideFromLeft 1s;
+.resume-home{
+  display: flex;
+  position: relative;
+  margin: 20px;
+  padding: 30px;
+  
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  font-size: 18px;
+  border: none;
+  border-radius: 100px;
+  background: rgb(152, 197, 161);
+  color: white;
+  font-family: 'Abril Fatface', cursive;
+  animation: pop-up .7s;
+  transition: all .1s;
 }
 
+.resume-home:hover{
+  cursor: pointer;
+  transform: translateY(5px);
+}
+@keyframes pop-up {
+  0%{
+    transform: scale(0);
+  }
+  50%{
+    transform: scale(1.2);
+  }
+  100%{
+    transform: scale(1);
+  }
+}
 @keyframes slideFromRight {
   0%{
     transform: translateX(100vw)

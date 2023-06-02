@@ -513,7 +513,7 @@ function EyeAnimation({ preset }) {
       >
         {/* <fog attach="fog" args={["white", 1, 950]} /> */}
       
-        {day ? <fog attach="fog" args={["white", 1, 8.80]} /> : <fog attach="fog" args={["black", 1, 8.80]} />}
+        {day ? <fog attach="fog" args={["white", 1, 7.0]} /> : <fog attach="fog" args={["black", 1, 7.0]} />}
         <mesh scale={[.01, .01, .01]}>
           
         
@@ -553,7 +553,7 @@ function EyeAnimation({ preset }) {
           </Suspense>
           </mesh>
         {/* <Stats/> */}
-        <Debug/>
+        {/* <Debug/> */}
         {/* <PerfHook/> */}
       </Canvas>
       <Loader/>

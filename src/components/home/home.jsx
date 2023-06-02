@@ -31,12 +31,13 @@ function Home(props) {
 
     <div className='screen home-box' >
       <h3 className='hello'> Hi, my name is </h3>
-      <h3 className="hello name">
+      <div className="hello name">
         Lawrence Yee  
-      </h3>
+      </div>
         <h3 className='text-one' style={props.slideH3}>I am a Software Engineer/Architecture Designer</h3>
         {/* <h3 className='text-two' style={props.slideH3}>based in New York, NY</h3> */}
-      <h3 className='text-three' style={props.slideH3}>Passion for turning designs into reality</h3>
+        <h3 className='text-three' style={props.slideH3}>Passion for turning designs into reality</h3>
+        <button className="resume-home">Resume ⇩</button>
     </div>
       
 
