@@ -52,7 +52,9 @@
   text-shadow: none;
   animation: slideFromLeft 1s;
 } */
-
+h5{
+  z-index: 2;
+}
 @keyframes slideFromRight {
   0%{
     transform: translateX(100vw)

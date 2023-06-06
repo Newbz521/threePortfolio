@@ -30,7 +30,9 @@ function Architecture(props) {
     <div className="home-container">
 
       <div className='screen home-box' style={{ fontSize: "40px"}}>
-      <h5>Coming Soon..</h5>
+        <h5>Coming Soon..</h5>
+        <div className="blur"></div>
+
     </div>
       
 

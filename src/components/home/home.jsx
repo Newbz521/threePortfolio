@@ -29,7 +29,8 @@ function Home(props) {
   return (
     <div className="home-container">
 
-    <div className='screen home-box' >
+      <div className='screen home-box' >
+      <div className="blur"></div>
       <h3 className='hello'> Hi, my name is </h3>
       <div className="hello name">
         Lawrence Yee  
