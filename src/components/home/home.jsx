@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 // import ReactScrollWheelHandler from "react-scroll-wheel-handler";
 import "./home.css";
+import Resume from "../station2/Resume.pdf"
 
 function Home(props) {
   const [currentUser, setCurrentUser] = useState(null)
@@ -38,7 +39,7 @@ function Home(props) {
         <h3 className='text-one' style={props.slideH3}>I am a Software Engineer | Architecture Designer</h3>
         {/* <h3 className='text-two' style={props.slideH3}>based in New York, NY</h3> */}
         <h3 className='text-three' style={props.slideH3}>Passion for turning designs into reality</h3>
-        <button className="resume-home">Resume ⇩</button>
+        <button className="resume-home" onClick={() => { window.open(Resume, "_blank"); }}>Resume ⇩</button>
     </div>
       
 
