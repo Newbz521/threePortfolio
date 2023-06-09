@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@r3f-cutter/r3f-cutter": "^1.0.8",
+    "@react-pdf/renderer": "^3.1.11",
     "@react-spring/three": "^9.7.2",
     "@react-three/csg": "^2.2.0",
     "@react-three/drei": "^9.66.1",
@@ -17,9 +18,11 @@
     "r3f-perf": "^7.1.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-pdf": "^7.1.1",
     "react-router-dom": "^6.11.2",
     "react-scripts": "5.0.1",
     "three": "^0.151.3",
+    "three-stdlib": "^2.23.9",
     "troika-three-text": "^0.47.1",
     "web-vitals": "^2.1.4"
   },

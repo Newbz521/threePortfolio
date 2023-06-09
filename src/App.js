@@ -11,44 +11,44 @@ import Home from './components/home/home';
 import Architecture from './components/architecture/architecture';
 
 function App() {
-  useEffect(()=>{
-    console.log("hello");
-    window.onload = function() {
-      var lastCalledTime;
-      var counter = 0;
-      var fpsArray = [];
+  // useEffect(()=>{
+  //   console.log("hello");
+  //   window.onload = function() {
+  //     var lastCalledTime;
+  //     var counter = 0;
+  //     var fpsArray = [];
     
-      function update(timestamp) {
-        var fps;
+  //     function update(timestamp) {
+  //       var fps;
       
-        if (!lastCalledTime) {
-          lastCalledTime = new Date().getTime();
-          fps = 0;
-        }
+  //       if (!lastCalledTime) {
+  //         lastCalledTime = new Date().getTime();
+  //         fps = 0;
+  //       }
       
-        var delta = (new Date().getTime() - lastCalledTime) / 1000;
-        lastCalledTime = new Date().getTime();
-        fps = Math.ceil((1/delta));
+  //       var delta = (new Date().getTime() - lastCalledTime) / 1000;
+  //       lastCalledTime = new Date().getTime();
+  //       fps = Math.ceil((1/delta));
       
-        if (counter >= 60) {
-          var sum = fpsArray.reduce(function(a,b) { return a + b });
-          var average = Math.ceil(sum / fpsArray.length);
-          console.log(average);
-          counter = 0;
-        } else {
-          if (fps !== Infinity) {
-            fpsArray.push(fps);
-          }
+  //       if (counter >= 60) {
+  //         var sum = fpsArray.reduce(function(a,b) { return a + b });
+  //         var average = Math.ceil(sum / fpsArray.length);
+  //         console.log(average);
+  //         counter = 0;
+  //       } else {
+  //         if (fps !== Infinity) {
+  //           fpsArray.push(fps);
+  //         }
       
-          counter++;
-        }
+  //         counter++;
+  //       }
       
-        window.requestAnimationFrame(update);
-      }
+  //       window.requestAnimationFrame(update);
+  //     }
     
-      window.requestAnimationFrame(update);
-    };
-  },[])
+  //     window.requestAnimationFrame(update);
+  //   };
+  // },[])
  
   return (
     <div className="App">

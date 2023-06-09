@@ -24,9 +24,9 @@ import Stats from "../fps/fps.jsx"
 const StationOne = (props) => {
   const [toggler, setToggler] = useState(false);
   const [dpr, setDpr] = useState(1.5)
+  const [dov, setDov] = useState(85);
   const [preset, setPreset] = useState(0)  
   const [start, setStart] = useState(false);
-  const [dov, setDov] = useState(85);
   const [day, setDay] = useState(true);
   const [shaded, setShaded] = useState(false);
   useEffect(()=>{
