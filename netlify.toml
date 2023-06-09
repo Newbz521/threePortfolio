@@ -1,0 +1,2 @@
+[build]
+  command = "GIT_LFS_SKIP_SMUDGE=1 npm run build"  # Replace with your build command
