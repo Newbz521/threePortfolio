@@ -154,14 +154,15 @@ h5{
   /* border: 5px solid blue; */
   right: 0;
   top: 0;
-  width: 40vw;
+  width: 50vw;
   height: calc(100vh - 60px);
   z-index: 5; 
   overflow: scroll;
   background-color: rgb(31, 50, 105);
   background-color: rgb(71, 94, 160);
   scrollbar-width: none;
-  pointer-events: none;
+  overflow-y: hidden;
+  /* pointer-events: none; */
 }
 
 .Arch-container::-webkit-scrollbar {
@@ -191,7 +192,7 @@ h5{
 
 .canvas-wrap{
   display: flex;
-  width: 70vw;
+  width: 50vw;
   height: calc(100vh - 60px);
   position:absolute;
   left: 0;
@@ -199,7 +200,13 @@ h5{
 img{
  height: 100%;
 }
+.image-zoom{
 
+  transition: all .1s;
+}
+.image-zoom:hover{
+  transform: scale(2);
+}
 @media (max-width: 600px){
   .home-box > h1, h3{
     width: 80vw;

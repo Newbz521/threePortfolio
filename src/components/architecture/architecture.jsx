@@ -16,6 +16,8 @@ import EastElevation from "./EastElevation.jpg"
 import WestElevation from "./WestElevation.jpg"
 import NorthElevation from "./NorthElevation.jpg"
 import SouthElevation from "./SouthElevation.jpg"
+import GroundFloor from "./GroundFloor.jpg"
+import ShortSection from "./ShortSection.jpg"
 import ArchImage from "./Building";
 import ScrollTo from "react-scroll-into-view";
 
@@ -36,7 +38,9 @@ function Architecture(props) {
   const EastRef = useRef();
   const NorthRef = useRef();
   const SouthRef = useRef();
-  const pages =[{name: "east", pic: EastElevation, ref: EastRef },{name: "west", pic: WestElevation, ref: WestRef}, {name: "north", pic: NorthElevation, ref: NorthRef},{name: "south", pic: SouthElevation, ref: SouthRef},]
+  const GroundFloorRef = useRef();
+  const ShortSectionRef = useRef();
+  const pages =[{name: "east", pic: EastElevation, ref: EastRef },{name: "west", pic: WestElevation, ref: WestRef}, {name: "north", pic: NorthElevation, ref: NorthRef},{name: "south", pic: SouthElevation, ref: SouthRef}, {name: "ground", pic: GroundFloor, ref: GroundFloorRef}, {name: "shortsection", pic: ShortSection, ref: ShortSectionRef}]
 
   function Model(props) {
     const materials = useLoader(MTLLoader, '/NewDesign8Mesh.mtl')
@@ -79,11 +83,7 @@ function Architecture(props) {
     <div className="home-container">
 
       <div className='architecture-screen' style={{ fontSize: "40px"}}>
-        {/* <h5>Coming Soon..</h5> */}
-        {/* <div className="blur"></div> */}
-
-        {/* {projects.map((data) => <div className="project-box" ><img src={Cover}></img></div>
-        )} */}
+   
         <div className="Arch-container">
   
           {pages.map((data) => (<ArchImage img={data.pic} name={data.name} ref={data.ref} />))}
@@ -99,7 +99,7 @@ function Architecture(props) {
         far={1000}
         dpr={dpr} 
         gl={{ localClippingEnabled: true, alpha: false }} 
-        camera={{ position: [-35.0, 7, 35.0], fov: dov }}
+        camera={{ position: [-35.0, 7, -35.0], fov: dov }}
         performance={{ min: .1 }}
         >
         <OrbitControls minPolarAngle={0} maxPolarAngle={Math.PI * 0.5} minDistance={18} maxDistance={35}  makeDefault />
@@ -109,6 +109,29 @@ function Architecture(props) {
           {/* <mesh>
             <boxGeometry args={[1,1,1]}></boxGeometry>
           </mesh> */}
+
+          <mesh position={[0,5,0]} >
+              <Html distanceFactor={35}>
+              <ScrollTo selector={`#ground`}>
+            <div style={{zIndex:"1",display: "flex", flexDirection: "column", justifyContent: "center", alignItems:"center", opacity: fade}}>
+              <div  style={{ borderRadius: "50px",border: "2px solid blue", height: "25px", fontSize: "25px", justifyContent: "center", alignItems:"center", display: "flex", background: "blue", color: "white", cursor: "pointer"}}>Plan</div>
+              <div style={{border: "1px solid blue", width: "0px", height: "20px"}}></div>
+                  </div>
+                  </ScrollTo>
+            </Html>
+            </mesh>
+            
+            <mesh position={[-10,6,-3]} >
+              <Html distanceFactor={35}>
+              <ScrollTo selector={`#shortsection`}>
+            <div style={{zIndex:"1",display: "flex", flexDirection: "column", justifyContent: "center", alignItems:"center", opacity: fade}}>
+              <div  style={{ borderRadius: "50px",border: "2px solid blue", height: "25px", fontSize: "25px", justifyContent: "center", alignItems:"center", display: "flex", background: "blue", color: "white", cursor: "pointer"}}>Section</div>
+              <div style={{border: "1px solid blue", width: "0px", height: "20px"}}></div>
+                  </div>
+                  </ScrollTo>
+            </Html>
+          </mesh>
+
 
           <mesh position={[18,1,-2]} >
               <Html distanceFactor={35}>

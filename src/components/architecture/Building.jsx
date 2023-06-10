@@ -9,8 +9,8 @@ export default function ArchImage(props) {
     <div id={props.name} className="arch-img-container" ref={props.ref}>
       
         <div className="arch-img" >
-        <img src={props.img} loading="lazy"></img>
-        <div className="arch-name">{props.name} elevation</div>
+        <img className="image-zoom" src={props.img} loading="lazy"></img>
+        <div className="arch-name">{props.name}</div>
         </div>
         </div>
   
