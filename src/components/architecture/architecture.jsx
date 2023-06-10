@@ -5,14 +5,19 @@ import { useEffect, useState, useRef } from "react";
 import "./architecture.css";
 import { Canvas, useFrame, useThree, PerspectiveCamera, useLoader } from "@react-three/fiber"
 import { ObjectLoader } from "three";
-import {OrbitControls} from '@react-three/drei'
+import {MeshReflectorMaterial,OrbitControls, RoundedBox, useCursor, Text, Preload, Html, AdaptiveEvents, AdaptiveDpr, PerformanceMonitor, Hud, useProgress, Loader, Reflector} from '@react-three/drei'
 import { Document } from "react-pdf";
 import ThreeScene from "./Building";
 import * as THREE from 'three'
 import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader";
 import Capybara from "./Building";
 import { MTLLoader, DDSLoader } from 'three-stdlib'
-
+import EastElevation from "./EastElevation.jpg"
+import WestElevation from "./WestElevation.jpg"
+import NorthElevation from "./NorthElevation.jpg"
+import SouthElevation from "./SouthElevation.jpg"
+import ArchImage from "./Building";
+import ScrollTo from "react-scroll-into-view";
 
 
 function Architecture(props) {
@@ -23,9 +28,15 @@ function Architecture(props) {
   const projects = [{background: "cover"}]
   const [dpr, setDpr] = useState(1.5)
   const [dov, setDov] = useState(75);
-
-
-  // THREE.DefaultLoadingManager.addHandler(/\.dds$/i, new DDSLoader())
+  const [image, setImage] = useState("");
+  const [fade, setFade] = useState(.4);
+  
+ 
+  const WestRef = useRef();
+  const EastRef = useRef();
+  const NorthRef = useRef();
+  const SouthRef = useRef();
+  const pages =[{name: "east", pic: EastElevation, ref: EastRef },{name: "west", pic: WestElevation, ref: WestRef}, {name: "north", pic: NorthElevation, ref: NorthRef},{name: "south", pic: SouthElevation, ref: SouthRef},]
 
   function Model(props) {
     const materials = useLoader(MTLLoader, '/NewDesign8Mesh.mtl')
@@ -36,10 +47,11 @@ function Architecture(props) {
       
     })
     const leftRef = useRef(null);
+  
     useFrame(() => {
 
-      leftRef.current.position.z = 0;
-      leftRef.current.position.y = 0;
+      leftRef.current.position.z = -2;
+      leftRef.current.position.y = -4;
       leftRef.current.receiveShadow = true;
       leftRef.current.rotation.x = -0.5 * Math.PI;
       leftRef.current.castShadow = true;
@@ -50,13 +62,17 @@ function Architecture(props) {
     return (
       <mesh ref={leftRef} scale={[.05,.05,.05]} >
 
-        <primitive  object={obj} ref={leftRef}>
+        <primitive  object={obj} >
 
         </primitive>
         <meshStandardMaterial  side={THREE.DoubleSide} attach="material" color={"red"} flatShading />
 
       </mesh>
     )
+  }
+
+  function clickAboutMe() {
+    NorthRef.current.scrollIntoView({ behavior: "smooth" });
   }
   
   return (
@@ -68,36 +84,92 @@ function Architecture(props) {
 
         {/* {projects.map((data) => <div className="project-box" ><img src={Cover}></img></div>
         )} */}
+        <div className="Arch-container">
+  
+          {pages.map((data) => (<ArchImage img={data.pic} name={data.name} ref={data.ref} />))}
+        </div>
+        <div className="canvas-wrap">
+          <div className="arch-title">
+            Manufacturing Laboratory
+            <div className="address">320 W Fordham Road, Bronx, NY</div>
+          </div>
+      
        <Canvas shadows
         
         far={1000}
         dpr={dpr} 
         gl={{ localClippingEnabled: true, alpha: false }} 
-        camera={{ position: [-35.0, 15, -20.0], fov: dov }}
+        camera={{ position: [-35.0, 7, 35.0], fov: dov }}
         performance={{ min: .1 }}
         >
-          <OrbitControls></OrbitControls>
+        <OrbitControls minPolarAngle={0} maxPolarAngle={Math.PI * 0.5} minDistance={18} maxDistance={35}  makeDefault />
+
         <color attach="background" args={["rgb(201, 200, 210)"]}></color>
-        <ambientLight color="white" intensity={.075}></ambientLight>
-          <mesh>
+        {/* <ambientLight color="white" intensity={.075}></ambientLight> */}
+          {/* <mesh>
             <boxGeometry args={[1,1,1]}></boxGeometry>
+          </mesh> */}
+
+          <mesh position={[18,1,-2]} >
+              <Html distanceFactor={35}>
+              <ScrollTo selector={`#south`}>
+            <div style={{zIndex:"1",display: "flex", flexDirection: "column", justifyContent: "center", alignItems:"center", opacity: fade}}>
+              <div  style={{ borderRadius: "50px",border: "2px solid blue",width: "25px", height: "25px", fontSize: "25px", justifyContent: "center", alignItems:"center", display: "flex", background: "blue", color: "white", cursor: "pointer"}}>S</div>
+              <div style={{border: "1px solid blue", width: "0px", height: "20px"}}></div>
+                  </div>
+                  </ScrollTo>
+            </Html>
           </mesh>
+
+          <mesh position={[-18,1,-2]}>
+              <Html distanceFactor={35}>
+                <ScrollTo selector={`#north`}>
+            <div style={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems:"center", opacity: fade}}>
+              <div style={{ borderRadius: "50px",border: "2px solid blue",width: "25px", height: "25px", fontSize: "25px", justifyContent: "center", alignItems:"center", display: "flex", background: "blue", color: "white", cursor: "pointer"}}>N</div>
+              <div style={{border: "1px solid blue", width: "0px", height: "20px"}}></div>
+              </div>    
+                </ScrollTo>
+            </Html>
+          </mesh>
+
+          <mesh position={[0,1,5]}>
+              <Html distanceFactor={35}>
+              <ScrollTo selector={`#west`}>
+            <div style={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems:"center", opacity: fade}}>
+              <div style={{ borderRadius: "50px",border: "2px solid blue",width: "25px", height: "25px", fontSize: "25px", justifyContent: "center", alignItems:"center", display: "flex", background: "blue", color: "white", cursor: "pointer"}}>W</div>
+              <div style={{border: "1px solid blue", width: "0px", height: "20px"}}></div>
+                  </div>
+                  </ScrollTo>
+            </Html>
+          </mesh>
+
+          <mesh position={[0,1,-9]}>
+              <Html distanceFactor={35}>
+              <ScrollTo selector={`#east`}>
+              <div style={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems:"center", opacity: fade, transition: ".5s"}}>
+              <div style={{ borderRadius: "50px",border: "2px solid blue",width: "25px", height: "25px", fontSize: "25px", justifyContent: "center", alignItems:"center", display: "flex", background: "blue", color: "white", cursor: "pointer"}}>E</div>
+              <div style={{border: "1px solid blue", width: "0px", height: "20px"}}></div>
+                  </div>
+                  </ScrollTo>
+            </Html>
+          </mesh>
+
           <Model />
           {/* <spotLight color="white" angle={.2} penumbra={.8} intensity={1} position={[-10,20,0]}></spotLight> */}
           {/* <spotLight angle={.4} penumbra={.8} intensity={.2} position={[0,50,0]}></spotLight> */}
           <spotLight color="rgb(110,175,250)" angle={.1} penumbra={.8} intensity={.4} position={[200,90,-150]}></spotLight>
           <spotLight angle={.1} penumbra={.8} intensity={.2} position={[200, 50, 0]}></spotLight>
           
-          <spotLight  angle={.1} penumbra={.8} intensity={.3} position={[-250,20,70]}></spotLight>
-          <spotLight  color="rgb(110,175,250)" angle={.1} penumbra={.8} intensity={.4} position={[-200,40,70]}></spotLight>
+          <spotLight color="white"  angle={.1} penumbra={.8} intensity={.8} position={[-250,20,70]}></spotLight>
+          {/* <spotLight  color="rgb(110,175,250)" angle={.1} penumbra={.8} intensity={.4} position={[-200,40,70]}></spotLight> */}
 
           {/* <spotLight  angle={.1} penumbra={.8} intensity={.05} position={[0,20,250]}></spotLight>
           <spotLight  color="rgb(110,175,250)" angle={.1} penumbra={.8} intensity={.05} position={[0,20,300]}></spotLight> */}
 
           {/* <spotLight angle={.3} penumbra={.5} intensity={.5} position={[0,50,50]}></spotLight> */}
-          {/* <Capybara/> */}
+          <Preload all/>
       </Canvas>
-
+      </div>
       </div>
 
   </div>
