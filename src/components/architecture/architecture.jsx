@@ -75,9 +75,8 @@ function Architecture(props) {
     )
   }
 
-  function clickAboutMe() {
-    NorthRef.current.scrollIntoView({ behavior: "smooth" });
-  }
+
+
   
   return (
     <div className="home-container">
