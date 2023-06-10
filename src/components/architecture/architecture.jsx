@@ -28,9 +28,9 @@ function Architecture(props) {
   // THREE.DefaultLoadingManager.addHandler(/\.dds$/i, new DDSLoader())
 
   function Model(props) {
-    const materials = useLoader(MTLLoader, '/Design8Mesh.mtl')
+    const materials = useLoader(MTLLoader, '/NewDesign8Mesh.mtl')
     materials.side = THREE.DoubleSide;
-    const obj = useLoader(OBJLoader, '/Design8Mesh.obj', (loader) => {
+    const obj = useLoader(OBJLoader, '/NewDesign8Mesh.obj', (loader) => {
       materials.preload()
       loader.setMaterials(materials)
       
@@ -48,7 +48,7 @@ function Architecture(props) {
     })
 
     return (
-      <mesh ref={leftRef} scale={[.05,.05,.05]}>
+      <mesh ref={leftRef} scale={[.05,.05,.05]} >
 
         <primitive  object={obj} ref={leftRef}>
 
