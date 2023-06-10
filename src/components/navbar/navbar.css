@@ -83,7 +83,7 @@
   content: "";
   width: 0%;
   height: 3px;
-  background-color: rgb(152, 197, 161);
+  background-color: rgb(71, 94, 160);
   border-radius: 25px 25px 25px 25px;
   left: 50%;
   bottom: -5px;
@@ -97,7 +97,7 @@
 
 .signUpTab {
   border-radius: 4px;
-  background-color: rgb(152, 197, 161);
+  background-color: rgb(71, 94, 160);
   color: white;
   height: 60%;
   display: flex;
