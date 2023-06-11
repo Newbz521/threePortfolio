@@ -222,6 +222,7 @@ img{
 }
 .image-zoom{
   transition: all .1s;
+  transform-origin: bottom center ;
 }
 .image-zoom:hover{
   transform: scale(1.5);
@@ -262,7 +263,10 @@ figure:hover img {
 
 .image-link{
   color: white;
+  margin-top: 20px;
+  padding: 2px;
   font-size: 20px;
+  border: 1px solid white;
 }
 /* 
 img {
