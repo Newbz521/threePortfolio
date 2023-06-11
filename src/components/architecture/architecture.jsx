@@ -40,7 +40,7 @@ function Architecture(props) {
   const SouthRef = useRef();
   const GroundFloorRef = useRef();
   const ShortSectionRef = useRef();
-  const pages =[{name: "east", pic: EastElevation, ref: EastRef },{name: "west", pic: WestElevation, ref: WestRef}, {name: "north", pic: NorthElevation, ref: NorthRef},{name: "south", pic: SouthElevation, ref: SouthRef}, {name: "ground", pic: GroundFloor, ref: GroundFloorRef}, {name: "shortsection", pic: ShortSection, ref: ShortSectionRef}]
+  const pages =[{name: "east-elevation", pic: EastElevation, ref: EastRef },{name: "west-elevation", pic: WestElevation, ref: WestRef}, {name: "north-elevation", pic: NorthElevation, ref: NorthRef},{name: "south-elevation", pic: SouthElevation, ref: SouthRef}, {name: "ground-floorplan", pic: GroundFloor, ref: GroundFloorRef}, {name: "shortsection", pic: ShortSection, ref: ShortSectionRef}]
 
   function Model(props) {
     const materials = useLoader(MTLLoader, '/NewDesign8Mesh.mtl')
@@ -92,6 +92,13 @@ function Architecture(props) {
             Manufacturing Laboratory
             <div className="address">320 W Fordham Road, Bronx, NY</div>
           </div>
+
+          <div className="controls">
+            <div>Mouse Controls</div>
+            <div>Left : Rotate</div>
+            <div>Middle : Zoom</div>
+            <div>Right : Move</div>
+          </div>
       
        <Canvas shadows
         
@@ -111,7 +118,7 @@ function Architecture(props) {
 
           <mesh position={[0,5,0]} >
               <Html distanceFactor={35}>
-              <ScrollTo selector={`#ground`}>
+              <ScrollTo selector={`#ground-floorplan`}>
             <div style={{zIndex:"1",display: "flex", flexDirection: "column", justifyContent: "center", alignItems:"center", opacity: fade}}>
               <div  style={{ borderRadius: "50px",border: "2px solid blue", height: "25px", fontSize: "25px", justifyContent: "center", alignItems:"center", display: "flex", background: "blue", color: "white", cursor: "pointer"}}>Plan</div>
               <div style={{border: "1px solid blue", width: "0px", height: "20px"}}></div>
@@ -134,7 +141,7 @@ function Architecture(props) {
 
           <mesh position={[18,1,-2]} >
               <Html distanceFactor={35}>
-              <ScrollTo selector={`#south`}>
+              <ScrollTo selector={`#south-elevation`}>
             <div style={{zIndex:"1",display: "flex", flexDirection: "column", justifyContent: "center", alignItems:"center", opacity: fade}}>
               <div  style={{ borderRadius: "50px",border: "2px solid blue",width: "25px", height: "25px", fontSize: "25px", justifyContent: "center", alignItems:"center", display: "flex", background: "blue", color: "white", cursor: "pointer"}}>S</div>
               <div style={{border: "1px solid blue", width: "0px", height: "20px"}}></div>
@@ -145,7 +152,7 @@ function Architecture(props) {
 
           <mesh position={[-18,1,-2]}>
               <Html distanceFactor={35}>
-                <ScrollTo selector={`#north`}>
+                <ScrollTo selector={`#north-elevation`}>
             <div style={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems:"center", opacity: fade}}>
               <div style={{ borderRadius: "50px",border: "2px solid blue",width: "25px", height: "25px", fontSize: "25px", justifyContent: "center", alignItems:"center", display: "flex", background: "blue", color: "white", cursor: "pointer"}}>N</div>
               <div style={{border: "1px solid blue", width: "0px", height: "20px"}}></div>
@@ -156,7 +163,7 @@ function Architecture(props) {
 
           <mesh position={[0,1,5]}>
               <Html distanceFactor={35}>
-              <ScrollTo selector={`#west`}>
+              <ScrollTo selector={`#west-elevation`}>
             <div style={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems:"center", opacity: fade}}>
               <div style={{ borderRadius: "50px",border: "2px solid blue",width: "25px", height: "25px", fontSize: "25px", justifyContent: "center", alignItems:"center", display: "flex", background: "blue", color: "white", cursor: "pointer"}}>W</div>
               <div style={{border: "1px solid blue", width: "0px", height: "20px"}}></div>
@@ -167,7 +174,7 @@ function Architecture(props) {
 
           <mesh position={[0,1,-9]}>
               <Html distanceFactor={35}>
-              <ScrollTo selector={`#east`}>
+              <ScrollTo selector={`#east-elevation`}>
               <div style={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems:"center", opacity: fade, transition: ".5s"}}>
               <div style={{ borderRadius: "50px",border: "2px solid blue",width: "25px", height: "25px", fontSize: "25px", justifyContent: "center", alignItems:"center", display: "flex", background: "blue", color: "white", cursor: "pointer"}}>E</div>
               <div style={{border: "1px solid blue", width: "0px", height: "20px"}}></div>
