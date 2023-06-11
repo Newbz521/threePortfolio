@@ -14,7 +14,9 @@ export default function ArchImage(props) {
       {/* <ImageZoom src={props.img}></ImageZoom> */}
         <div className="arch-img" id="container">
         <img className="image-zoom" src={props.img} loading="lazy"></img>
-        <div className="arch-name">{props.name}</div>
+          <a className="image-link" style={{textDecoration: "none", color: "white"}} href={props.img} target="_blank">Open Image </a>
+          <div style={{pointerEvents: "none"}} className="arch-name">{props.name}</div>
+
       </div>
       {/* <button className="img-button" onClick={window.open(props.img)}>download</button> */}
       </div>

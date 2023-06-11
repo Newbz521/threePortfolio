@@ -150,7 +150,7 @@ h5{
   flex-direction: column;
   align-items: flex-start;
   padding-left: 10px;
-  bottom: 0;
+  top: 0;
   font-size: 20px;
 }
 .arch-name{
@@ -258,6 +258,11 @@ figure:hover img {
 
 .img-button{
   position: relative;
+}
+
+.image-link{
+  color: white;
+  font-size: 20px;
 }
 /* 
 img {

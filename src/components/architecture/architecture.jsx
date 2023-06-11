@@ -91,14 +91,12 @@ function Architecture(props) {
           <div className="arch-title">
             Manufacturing Laboratory
             <div className="address">320 W Fordham Road, Bronx, NY</div>
+            <div className="address">Mouse Controls</div>
+            <div className="address">Left : Rotate</div>
+            <div className="address">Middle : Zoom</div>
+            <div className="address">Right : Rotate</div>
           </div>
 
-          <div className="controls">
-            <div>Mouse Controls</div>
-            <div>Left : Rotate</div>
-            <div>Middle : Zoom</div>
-            <div>Right : Move</div>
-          </div>
       
        <Canvas shadows
         
