@@ -1,6 +1,7 @@
 import {
  
-  Sky
+  Sky,
+  Html
 } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
 // import { useControls } from "leva";
@@ -53,7 +54,10 @@ function DayScene(props) {
         <mesh ref={sunRef} onClick={handleShow}  onPointerOver={() => setHovered(true)}
     onPointerOut={() => setHovered(false)}  position={[200, 220, -150]}>
           <sphereGeometry args={[size, 32, 32]} />
-          <meshBasicMaterial  color={planet} />
+          <meshBasicMaterial color={planet} />
+          <Html >
+            <div className="chat-bubble" style={{ border: "2px solid grey", borderRadius: "5px", margin: "0", color: "black"}}>Click Me</div>
+          </Html>
         </mesh>
        
         

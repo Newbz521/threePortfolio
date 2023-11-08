@@ -268,7 +268,15 @@ function EyeAnimation({ preset }) {
         <mesh ref={bounceRef}>
           <mesh ref={ref} position={[-20, 8, -15]} receiveShadow castShadow onClick={() => { setPreset(1) } } >
           <boxGeometry args={[8, 8, .5]} />
-          <meshStandardMaterial color={active ? 'lightpink' : 'lightblue'}/>
+            <meshStandardMaterial color={active ? 'lightpink' : 'lightblue'} />
+            <mesh position={[0,0,.3]} >
+          <Text
+        scale={[1.25, 1.5, 1.5]}
+        color="white" // default
+        >
+            Fiber Kitchen
+          </Text>
+            </mesh>
           </mesh>
           {/* <Video /> */}
           <mesh ref={ref} scale={git ?[1.2,1.2,1]: [1,1,1] } position={[-23, 14, -15]} receiveShadow castShadow onClick={() => { window.open("https://github.com/Newbz521/FiberKitchen", "_blank"); }} >
@@ -325,7 +333,15 @@ function EyeAnimation({ preset }) {
       <mesh ref={bounceRef}>
         <mesh ref={ref} position={[0, 8, -15]} receiveShadow castShadow onClick={() => { setPreset(2) }} >
         <boxGeometry args={[8, 8, .5]} />
-        <meshStandardMaterial color={active ? 'lightpink' : 'lightblue'}  />
+          <meshStandardMaterial color={active ? 'lightpink' : 'lightblue'} />
+          <mesh position={[0,0,.3]} >
+          <Text
+        scale={[1, 1.75, 1.25]}
+        color="white" // default
+        >
+            Beacon Defender
+          </Text>
+            </mesh>
         </mesh>
         {/* <VideoTwo /> */}
         <mesh ref={ref} scale={git ?[1.2,1.2,1]: [1,1,1] }position={[-3, 14, -15]} receiveShadow castShadow onClick={() => { window.open("https://github.com/Newbz521/Beacon-Defender-", "_blank"); }} >
@@ -387,7 +403,15 @@ function EyeAnimation({ preset }) {
       <mesh ref={bounceRef}>
         <mesh ref={ref} position={[20, 8, -15]} receiveShadow castShadow onClick={() => { setPreset(3) }} >
         <boxGeometry args={[8, 8, .5]} />
-        <meshStandardMaterial color={active ? 'lightpink' : 'lightblue'} />
+          <meshStandardMaterial color={active ? 'lightpink' : 'lightblue'} />
+          <mesh position={[0,0,.3]} >
+          <Text
+        scale={[1.5, 1.5, 1.5]}
+        color="white" // default
+        >
+            Virtual Fit
+          </Text>
+            </mesh>
         </mesh>
         {/* <VideoThree /> */}
         <mesh ref={ref} scale={git ?[1.2,1.2,1]: [1,1,1] } position={[17, 14, -15]} receiveShadow castShadow onClick={() => { window.open("https://github.com/Newbz521/virtufit-prototype", "_blank") }} >
@@ -464,7 +488,13 @@ function EyeAnimation({ preset }) {
         <h4 onClick={function () { setPreset(7) }}>CONTACTS</h4>
         <h4 onClick={function () { setPreset(8) }}>ABOUT ME</h4>
       </div>
+      <div className="title-block" style={{bottom:"calc(25px + 10vh)",position:"absolute",borderRadius:"10px", width:"fit-content", height: "25vh", color:"white", zIndex:"20", display:"flex", justifyContent:"center", alignItems:"start", flexDirection:"column", paddingLeft:"1vw", pointerEvents:"none"}}>
+        <h4 style={{textShadow:"0 0 3px black"}}>ESC : Zoom to World View</h4>
+        <h4 style={{textShadow:"0 0 3px black"}}>Left(Hold) : Camera Angle</h4>
+        <h4 style={{textShadow:"0 0 3px black"}}>Left(Click) : Select </h4>
+        <h4 style={{textShadow:"0 0 3px black"}}>Scroll : Zoom </h4>
 
+      </div>
 
       
       <Canvas shadows
