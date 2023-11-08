@@ -13,6 +13,7 @@ function DayScene(props) {
   
   const [toggler, setToggler] = useState(false);
   const [planet, setPlanet] = useState("rgb(255, 244, 120)")
+  const [sun,setSun] = useState("Go Night Mode")
   const [size,setSize] = useState(50)
   const dayRef = useRef()
   const nightRef = useRef()
@@ -30,10 +31,12 @@ function DayScene(props) {
       // setShow("");
       setPlanet("rgb(255, 244, 120)");
       setSize(50)
+      setSun("Go Night Mode")
       props.setDay(true)
       // props.setColor({color:"grey"})
     } else {
       setPlanet("white");
+      setSun("Go Day Mode")
       setSize(30)
       props.setDay(false)
       // props.setColor({color:"white"})
@@ -56,7 +59,7 @@ function DayScene(props) {
           <sphereGeometry args={[size, 32, 32]} />
           <meshBasicMaterial color={planet} />
           <Html >
-            <div className="chat-bubble" style={{ border: "2px solid grey", borderRadius: "5px", margin: "0", color: "black"}}>Click Me</div>
+            <div style={{borderRadius: "5px", margin: "0", color: "white", fontWeight:"bolder", textShadow:"0 0 1px black", pointerEvents:"none" }}>{sun}</div>
           </Html>
         </mesh>
        

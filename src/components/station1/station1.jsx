@@ -34,7 +34,11 @@ const StationOne = (props) => {
     if (window.innerWidth < 500) {
       setDov(105)
     } 
-  },[])
+  }, [])
+  
+  let created =() => {
+    console.log("created")
+  }
 
   document.addEventListener('keydown', function (event) {
     
@@ -269,7 +273,8 @@ function EyeAnimation({ preset }) {
           <mesh ref={ref} position={[-20, 8, -15]} receiveShadow castShadow onClick={() => { setPreset(1) } } >
           <boxGeometry args={[8, 8, .5]} />
             <meshStandardMaterial color={active ? 'lightpink' : 'lightblue'} />
-            <mesh position={[0,0,.3]} >
+            <mesh position={[0, 0, .3]} >
+
           <Text
         scale={[1.25, 1.5, 1.5]}
         color="white" // default
@@ -497,13 +502,14 @@ function EyeAnimation({ preset }) {
       </div>
 
       
-      <Canvas shadows
-        
+      <Canvas
+      
         far={1000}
         dpr={dpr} 
         gl={{ localClippingEnabled: true, alpha: false }} 
         camera={{ position: [-180, 60, -150], fov: dov }}
         performance={{ min: .1 }}
+        onCreated={created}
         // frameloop="ondemand"
       >
         {/* <fog attach="fog" args={["white", 1, 950]} /> */}
