@@ -31,7 +31,7 @@ export function Bot({position, rotation}) {
       // leftRef.current.position.y = 0;
       leftRef.current.receiveShadow = true;
       // moveRef.current.position.x = 2 * Math.sin(rise)
-      moveRef.current.position.y = .2 * Math.sin(rise)
+      // moveRef.current.position.y = .2 * Math.sin(rise)
       
       
       // leftRef.current.castShadow = true;
@@ -160,7 +160,7 @@ export function Bot({position, rotation}) {
         // leftRef.current.position.y = 0;
         leftRef.current.receiveShadow = true;
         // moveRef.current.position.x = 2 * Math.sin(rise)
-        moveRef.current.position.y = -.2 * Math.sin(rise)
+        // moveRef.current.position.y = -.2 * Math.sin(rise)
         
         
         // leftRef.current.castShadow = true;
@@ -425,7 +425,7 @@ export function Bot({position, rotation}) {
             </mesh>
             </mesh>
         </mesh>
-        <OrbitingMeshFour />
+        {/* <OrbitingMeshFour /> */}
         
 
 

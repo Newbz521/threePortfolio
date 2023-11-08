@@ -41,7 +41,8 @@
   bottom:1vh;
   overflow: none;
   font-family: 'Teko', sans-serif;
-  color: rgb(182, 180, 180);
+  color: white;
+  text-shadow: 0px 0px 4px black;
 
 }
 h1, h4{
@@ -55,6 +56,7 @@ h1{
   font-size: 40px;
   color: rgb(72, 133, 247);
   margin-left: 1vw;
+  text-shadow: 0px 0px 0px white;
 }
 
 h1:hover, h4:hover {

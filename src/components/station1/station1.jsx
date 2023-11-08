@@ -50,43 +50,43 @@ const StationOne = (props) => {
 const t = new Vector3();
 
 const defaultPosition = {
-  position: [-1.00, .30, .80],
+  position: [-100, 30, 80],
   target: [0, 0, 0]
 };
 
 const farAway = {
-  position: [-.18, .10, 0],
-  target: [-.18, .10, -.15]
+  position: [-18, 10, 0],
+  target: [-18, 10, -15]
 };
   
   const storeTwo = {
-    position: [0, .10, 0],
-    target: [0,.10,-.15]
+    position: [0, 10, 0],
+    target: [0,10,-15]
   }
   
   const storeThree = {
-    position: [.18, .10, 0],
-    target: [.18,.10,-.15]
+    position: [18, 10, 0],
+    target: [18,10,-15]
   }
   const storeFour = {
-    position: [-.18, .10, 0],
-    target: [-.18,.10,.15]
+    position: [-18, 10, 0],
+    target: [-18,10,15]
   }
   const storeFive = {
-    position: [0, .10, 0],
-    target: [0,.10,.15]
+    position: [0, 10, 0],
+    target: [0,10,15]
   }
   const storeSix = {
-  position: [.18, .10, 0],
-  target: [.18,.10,.15]
+  position: [18, 10, 0],
+  target: [18,10,15]
   }
   const Island2 = {
-    position: [4.90, -.38, .20],
-    target: [4.50,-.40,0]
+    position: [490, -38, 20],
+    target: [450,-40,0]
   }
   const Island3 = {
-    position: [3.00,.90,-5.75],
-    target: [3.00, .50,-5.00]
+    position: [300,90,-575],
+    target: [300, 50,-500]
   }
 
 const CameraWrapper = ({ cameraPosition, target }) => {
@@ -188,7 +188,7 @@ function EyeAnimation({ preset }) {
       // rise += risespeed
       leftRef.current.position.z = midZ;
       leftRef.current.position.y = 7;
-      leftRef.current.position.x = -20 * Math.sin(step) 
+      // leftRef.current.position.x = -20 * Math.sin(step) 
       leftRef.current.receiveShadow = shaded;
       leftRef.current.castShadow = shaded;
       // subRef.current.position.y = 1.5 * Math.sin(rise);
@@ -226,7 +226,7 @@ function EyeAnimation({ preset }) {
       leftRef.current.position.z = midZ;
       leftRef.current.position.y = 7;
       leftRef.current.receiveShadow = true;
-      leftRef.current.position.x = 20 * Math.sin(step) 
+      // leftRef.current.position.x = 20 * Math.sin(step) 
       leftRef.current.castShadow = shaded;
       subRef.current.castShadow = shaded;
 
@@ -248,43 +248,6 @@ function EyeAnimation({ preset }) {
       </mesh>
     )
   }
-  // function Video() {
-  //   const [video] = useState(() => Object.assign(document.createElement('video'), { src: "/Kitchan.mp4", crossOrigin: 'Anonymous', loop: true, muted: true }))
-  //   useEffect(() => void video.play(), [video])
-  //   return (
-  //     <mesh position={[-20, 8, -14.7]} rotation={[0, Math.PI / 2, 0]}>
-  //       <boxGeometry args={[.1,8,8]}/>
-  //       <meshBasicMaterial  toneMapped={false}>
-  //         <videoTexture attach="map" args={[video]} encoding={THREE.sRGBEncoding} />
-  //       </meshBasicMaterial>
-  //     </mesh>
-  //   )
-  // }
-  // function VideoTwo() {
-  //   const [video] = useState(() => Object.assign(document.createElement('video'), { src: "/Bubble.mp4", crossOrigin: 'Anonymous', loop: true, muted: true }))
-  //   useEffect(() => void video.play(), [video])
-  //   return (
-  //     <mesh position={[0, 8, -14.7]} rotation={[0, Math.PI / 2, 0]}>
-  //       <boxGeometry args={[.1,8,8]}/>
-  //       <meshBasicMaterial  toneMapped={false}>
-  //         <videoTexture attach="map" args={[video]} encoding={THREE.sRGBEncoding} />
-  //       </meshBasicMaterial>
-  //     </mesh>
-  //   )
-  // }
-  // function VideoThree() {
-  //   const [video] = useState(() => Object.assign(document.createElement('video'), { src: "/Levi.mp4", crossOrigin: 'Anonymous', loop: true, muted: true }))
-  //   useEffect(() => void video.play(), [video])
-  //   return (
-  //     <mesh position={[20, 8, -14.7]} rotation={[0, Math.PI / 2, 0]}>
-  //       <boxGeometry args={[.1,8,8]}/>
-  //       <meshBasicMaterial  toneMapped={false}>
-  //         <videoTexture attach="map" args={[video]} encoding={THREE.sRGBEncoding} />
-  //       </meshBasicMaterial>
-  //     </mesh>
-  //   )
-  // }
-
 
   function StoreOne() {
       const ref = useRef()
@@ -317,7 +280,7 @@ function EyeAnimation({ preset }) {
         scale={[.5, .5, .5]}
         color="white" // default
         >
-            GIT
+            REPO
           </Text>
             </mesh>
           <mesh ref={ref}scale={deploy ?[1.2,1.2,1]: [1,1,1] } position={[-20, 14, -15]} receiveShadow castShadow onClick={() => {  window.open("https://kitchan.netlify.app/", "_blank"); }} >
@@ -374,7 +337,7 @@ function EyeAnimation({ preset }) {
         scale={[.5, .5, .5]}
         color="white" // default
         >
-            GIT
+            REPO
           </Text>
             </mesh>
           <mesh ref={ref} scale={deploy ?[1.2,1.2,1]: [1,1,1] } position={[0, 14, -15]} receiveShadow castShadow onClick={() => { window.open("https://newbz521.github.io/Beacon-Defender-/", "_blank"); }} >
@@ -436,7 +399,7 @@ function EyeAnimation({ preset }) {
         scale={[.5, .5, .5]}
         color="white" // default
         >
-            GIT
+            REPO
           </Text>
             </mesh>
           <mesh ref={ref} scale={deploy ?[1.2,1.2,1]: [1,1,1] } position={[20, 14, -15]} receiveShadow castShadow onClick={() => { window.open("https://virtualfit.netlify.app/", "_blank") }} >
@@ -466,6 +429,7 @@ function EyeAnimation({ preset }) {
       </mesh>
     )
   }
+
   function QuickLoad() {
     const { progress } = useProgress()
     return <Html center> {progress} % loaded</Html>
@@ -510,16 +474,17 @@ function EyeAnimation({ preset }) {
         gl={{ localClippingEnabled: true, alpha: false }} 
         camera={{ position: [-180, 60, -150], fov: dov }}
         performance={{ min: .1 }}
+        // frameloop="ondemand"
       >
         {/* <fog attach="fog" args={["white", 1, 950]} /> */}
       
-        {day ? <fog attach="fog" args={["white", 1, 7.0]} /> : <fog attach="fog" args={["black", 1, 7.0]} />}
-        <mesh scale={[.01, .01, .01]}>
+        {day ? <fog attach="fog" args={["white", 10, 700]} /> : <fog attach="fog" args={["black", 1, 700]} />}
+        <mesh scale={[1, 1, 1]}>
           
         
         <PerformanceMonitor flipflops={3} onFallback={() => setDpr(1)}/>
         <EyeAnimation preset={preset} />
-        <OrbitControls minDistance={0} maxDistance={10} makeDefault />
+        <OrbitControls minDistance={0} maxDistance={170} makeDefault />
         
     <AdaptiveDpr pixelated />
     <AdaptiveEvents />
@@ -537,7 +502,7 @@ function EyeAnimation({ preset }) {
     <PlatformOne middle={15} />
               <Island setPreset={setPreset} shaded={shaded} />
               <mesh position={[-11.5, 15, -12]} rotation={[-Math.PI / 1.2, 0, -Math.PI]}>
-          <Html distanceFactor={.50}>
+          <Html distanceFactor={50}>
             <div className="chat-bubble">Take a look at my projects!</div>
           </Html>
         </mesh>

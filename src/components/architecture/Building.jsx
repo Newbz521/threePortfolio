@@ -13,7 +13,7 @@ export default function ArchImage(props) {
       {/* <MyImg src={props.img} ></MyImg> */}
       {/* <ImageZoom src={props.img}></ImageZoom> */}
         <div className="arch-img" id="container">
-        <img className="image-zoom" src={props.img} loading="lazy"></img>
+        <img rel="preload" className="image-zoom" src={props.img} loading="lazy"></img>
           <a className="image-link" style={{textDecoration: "none", color: "white"}} href={props.img} target="_blank">Open Image in New Tab</a>
           <div style={{pointerEvents: "none"}} className="arch-name">{props.name}</div>
 

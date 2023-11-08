@@ -167,7 +167,7 @@ function IslandThree(props) {
           <meshStandardMaterial side={THREE.DoubleSide} color="blue"  transparent opacity={.03} />
         </mesh> */}
         <mesh position={[300, 105, -470]} rotation={[-Math.PI / 1.2, 0, -Math.PI]}>
-          <Html distanceFactor={1.75}>
+          <Html distanceFactor={175}>
             <div className="chat-bubble">Hi, welcome to Lawrence's Land!</div>
           </Html>
         </mesh>

@@ -13,7 +13,7 @@ function Propel({location}) {
 
 
   useFrame(() => {
-   propelRef.current.rotation.y -= 0.01
+  //  propelRef.current.rotation.y -= 0.01
 
 })
   return (
