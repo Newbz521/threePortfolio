@@ -461,7 +461,9 @@ function EyeAnimation({ preset }) {
 
   function QuickLoad() {
     const { progress, active,errors,item,loaded,total } = useProgress()
-    return <Html center> {progress} % loaded</Html>
+    return (
+      <Html center> <div className="load-block" style={{fontSize:"5vw"}}>{progress} % of World loaded...</div></Html>
+    )
   }
   
   const Debug = () => {
