@@ -1,11 +1,10 @@
 import React, { Component, useMemo} from "react";
 import { useEffect, useState, useRef, Suspense } from "react";
-import { useSpring, a, config} from "@react-spring/three";
-import { Canvas, useFrame, useThree, PerspectiveCamera} from "@react-three/fiber"
-import {MeshReflectorMaterial,OrbitControls, RoundedBox, useCursor, Text, Preload, Html, AdaptiveEvents, AdaptiveDpr, PerformanceMonitor, Hud, useProgress, Loader, Reflector} from '@react-three/drei'
+import { useSpring, a} from "@react-spring/three";
+import { Canvas, useFrame, useThree} from "@react-three/fiber"
+import {OrbitControls, RoundedBox, useCursor, Text, Preload, Html, AdaptiveEvents, AdaptiveDpr, PerformanceMonitor, Hud, useProgress, Loader, Reflector} from '@react-three/drei'
 import PlatformOne from "./platform1";
 import DayScene from "./environment";
-import { OrbitingMesh, OrbitingMeshTwo } from "./satelite";
 import Island from "./island";
 import IslandTwo from "../station2/island2";
 import IslandThree from "../station3/island3";
@@ -13,7 +12,6 @@ import "./station1.css"
 import { Vector3 } from "three";
 import { Bot, BotTwo } from "../station3/bot";
 import { PerfHeadless, usePerf, Perf, getReport } from 'r3f-perf'
-import Stats from "../fps/fps.jsx"
 
 // import * as THREE from 'three'
 // import { BlurPass, Resizer, KernelSize, Resolution } from 'postprocessing'
@@ -22,11 +20,9 @@ import Stats from "../fps/fps.jsx"
 
 
 const StationOne = (props) => {
-  const [toggler, setToggler] = useState(false);
   const [dpr, setDpr] = useState(1.5)
   const [dov, setDov] = useState(85);
   const [preset, setPreset] = useState(0)  
-  const [start, setStart] = useState(false);
   const [day, setDay] = useState(true);
   const [shaded, setShaded] = useState(false);
   useEffect(()=>{
@@ -193,8 +189,8 @@ function EyeAnimation({ preset }) {
       leftRef.current.position.z = midZ;
       leftRef.current.position.y = 7;
       // leftRef.current.position.x = -20 * Math.sin(step) 
-      leftRef.current.receiveShadow = shaded;
-      leftRef.current.castShadow = shaded;
+      // leftRef.current.receiveShadow = shaded;
+      // leftRef.current.castShadow = shaded;
       // subRef.current.position.y = 1.5 * Math.sin(rise);
       // if (leftRef.current.position.x < 200) {
       //   leftRef.current.position.x += .5
@@ -206,9 +202,9 @@ function EyeAnimation({ preset }) {
     })
     return (
       <mesh ref={subRef}>
-        <mesh ref={leftRef} >
-        <RoundedBox args={[30, 12, 13]} radius={3}>
-        <meshLambertMaterial attach="material" color={"lightgrey"} flatShading />
+        <mesh ref={leftRef} scale={[30,12,13]} >
+        <RoundedBox args={[1, 1, 1]} radius={.3}>
+        <meshLambertMaterial attach="material" color={"lightgrey"}  />
       </RoundedBox>
         </mesh>
 
@@ -231,8 +227,8 @@ function EyeAnimation({ preset }) {
       leftRef.current.position.y = 7;
       leftRef.current.receiveShadow = true;
       // leftRef.current.position.x = 20 * Math.sin(step) 
-      leftRef.current.castShadow = shaded;
-      subRef.current.castShadow = shaded;
+      // leftRef.current.castShadow = shaded;
+      // subRef.current.castShadow = shaded;
 
       // subRef.current.position.y = 1.5 * Math.sin(rise);
       // if (leftRef.current.position.x > -200) {
@@ -243,10 +239,10 @@ function EyeAnimation({ preset }) {
     })
     return (
       <mesh ref={subRef}>
-        <mesh ref={leftRef}>
-          <RoundedBox args={[30, 12, 13]} radius={3}>
-        <meshLambertMaterial attach="material" color={"lightgrey"}  />
-      </RoundedBox>
+        <mesh ref={leftRef} scale={[30,12,13]} >
+          <RoundedBox args={[1, 1, 1]} radius={.3}>
+          <meshLambertMaterial attach="material" color={"lightgrey"}  />
+          </RoundedBox>
         </mesh>
 
       </mesh>
@@ -270,13 +266,13 @@ function EyeAnimation({ preset }) {
       })
       return (
         <mesh ref={bounceRef}>
-          <mesh ref={ref} position={[-20, 8, -15]} receiveShadow castShadow onClick={() => { setPreset(1) } } >
-          <boxGeometry args={[8, 8, .5]} />
+          <mesh ref={ref} scale={[8,8,.5]} position={[-20, 8, -15]} receiveShadow castShadow onClick={() => { setPreset(1) } } >
+          <boxGeometry args={[1, 1, 1]} />
             <meshStandardMaterial color={active ? 'lightpink' : 'lightblue'} />
-            <mesh position={[0, 0, .3]} >
+            <mesh position={[0, 0, .65]} >
 
           <Text
-        scale={[1.25, 1.5, 1.5]}
+        scale={[.12, .12, .12]}
         color="white" // default
         >
             Fiber Kitchen
@@ -336,12 +332,16 @@ function EyeAnimation({ preset }) {
      
     return (
       <mesh ref={bounceRef}>
-        <mesh ref={ref} position={[0, 8, -15]} receiveShadow castShadow onClick={() => { setPreset(2) }} >
-        <boxGeometry args={[8, 8, .5]} />
+        <mesh ref={ref} scale={[8,8,.5]} position={[0, 8, -15]} receiveShadow castShadow onClick={() => { setPreset(2) }} >
+          <boxGeometry
+            // args={[8, 8, .5]}
+            args={[1, 1, 1]}
+            
+          />
           <meshStandardMaterial color={active ? 'lightpink' : 'lightblue'} />
-          <mesh position={[0,0,.3]} >
+          <mesh position={[0,0,.6]} >
           <Text
-        scale={[1, 1.75, 1.25]}
+        scale={[.12, .12, .12]}
         color="white" // default
         >
             Beacon Defender
@@ -406,12 +406,12 @@ function EyeAnimation({ preset }) {
     })
     return (
       <mesh ref={bounceRef}>
-        <mesh ref={ref} position={[20, 8, -15]} receiveShadow castShadow onClick={() => { setPreset(3) }} >
-        <boxGeometry args={[8, 8, .5]} />
+        <mesh ref={ref} scale={[8,8,.5]} position={[20, 8, -15]} receiveShadow castShadow onClick={() => { setPreset(3) }} >
+        <boxGeometry args={[1,1,1]} />
           <meshStandardMaterial color={active ? 'lightpink' : 'lightblue'} />
-          <mesh position={[0,0,.3]} >
+          <mesh position={[0,0,.6]} >
           <Text
-        scale={[1.5, 1.5, 1.5]}
+        scale={[.12, .12, .12]}
         color="white" // default
         >
             Virtual Fit
@@ -460,7 +460,7 @@ function EyeAnimation({ preset }) {
   }
 
   function QuickLoad() {
-    const { progress } = useProgress()
+    const { progress, active,errors,item,loaded,total } = useProgress()
     return <Html center> {progress} % loaded</Html>
   }
   
@@ -525,7 +525,7 @@ function EyeAnimation({ preset }) {
     <AdaptiveDpr pixelated />
     <AdaptiveEvents />
       
-    <Suspense fallback={null}>    
+          <Suspense fallback={<QuickLoad/>}>    
           {(      
             <>
     <DayScene setDay={setDay} />      
@@ -548,16 +548,20 @@ function EyeAnimation({ preset }) {
     <OrbitingMeshTwo /> */}
               <IslandTwo setPreset={setPreset} shaded={shaded} />  
               <IslandThree setPreset={setPreset} />
-              <Preload all/>
             </>
           )}
           </Suspense>
+          <Preload all/>
           </mesh>
         {/* <Stats/> */}
         {/* <Debug/> */}
         {/* <PerfHook/> */}
       </Canvas>
-      <Loader/>
+      <Loader
+        initialState={(active) => active}
+        // barStyles={}
+        dataInterpolation={(p) => `Loading ${p.toFixed(2)}%`}
+      />
     </div>
   );
 }
