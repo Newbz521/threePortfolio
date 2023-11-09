@@ -524,11 +524,11 @@ function EyeAnimation({ preset }) {
         
     <AdaptiveDpr pixelated />
     <AdaptiveEvents />
+          <DayScene setDay={setDay} />      
       
           <Suspense fallback={<QuickLoad/>}>    
           {(      
             <>
-    <DayScene setDay={setDay} />      
     <StoreOne />
     <StoreTwo />
     <StoreThree />
