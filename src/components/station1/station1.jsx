@@ -25,12 +25,61 @@ const StationOne = (props) => {
   const [preset, setPreset] = useState(0)  
   const [day, setDay] = useState(true);
   const [shaded, setShaded] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [webGLSupported, setWebGLSupported] = useState(true);
+
+  // Check WebGL support
+  useEffect(() => {
+    const checkWebGL = () => {
+      try {
+        const canvas = document.createElement('canvas');
+        const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+        if (!gl) {
+          setWebGLSupported(false);
+          return;
+        }
+        
+        // Check for basic WebGL capabilities
+        const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+        if (debugInfo) {
+          const renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+          // Check if it's a software renderer
+          if (renderer && (renderer.includes('SwiftShader') || renderer.includes('Software') || renderer.includes('llvmpipe'))) {
+            setWebGLSupported(false);
+            return;
+          }
+        }
+        
+        setWebGLSupported(true);
+      } catch (e) {
+        setWebGLSupported(false);
+      }
+    };
+    
+    checkWebGL();
+  }, []);
+
   useEffect(()=>{
     // console.log(window.innerWidth)
     if (window.innerWidth < 500) {
       setDov(105)
     } 
   }, [])
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 600);
+      // Reduce DPR on mobile for better performance
+      if (window.innerWidth <= 600) {
+        setDpr(0.8);
+      } else {
+        setDpr(1.5);
+      }
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
   
   let created =() => {
     console.log("created")
@@ -109,8 +158,14 @@ function AnimateEyeToTarget({ position, target }) {
 
   const s = useSpring({
     from: defaultPosition,
-    // Fun jelly-like animation
-    // config: config.wobbly,
+    // Smooth, configurable animation
+    config: {
+      mass: 1,
+      tension: 170,
+      friction: 26,
+      duration: 2000, // 2 second transition
+      easing: t => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t // easeInOutQuart
+    },
     onStart: () => {
       if (!controls) return;
       controls.enabled = false;
@@ -121,10 +176,26 @@ function AnimateEyeToTarget({ position, target }) {
     }
   });
 
-  s.position.start({ from: camera.position.toArray(), to: position });
+  s.position.start({ 
+    from: camera.position.toArray(), 
+    to: position,
+    config: {
+      mass: 1,
+      tension: 170,
+      friction: 26,
+      duration: 2000
+    }
+  });
+  
   s.target.start({
     from: controls ? controls.target.toArray() : [0, 0, 0],
-    to: target
+    to: target,
+    config: {
+      mass: 1,
+      tension: 170,
+      friction: 26,
+      duration: 2000
+    }
   });
 
   const AnimateControls = useMemo(() => a(ControlsWrapper), []);
@@ -461,8 +532,93 @@ function EyeAnimation({ preset }) {
 
   function QuickLoad() {
     const { progress, active,errors,item,loaded,total } = useProgress()
+    return null // We'll use the LoadingOverlay instead
+  }
+
+  // Loading Overlay Component (outside Canvas)
+  const LoadingOverlay = () => {
+    const [isLoading, setIsLoading] = useState(false)
+    const [smoothProgress, setSmoothProgress] = useState(0)
+    const { progress, active } = useProgress()
+    
+    // Check if this is the very first time the site has ever been loaded
+    const isFirstEverLoad = !localStorage.getItem('siteHasLoadedBefore')
+    
+    // Only show loading on the very first site load ever
+    const shouldShow = isFirstEverLoad && active && progress < 100
+    
+    // Use useEffect to manage loading state more smoothly
+    useEffect(() => {
+      if (shouldShow) {
+        setIsLoading(true)
+        setSmoothProgress(0)
+        
+        const startTime = Date.now()
+        const minLoadTime = 5000 // 5 seconds minimum
+        
+        // Smoothly animate progress
+        const interval = setInterval(() => {
+          const elapsed = Date.now() - startTime
+          const progressRatio = Math.min(elapsed / minLoadTime, 1)
+          
+          // Calculate target progress based on time elapsed vs actual progress
+          const targetProgress = Math.max(progress, progressRatio * 100)
+          
+          setSmoothProgress(prev => {
+            // Move in small increments (0.5% per update for smooth animation)
+            const increment = 0.5
+            if (prev < targetProgress) {
+              return Math.min(prev + increment, targetProgress)
+            }
+            return prev
+          })
+        }, 15) // Update every 15ms for smoother animation (60fps)
+        
+        return () => clearInterval(interval)
+      } else if (isLoading && !active) {
+        // Add a small delay before hiding to prevent flickering
+        const timer = setTimeout(() => {
+          setIsLoading(false)
+          setSmoothProgress(0)
+          // Mark that the site has been loaded before (permanent)
+          localStorage.setItem('siteHasLoadedBefore', 'true')
+        }, 500)
+        return () => clearTimeout(timer)
+      }
+    }, [shouldShow, progress, active, isLoading, isFirstEverLoad])
+    
+    if (!isLoading) return null
+    
     return (
-      <Html center> <div className="load-block" style={{fontSize:"5vw"}}>{progress} % of World loaded...</div></Html>
+      <div style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100vw',
+        height: '100vh',
+        backgroundColor: 'rgba(0, 0, 0, 0.9)',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        zIndex: 99999,
+        backdropFilter: 'blur(5px)',
+        pointerEvents: 'auto',
+        transition: 'opacity 0.3s ease-in-out'
+      }}>
+        <div className="load-block" style={{
+          fontSize: "5vw",
+          color: 'white',
+          textAlign: 'center',
+          textShadow: '0 0 10px rgba(255, 255, 255, 0.5)',
+          padding: '2rem',
+          borderRadius: '1rem',
+          backgroundColor: 'rgba(0, 0, 0, 0.7)',
+          border: '2px solid rgba(255, 255, 255, 0.3)',
+          boxShadow: '0 0 20px rgba(0, 0, 0, 0.5)'
+        }}>
+          {Math.round(smoothProgress)} % of World loaded...
+        </div>
+      </div>
     )
   }
   
@@ -487,15 +643,52 @@ function EyeAnimation({ preset }) {
     return <PerfHeadless />
   }
 
+  // WebGL Fallback Component
+  const WebGLFallback = () => (
+    <div style={{
+      width: '100vw',
+      height: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: '#1a1a1a',
+      color: 'white',
+      fontFamily: 'Arial, sans-serif',
+      textAlign: 'center',
+      padding: '20px'
+    }}>
+      <h1 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Graphics Upgrade Required</h1>
+      <p style={{ fontSize: '1.1rem', maxWidth: '500px', lineHeight: '1.5' }}>
+        Your device doesn't support the required graphics capabilities for this 3D experience. 
+        Please enable hardware acceleration in your browser settings or upgrade your graphics drivers.
+      </p>
+      <div style={{ marginTop: '2rem' }}>
+        <h3 style={{ marginBottom: '1rem' }}>How to enable hardware acceleration:</h3>
+        <ul style={{ textAlign: 'left', maxWidth: '400px', margin: '0 auto' }}>
+          <li>Chrome: Settings → Advanced → System → Use hardware acceleration</li>
+          <li>Firefox: about:config → layers.acceleration.force-enabled → true</li>
+          <li>Edge: Settings → System and performance → Use hardware acceleration</li>
+        </ul>
+      </div>
+    </div>
+  );
+
+  // Return fallback if WebGL is not supported
+  if (!webGLSupported) {
+    return <WebGLFallback />;
+  }
+
   return (
     <div className="canvasContainer" load>
-      <div className='title-block' >
+      <LoadingOverlay />
+      <div className='title-block'>
         <h1 onClick={function () { setPreset(0) }}>WORLD</h1>
         <h4 onClick={function () { setPreset(2) }}>Projects</h4>
         <h4 onClick={function () { setPreset(7) }}>CONTACTS</h4>
         <h4 onClick={function () { setPreset(8) }}>ABOUT ME</h4>
       </div>
-      <div className="title-block" style={{bottom:"calc(25px + 10vh)",position:"absolute",borderRadius:"10px", width:"fit-content", height: "25vh", color:"white", zIndex:"20", display:"flex", justifyContent:"center", alignItems:"start", flexDirection:"column", paddingLeft:"1vw", pointerEvents:"none"}}>
+      <div className="title-block controls-block" style={{bottom:"calc(25px + 10vh)",position:"absolute",borderRadius:"10px", width:"fit-content", height: "25vh", color:"white", zIndex:"20", display:"flex", justifyContent:"center", alignItems:"start", flexDirection:"column", paddingLeft:"1vw", pointerEvents:"none"}}>
         <h4 style={{textShadow:"0 0 3px black"}}>ESC : Zoom to World View</h4>
         <h4 style={{textShadow:"0 0 3px black"}}>Left(Hold) : Camera Angle</h4>
         <h4 style={{textShadow:"0 0 3px black"}}>Left(Click) : Select </h4>

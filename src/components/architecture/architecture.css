@@ -4,6 +4,8 @@
   position: absolute;
   top: 60px;
 } */
+
+
 /* .screen{
   width: 100%;
   height: calc(100vh - 60px);
@@ -11,10 +13,13 @@
   justify-content: center;
   align-items: center;
 } */
+
+
 /* .home-box{
   flex-direction: column;
   color: rgb(177, 135, 249);
 } */
+
 
 /* .home-box > h1, h3{
   margin: 0;
@@ -26,8 +31,12 @@
   width: fit-content;
   animation: slideFromLeft 1.2s;
 } */
+
+
 /* .home-box > h3{
 } */
+
+
 /* .home-box > .text-one{
   padding-top: 10px;
   font-size: 30px;
@@ -53,224 +62,296 @@
   animation: slideFromLeft 1s;
 } */
 
-.architecture-screen{
-  display: flex;
-  width: 100vw;
-  /* position: absolute; */
-  top: 0px;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  width: calc(100vw );
-  height: calc(100%);
-  background-color: white;
-  background-size: cover;
-  background-position: center;
-  background-image: url("https://img.freepik.com/premium-photo/small-white-flowers-white-background-mockup-design-element-valentines-day-mother-day_92695-1204.jpg?w=2000");
-  border-radius: 2px;
-  overflow: hidden;
-  box-shadow: 0 0 10px 2px rgb(128, 128, 128, .5);
+.architecture-screen {
+    display: flex;
+    width: 100vw;
+    /* position: absolute; */
+    top: 0px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    width: calc(100vw);
+    height: calc(100%);
+    background-color: white;
+    background-size: cover;
+    background-position: center;
+    background-image: url("https://img.freepik.com/premium-photo/small-white-flowers-white-background-mockup-design-element-valentines-day-mother-day_92695-1204.jpg?w=2000");
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 0 0 10px 2px rgb(128, 128, 128, .5);
 }
-.project-box{
-  display: flex;
-  width: 30vw;
-  height: 30vw;
-  border: 5px solid black;
-  background-size: cover;
-  background-position: center;
-  z-index: 5;
+
+.project-box {
+    display: flex;
+    width: 30vw;
+    height: 30vw;
+    border: 5px solid black;
+    background-size: cover;
+    background-position: center;
+    z-index: 5;
 }
-h5{
-  z-index: 2;
+
+h5 {
+    z-index: 2;
 }
+
 @keyframes slideFromRight {
-  0%{
-    transform: translateX(100vw)
-  }
-  100%{
-    transform: translateX(0)
-  }
+    0% {
+        transform: translateX(100vw)
+    }
+    100% {
+        transform: translateX(0)
+    }
 }
+
 @keyframes slideFromLeft {
-  0%{
-    transform: translateX(-100vw)
-  }
-  100%{
-    transform: translateX(0)
-  }
+    0% {
+        transform: translateX(-100vw)
+    }
+    100% {
+        transform: translateX(0)
+    }
 }
+
 @keyframes lagSlide {
-  0%{
-    transform: translateX(-100vw)
-  }
-  90%{
-    transform: translateX(5vw)
-  }
-  95%{
-    transform: translateX(-5vw)
-  }
-  100%{
-    transform: translateX(0)
-  }
+    0% {
+        transform: translateX(-100vw)
+    }
+    90% {
+        transform: translateX(5vw)
+    }
+    95% {
+        transform: translateX(-5vw)
+    }
+    100% {
+        transform: translateX(0)
+    }
 }
 
 @keyframes slideUp {
-  0%{
-    transform: translateY(100vh)
-  }
- 
-  100%{
-    transform: translateY(0)
-  }
-}
-.arch-title{
-  position: absolute;
-  z-index: 5;
-  pointer-events: none;
-  color: rgb(71, 94, 160);
-  font-family: 'Teko', sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding-left: 10px;
-}
-.address{
-  font-size: 20px;
-}
-.controls{
-  position: absolute;
-  z-index: 5;
-  pointer-events: none;
-  color: rgb(71, 94, 160);
-  font-family: 'Teko', sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding-left: 10px;
-  top: 0;
-  font-size: 20px;
-}
-.arch-name{
-  color: white;
-  font-size: 20px;
-  text-transform: uppercase;
-}
-.Arch-container{
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  position: absolute;
-  /* border: 5px solid blue; */
-  right: 0;
-  top: 0;
-  width: 50vw;
-  height: calc(100vh - 60px);
-  z-index: 5; 
-  overflow: scroll;
-  background-color: rgb(31, 50, 105);
-  background-color: rgb(71, 94, 160);
-  scrollbar-width: none;
-  overflow-x: visible;
-  overflow-y: hidden;
-  /* pointer-events: none; */
+    0% {
+        transform: translateY(100vh)
+    }
+    100% {
+        transform: translateY(0)
+    }
 }
 
-.Arch-container::-webkit-scrollbar {
-  display: none;
-}
-.arch-img-container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 30vw;
-  font-family: 'Teko', sans-serif;
-overflow: none;
-  /* border: 5px solid pink; */
-}
-.arch-img{
-  display: flex;
-  z-index: 10;
-  height: 40%;
-  width: 90%;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  /* position: absolute; */
-  /* border: 1px solid blue; */
-  /* animation: slideUp 2s; */
+.arch-title {
+    position: absolute;
+    z-index: 5;
+    pointer-events: none;
+    color: rgb(71, 94, 160);
+    font-family: 'Teko', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 10px;
 }
 
-.canvas-wrap{
-  display: flex;
-  width: 50vw;
-  height: calc(100vh - 60px);
-  position:absolute;
-  left: 0;
-}
-img{
- height: 100%;
- transform-origin: center center;
- object-fit: cover;
- /* display: block;
-  height: 100%;
-  pointer-events: none; */
-}
-.image-zoom{
-  transition: all .1s;
-  transform-origin: bottom center ;
-}
-.image-zoom:hover{
-  transform: scale(1.5);
-}
-@media (max-width: 600px){
-  .home-box > h1, h3{
-    width: 80vw;
-  }
+.address {
+    font-size: 20px;
 }
 
-.modal-pop{
-  display: flex;
-  position: absolute;
-  border: 5px solid pink;
-  left: 0;
+.controls {
+    position: absolute;
+    z-index: 5;
+    pointer-events: none;
+    color: rgb(71, 94, 160);
+    font-family: 'Teko', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 10px;
+    top: 0;
+    font-size: 20px;
 }
+
+.arch-name {
+    color: white;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.canvas-wrap {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+
+img {
+    height: 100%;
+    transform-origin: center center;
+    object-fit: contain;
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.image-zoom {
+    transition: none;
+    transform-origin: center center;
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.image-zoom:hover {
+    transform: none;
+}
+
+@media (max-width: 600px) {
+    .home-box>h1,
+    h3 {
+        width: 80vw;
+    }
+    /* .arch-title{
+
+  } */
+    .address {
+        font-size: 15px;
+    }
+    .architecture-screen {
+        flex-direction: column;
+        align-items: stretch;
+        height: 100vh;
+        min-height: 100vh;
+        max-height: 100vh;
+    }
+    .canvas-wrap {
+        position: fixed !important;
+        top: 60px !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: calc(100dvh - 60px) !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        z-index: 2;
+    }
+    .Arch-container {
+        flex-direction: column;
+        position: static;
+        width: 100vw;
+        height: 50vh;
+        min-height: unset;
+        max-height: unset;
+        overflow: auto;
+        order: 1;
+    }
+}
+
+.modal-pop {
+    display: flex;
+    position: absolute;
+    border: 5px solid pink;
+    left: 0;
+}
+
 figure {
-
-  background-repeat: no-repeat;
-  display: flex;
-  z-index: 10;
-  height: 40%;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  /* border: 5px solid pink; */
+    background-repeat: no-repeat;
+    display: flex;
+    z-index: 10;
+    height: 40%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* border: 5px solid pink; */
 }
 
 figure:hover img {
-  opacity: .1;
-  z-index: 0;
+    opacity: .1;
+    z-index: 0;
 }
 
-.img-button{
-  position: relative;
+.img-button {
+    position: relative;
 }
 
-.image-link{
-  color: white;
-  margin-top: 20px;
-  padding: 2px;
-  font-size: 20px;
-  border: 1px solid white;
+.image-link {
+    color: white;
+    margin-top: 20px;
+    padding: 2px;
+    font-size: 20px;
+    border: 1px solid white;
 }
+
+
 /* 
 img {
   display: block;
   width: 100%;
   pointer-events: none;/static/media/EastElevation.d4fcd1378d76dd3c7e1d.jpg
 } */
+
+
+/* Modal styles for Arch-container */
+
+.Arch-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80vw;
+    max-width: 700px;
+    max-height: 80vh;
+    height: auto;
+    z-index: 100;
+    background: white;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    border-radius: 16px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 32px 24px;
+    scrollbar-width: thin;
+    scroll-snap-type: y mandatory;
+    display: none;
+}
+
+.Arch-container.modal-open {
+    display: flex;
+}
+
+
+/* Modal backdrop */
+
+.arch-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 99;
+    display: none;
+}
+
+.arch-modal-backdrop.open {
+    display: block;
+}
+
+.arch-img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    width: 100%;
+    font-family: 'Teko', sans-serif;
+    overflow: none;
+    scroll-snap-align: center;
+}
