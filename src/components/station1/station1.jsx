@@ -683,16 +683,16 @@ function EyeAnimation({ preset }) {
     <div className="canvasContainer" load>
       <LoadingOverlay />
       <div className='title-block'>
-        <h1 onClick={function () { setPreset(0) }}>WORLD</h1>
+        <h4 onClick={function () { setPreset(0) }}>WORLD</h4>
         <h4 onClick={function () { setPreset(2) }}>Projects</h4>
         <h4 onClick={function () { setPreset(7) }}>CONTACTS</h4>
         <h4 onClick={function () { setPreset(8) }}>ABOUT ME</h4>
       </div>
       <div className="title-block controls-block" style={{bottom:"calc(25px + 10vh)",position:"absolute",borderRadius:"10px", width:"fit-content", height: "25vh", color:"white", zIndex:"20", display:"flex", justifyContent:"center", alignItems:"start", flexDirection:"column", paddingLeft:"1vw", pointerEvents:"none"}}>
-        <h4 style={{textShadow:"0 0 3px black"}}>ESC : Zoom to World View</h4>
-        <h4 style={{textShadow:"0 0 3px black"}}>Left(Hold) : Camera Angle</h4>
-        <h4 style={{textShadow:"0 0 3px black"}}>Left(Click) : Select </h4>
-        <h4 style={{textShadow:"0 0 3px black"}}>Scroll : Zoom </h4>
+        <h4>ESC : Zoom to World View</h4>
+        <h4>Left(Hold) : Camera Angle</h4>
+        <h4>Left(Click) : Select </h4>
+        <h4>Scroll : Zoom </h4>
 
       </div>
 

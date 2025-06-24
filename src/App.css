@@ -20,9 +20,9 @@
 
 .canvasContainer {
     position: fixed;
-    top: 60px;
+    top: 0px;
     width: 100vw;
-    height: calc(100vh - 60px);
+    height: calc(100vh);
     overflow: none;
     overflow-y: none;
 }

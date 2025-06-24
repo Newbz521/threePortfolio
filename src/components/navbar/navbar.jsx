@@ -46,12 +46,12 @@ function Navbar(props) {
     
     
     <div className={navbar ? "navBarContainer active" : "navBarContainer"} >
-      <div className="navStartContainer" >
+      {/* <div className="navStartContainer" > */}
         <div className="navTab">
           <Link className="individualTab" to="/">Lawrence Yee</Link>
         </div>
-       </div>
-      <div className="navMidContainer">
+       {/* </div> */}
+      {/* <div className="navMidContainer"> */}
      
         <div className="navTab">
           <Link className="individualTab" to="/software">Software Engineer</Link>
@@ -59,7 +59,7 @@ function Navbar(props) {
         <div className="navTab">
           <Link className="individualTab" to="/architecture">Architecture Designer</Link>
         </div>
-      </div>
+      {/* </div> */}
       {/* <div className="navEndContainer">
         {!currentUser ? (
           <>
